@@ -20,11 +20,17 @@ class ProjectController extends Controller
     public function show($id)
     {
         // Fetch the project along with its related details
-        $project = Project::with(['propertyDetails', 'propertyUnits', 'outdoorFeatures'])
+        $project = Project::with(['propertyDetail', 'outdoorFeatures', 'propertyUnits'])
                           ->findOrFail($id);
 
-        return view('frontend.newproject.projectfile', compact('project'));
+        // Get outdoor features and property units related to the project
+        $outdoorFeatures = $project->outdoorFeatures; // Fetch outdoor features from the project
+        $propertyUnits = $project->propertyUnits; // Fetch property units from the project
+
+        return view('frontend.newproject.projectfile', compact('project', 'outdoorFeatures', 'propertyUnits'));
     }
+
+
     public function store(Request $request)
     {
         // Validate the incoming request data

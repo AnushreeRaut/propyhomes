@@ -15,4 +15,9 @@ class Role extends Model
         'added_by',
         'updated_by',
     ];
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'permission_role');
+    }
 }

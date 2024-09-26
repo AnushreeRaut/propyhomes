@@ -23,4 +23,22 @@ class Project extends Model
         'added_by',
         'updated_by',
     ];
+
+     // Define the relationship with PropertyDetail
+     public function propertyDetail()
+     {
+         return $this->hasOne(PropertyDetail::class);
+     }
+
+     // Define the relationship with OutdoorFeature
+     public function outdoorFeatures()
+     {
+         return $this->hasMany(OutdoorFeature::class);
+     }
+
+     // Define the relationship with PropertyUnit
+     public function propertyUnits()
+     {
+         return $this->hasMany(PropertyUnit::class);
+     }
 }

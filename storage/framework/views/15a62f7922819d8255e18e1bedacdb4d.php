@@ -317,7 +317,7 @@
                                 </div>
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-              
+
                     <div class="swiper-slide ">
                         <div class=" position-relative sec2Macard rounded-3 card-container  pt-3 z-1">
                             <a href="<?php echo e(route('mahendra')); ?>" class="text-decoration-none">

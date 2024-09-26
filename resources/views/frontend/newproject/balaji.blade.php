@@ -390,28 +390,7 @@
                 <div class="col-xl-4 col-lg-12   ">
                     <div class=" p-4 rounded-2 psec2borde w-100  position-sticky topfixed ">
                         <h2 class="psec2c2h">Related Property</h2>
-                        <!-- <p class="psec2c2p">Tantas signiferumque eum at, vix an dicant fierent homero dignissim.</p> -->
-                        <!-- <div class="">
-                            <div class="card p-3  h-100">
-                                <img src="assets/frontend/img/col2Img.webp" class="card-img-top" alt="...">
-                                <div class="card-body px-0">
-                                    <h5 class="card-title psec2c2h">₹50.66L - 53.03 L</h5>
-                                    <p class="card-text  psec2c2p">Kandivali East, Mumbai, Maharashtra </p>
-                                    <div class="d-flex">
-                                        <div class="d-flex">
-                                            <div class=""><img src="assets/frontend/img/bed1.svg" alt="" class="pe-2"></div>
-                                            <p class="pe-4 psec2c2p pt-1"> 2 Bed Rooms
-                                            </p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class=""><img src="assets/frontend/img/shawar.svg" alt="" class="pe-2"></div>
-                                            <p class="pe-4 psec2c2p pt-1"> 4 Bathrooms
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                     
                         <div class="owl-carousel  powl-carousel owl-theme">
                             <div class="item">
                                 <div class="">

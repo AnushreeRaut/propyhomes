@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -13,63 +14,34 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
+    public function run()
     {
-        // Seed roles
-        $roles = [
-            [
-                'role_name' => 'Admin',
-                'description' => 'Administrator with full access rights',
-                'added_by' => 1,
-            ],
-            [
-                'role_name' => 'Manager',
-                'description' => 'Manager with access to managerial functionalities',
-                'added_by' => 1,
-            ],
-            [
-                'role_name' => 'Employee',
-                'description' => 'Standard employee role with limited access',
-                'added_by' => 1,
-            ],
+        // Create Roles
+        $admin = Role::create(['role_name' => 'Admin']);
+        $manager = Role::create(['role_name' => 'Manager']);
+        $employee = Role::create(['role_name' => 'Employee']);
+        $referral = Role::create(['role_name' => 'Referral']);
+        $customer = Role::create(['role_name' => 'Customer']);
+
+        // Create Permissions
+        $permissions = [
+            'view_dashboard',
+            'manage_users',
+            'create_posts',
+            'edit_posts',
+            'delete_posts',
+            'view_reports',
         ];
 
-        foreach ($roles as $roleData) {
-            Role::create($roleData);
+        foreach ($permissions as $permission) {
+            Permission::create(['permission_name' => $permission]);
         }
 
-        // Retrieve the roles for assignment
-        $adminRole = Role::where('role_name', 'Admin')->first();
-        $managerRole = Role::where('role_name', 'Manager')->first();
-        $employeeRole = Role::where('role_name', 'Employee')->first();
-
-        // Seed users
-        $users = [
-            [
-                'name' => 'Admin User',
-                'email' => 'admin@example.com',
-                'mobile' => '1234567890',
-                'password' => Hash::make('password'),
-                'added_by' => 1,
-            ],
-            [
-                'name' => 'Manager User',
-                'email' => 'manager@example.com',
-                'mobile' => '1234567891',
-                'password' => Hash::make('password'),
-                'added_by' => 1,
-            ],
-            [
-                'name' => 'Employee User',
-                'email' => 'employee@example.com',
-                'mobile' => '1234567892',
-                'password' => Hash::make('password'),
-                'added_by' => 1,
-            ],
-        ];
-
-        foreach ($users as $userData) {
-            User::create($userData);
-        }
+        // Attach permissions to roles
+        $admin->permissions()->attach([1, 2, 3, 4, 5, 6]); // All permissions
+        $manager->permissions()->attach([1, 3, 4, 5, 6]); // Manager permissions
+        $employee->permissions()->attach([1, 3]); // Employee permissions
+        $referral->permissions()->attach([1]); // Referral permissions
+        $customer->permissions()->attach([1]); // Customer permissions
     }
 }

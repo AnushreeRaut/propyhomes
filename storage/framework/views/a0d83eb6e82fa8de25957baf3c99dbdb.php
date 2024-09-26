@@ -93,6 +93,7 @@
 
 
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const nameInput = document.getElementById('name');
@@ -132,8 +133,8 @@
 
             // Real-time validation for the password field
             passwordInput.addEventListener('input', function () {
-                if (passwordInput.value.length < 6) {
-                    passwordError.textContent = 'Password must be at least 6 characters long.';
+                if (passwordInput.value.length < 8) {
+                    passwordError.textContent = 'Password must be at least 8 characters long.';
                 } else {
                     passwordError.textContent = '';
                 }

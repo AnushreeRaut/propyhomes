@@ -197,6 +197,12 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                            <!-- Error message for checkboxes -->
+                            <div class="col-12">
+                                <small id="checkboxError" class="text-danger"></small>
+                            </div>
                         </div>
 
                         <!-- Salary-related fields -->
@@ -274,15 +280,19 @@
                             </div>
 
                             <!-- Turnover -->
+                            <!-- Turnover -->
                             <div class="col-lg-4">
                                 <div class="mb-4">
                                     <div class="form-group">
                                         <label for="turnover" class="form-label dpage5label">Turnover</label>
                                         <input type="text" name="turnover" id="turnover"
-                                            class="form-control dpage5input" placeholder="Enter turnover">
+                                            class="form-control dpage5input" placeholder="Enter turnover"
+                                            oninput="validateTurnover()">
+                                        <small id="turnoverError" class="text-danger"></small>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                         <!-- Submit/Back Buttons -->
@@ -339,9 +349,10 @@
                                         <label for="loan[0][comment]">Comment</label>
                                         <textarea name="loan[0][comment]" id="loan[0][comment]" class="form-control"></textarea>
                                     </div>
-                                    <div class="ms-3 mt-4 p-3"> <button type="button" class="plusbtn border-0" id="addLoanButton">
-                                        <i class="fa-solid fa-plus" style="color: #FFFFFF;"></i>
-                                    </button></div>
+                                    <div class="ms-3 mt-4 p-3"> <button type="button" class="plusbtn border-0"
+                                            id="addLoanButton">
+                                            <i class="fa-solid fa-plus" style="color: #FFFFFF;"></i>
+                                        </button></div>
                                     <div class="ms-3 mt-4 p-3">
                                         <button type="button" class="btn btn-danger remove-loan"
                                             style="display:none;">×</button>
@@ -351,14 +362,13 @@
                             </div>
                         </div>
 
-                        
-
                         <div class="mt-4">
                             <button type="button" class="btn btn-secondary" id="backButtonFinancial">Back</button>
                             <button type="button" class="btn btn-primary" id="saveNextButtonFinancial">Save and
                                 Next</button>
                         </div>
                     </div>
+
 
                     <!-- Insurance Details -->
                     <!-- Insurance Details -->
@@ -388,9 +398,13 @@
                                     <div class="form-group">
                                         <label for="insurance[0][premium]" class="form-label dpage5label">Premium</label>
                                         <input type="text" name="insurance[0][premium]" id="insurance[0][premium]"
-                                            class="form-control dpage5input" placeholder="Enter premium amount">
+                                            class="form-control dpage5input" placeholder="Enter premium amount"
+                                            oninput="validatePositiveNumericInput(this)" required>
+                                        <div class="error-message" id="error-premium" style="color: red; display: none;"></div>
                                     </div>
                                 </div>
+
+
                             </div>
 
                             <div class="row insurance-detail" id="insurance-detail-0">
@@ -790,59 +804,100 @@
     </script>
     
     
+    
+
     <script>
         $(document).ready(function() {
             let insuranceCount = 1; // Start counting from 1
 
             $('#addInsuranceButton').click(function() {
                 const newInsuranceRow = `
-            <div class="row insurance-detail" id="insurance-detail-${insuranceCount}">
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label for="insurance[${insuranceCount}][type_of_insurance_company]" class="form-label dpage5label">Type of Insurance Company</label>
-                        <input type="text" name="insurance[${insuranceCount}][type_of_insurance_company]" id="insurance[${insuranceCount}][type_of_insurance_company]" class="form-control dpage5input" placeholder="Enter insurance company type">
+                <div class="row insurance-detail" id="insurance-detail-${insuranceCount}">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="insurance[${insuranceCount}][type_of_insurance_company]" class="form-label dpage5label">Type of Insurance Company</label>
+                            <input type="text" name="insurance[${insuranceCount}][type_of_insurance_company]" id="insurance[${insuranceCount}][type_of_insurance_company]" class="form-control dpage5input" placeholder="Enter insurance company type">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="insurance[${insuranceCount}][type_of_policy]" class="form-label dpage5label">Type of Policy</label>
+                            <input type="text" name="insurance[${insuranceCount}][type_of_policy]" id="insurance[${insuranceCount}][type_of_policy]" class="form-control dpage5input" placeholder="Enter policy type">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="insurance[${insuranceCount}][premium]" class="form-label dpage5label">Premium</label>
+                            <input type="text" name="insurance[${insuranceCount}][premium]" id="insurance[${insuranceCount}][premium]" class="form-control dpage5input" placeholder="Enter premium amount" oninput="validatePositiveNumericInput(this, 'error-premium-${insuranceCount}')" required>
+                            <div class="error-message" id="error-premium-${insuranceCount}" style="color: red; display: none;"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label for="insurance[${insuranceCount}][type_of_policy]" class="form-label dpage5label">Type of Policy</label>
-                        <input type="text" name="insurance[${insuranceCount}][type_of_policy]" id="insurance[${insuranceCount}][type_of_policy]" class="form-control dpage5input" placeholder="Enter policy type">
+                <div class="row insurance-detail">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="insurance[${insuranceCount}][policy_start_date]" class="form-label dpage5label">Policy Start Date</label>
+                            <input type="date" name="insurance[${insuranceCount}][policy_start_date]" id="insurance[${insuranceCount}][policy_start_date]" class="form-control dpage5input" onchange="updateEndDate(${insuranceCount})">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="insurance[${insuranceCount}][policy_end_date]" class="form-label dpage5label">Policy End Date</label>
+                            <input type="date" name="insurance[${insuranceCount}][policy_end_date]" id="insurance[${insuranceCount}][policy_end_date]" class="form-control dpage5input">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="insurance[${insuranceCount}][comment]" class="form-label dpage5label">Comment</label>
+                            <textarea name="insurance[${insuranceCount}][comment]" id="insurance[${insuranceCount}][comment]" class="form-control dpage5input" placeholder="Enter your comment"></textarea>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label for="insurance[${insuranceCount}][premium]" class="form-label dpage5label">Premium</label>
-                        <input type="text" name="insurance[${insuranceCount}][premium]" id="insurance[${insuranceCount}][premium]" class="form-control dpage5input" placeholder="Enter premium amount">
-                    </div>
-                </div>
-            </div>
-            <div class="row insurance-detail">
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label for="insurance[${insuranceCount}][policy_start_date]" class="form-label dpage5label">Policy Start Date</label>
-                        <input type="date" name="insurance[${insuranceCount}][policy_start_date]" id="insurance[${insuranceCount}][policy_start_date]" class="form-control dpage5input">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label for="insurance[${insuranceCount}][policy_end_date]" class="form-label dpage5label">Policy End Date</label>
-                        <input type="date" name="insurance[${insuranceCount}][policy_end_date]" id="insurance[${insuranceCount}][policy_end_date]" class="form-control dpage5input">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label for="insurance[${insuranceCount}][comment]" class="form-label dpage5label">Comment</label>
-                        <textarea name="insurance[${insuranceCount}][comment]" id="insurance[${insuranceCount}][comment]" class="form-control dpage5input" placeholder="Enter your comment"></textarea>
-                    </div>
-                </div>
-            </div>
-            `;
+                `;
 
                 $('#insuranceDetailsContainer').append(newInsuranceRow);
                 insuranceCount++;
             });
         });
-    </script>
+
+        function validatePositiveNumericInput(input, errorFieldId) {
+            const errorField = document.getElementById(errorFieldId);
+            const value = input.value.trim();
+
+            // Regular expression to allow only positive numbers and optionally decimal point
+            const positiveNumericPattern = /^(?!0)[0-9]*\.?[0-9]*$/;
+
+            // Check if input is valid
+            if (value === '' || positiveNumericPattern.test(value)) {
+                errorField.style.display = 'none'; // Hide error message
+                input.style.borderColor = ''; // Reset border color
+            } else {
+                errorField.textContent = 'Please enter a valid positive number.';
+                errorField.style.display = 'block'; // Show error message
+                input.style.borderColor = 'red'; // Highlight border
+            }
+        }
+
+        function updateEndDate(insuranceCount) {
+            const startDateInput = document.getElementById(`insurance[${insuranceCount}][policy_start_date]`);
+            const endDateInput = document.getElementById(`insurance[${insuranceCount}][policy_end_date]`);
+            const today = new Date();
+
+            // Set the minimum date for the end date based on the start date
+            const startDate = new Date(startDateInput.value);
+            if (startDateInput.value) {
+                // Set the min attribute for the end date to be the start date or tomorrow
+                endDateInput.min = startDateInput.value;
+            } else {
+                // Reset the min attribute if no start date is selected
+                endDateInput.min = today.toISOString().split("T")[0]; // Reset to today
+            }
+
+            // Prevent past dates
+            endDateInput.setAttribute("min", today.toISOString().split("T")[0]);
+        }
+        </script>
+
     
     
     <script>
@@ -1003,6 +1058,96 @@
             });
         });
     </script>
+    
+    <script>
+        // JavaScript to validate the Turnover field in real-time
+        function validateTurnover() {
+            const turnoverField = document.getElementById('turnover');
+            const turnoverError = document.getElementById('turnoverError');
+            const turnoverValue = turnoverField.value;
+
+            // Check if the turnover contains only numbers
+            const isNumeric = /^[0-9]*$/.test(turnoverValue);
+
+            if (!isNumeric) {
+                // Show error if the input is not numeric
+                turnoverError.innerText = 'Please enter a valid number for turnover.';
+                turnoverField.classList.add('is-invalid');
+            } else {
+                // Clear the error if the input is valid
+                turnoverError.innerText = '';
+                turnoverField.classList.remove('is-invalid');
+            }
+        }
+
+        $(document).ready(function() {
+            // Disable the Save and Next button initially
+            $('#saveNextButtonProfessional').prop('disabled', true);
+
+            // Function to check if any checkbox is selected
+            function validateCheckboxes() {
+                const isChecked = $('#salary').is(':checked') || $('#business').is(':checked');
+                if (!isChecked) {
+                    $('#checkboxError').text('Please select at least one option.');
+                    $('#saveNextButtonProfessional').prop('disabled', true);
+                } else {
+                    $('#checkboxError').text(''); // Clear error message
+                    $('#saveNextButtonProfessional').prop('disabled', false); // Enable button
+                }
+            }
+
+            // Add event listeners to the checkboxes
+            $('#salary, #business').change(function() {
+                validateCheckboxes();
+            });
+
+            // Manually trigger validation on page load in case user comes back to this tab
+            validateCheckboxes();
+
+            // Save and Next Button handler
+            $('#saveNextButtonProfessional').click(function() {
+                if (validateCheckboxes()) {
+                    // Your logic to proceed to the next tab
+                    navigateTab(1);
+                }
+            });
+
+            // Function to navigate tabs (already in your original code)
+            function navigateTab(direction) {
+                var tabs = Array.from($('#detailsTabs .nav-link'));
+                var currentIndex = tabs.findIndex(tab => $(tab).attr('href') ===
+                    `#${$('.tab-pane.show.active').attr('id')}`);
+                currentIndex += direction;
+                if (currentIndex >= 0 && currentIndex < tabs.length) {
+                    $(tabs[currentIndex]).tab('show');
+                    localStorage.setItem('activeTab', $(tabs[currentIndex]).attr('href'));
+                }
+            }
+        });
+    </script>
+    
+    
+
+    <script>
+        function validatePositiveNumericInput(input) {
+            const errorField = document.getElementById('error-premium');
+            const value = input.value.trim();
+
+            // Regular expression to allow only positive numbers and optionally decimal point
+            const positiveNumericPattern = /^(?!0)[0-9]*\.?[0-9]*$/;
+
+            // Check if input is valid
+            if (value === '' || positiveNumericPattern.test(value)) {
+                errorField.style.display = 'none'; // Hide error message
+                input.style.borderColor = ''; // Reset border color
+            } else {
+                errorField.textContent = 'Please enter a valid positive number.';
+                errorField.style.display = 'block'; // Show error message
+                input.style.borderColor = 'red'; // Highlight border
+            }
+        }
+    </script>
+    
     
     <script>
         $(document).ready(function() {

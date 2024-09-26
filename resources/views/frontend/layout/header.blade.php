@@ -21,7 +21,7 @@
     <!-- ====== CSS-MQ ===== -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/styleMQ.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/frontend/img/logo.png') }}" type="image/x-icon">
-        <!--  -->
+    <!--  -->
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -306,7 +306,7 @@
             border-radius: 50%;
             /* Round thumb */
             background: white;
-            border: 3px solid #C8A864 ;
+            border: 3px solid #C8A864;
             /* Color of the thumb */
             cursor: pointer;
         }
@@ -331,13 +331,14 @@
             /* Change the progress bar color when active */
         }
     </style>
-        <style>
+    <style>
         content {
             color: #fff;
             font-weight: bold;
             background-color: #34495E;
             position: relative;
         }
+
         .content__container {
             position: relative;
             height: 60px;
@@ -346,44 +347,55 @@
             /* background-color: aqua; */
             /* background: chartreuse; */
         }
+
         @keyframes opacity {
+
             0%,
             50% {
                 opacity: 0;
                 color: #1D1F20;
             }
         }
+
         @keyframes trans {
+
             0%,
             14.66% {
                 transform: translateY(0%)
             }
+
             16.66%,
             31.32% {
                 transform: translateY(-25%)
             }
+
             33.32%,
             47.98% {
                 transform: translateY(-50%)
             }
+
             49.98%,
             64.64% {
                 transform: translateY(-75%)
             }
+
             66.64%,
             81.30% {
                 transform: translateY(-50%)
             }
+
             83.30%,
             97.96% {
                 transform: translateY(-25%)
             }
         }
+
         .content__container__text {
             position: absolute;
             /* margin-left: 41%; */
             margin-top: 0px;
         }
+
         .content__container__list {
             position: absolute;
             list-style-type: none;
@@ -393,42 +405,54 @@
             animation-iteration-count: infinite;
             margin-top: 4px;
         }
+
         .content__container__list__item {
             font-size: 37px;
             font-weight: 500;
             color: white;
         }
+
         @media only screen and (max-width: 1400px) and (min-width: 1200px) {
             .content__container__list__item {
                 font-size: 32px;
                 font-weight: 500;
                 color: white;
             }
+
             .banerh1 {
                 padding-top: 4px;
                 font-size: 32px !important;
                 font-weight: var(--font-weight-700);
             }
+
+            .content__container {
+                height: 55px;
+            }
         }
+
         @media only screen and (max-width: 1200px) and (min-width: 992px) {
             .content__container__list__item {
                 font-size: 28px;
                 font-weight: 500;
                 color: white;
             }
+
             .banerh1 {
                 font-size: 32px !important;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list {
                 margin-left: 12%;
-                margin-top: 5px;
+                margin-top: 1.5px;
             }
+
             .content__container {
-                height: 50px;
+                height: 45px;
                 /* margin-top: 140px; */
             }
         }
+
         @media only screen and (max-width: 992px) and (min-width: 768px) {
             .banerh1 {
                 padding-top: 6px;
@@ -436,93 +460,117 @@
                 font-weight: var(--font-weight-700);
             }
         }
+
         @media only screen and (max-width: 768px) and (min-width: 576px) {
             .banerh1 {
                 font-size: 32px !important;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list__item {
                 font-size: 32px;
                 font-weight: 500;
                 color: white;
             }
+
             .content__container__list {
                 margin-left: 11%;
                 margin-top: 0px;
             }
+
             .content__container {
                 height: 54px;
                 /* margin-top: 140px; */
             }
         }
+
         @media only screen and (max-width: 576px) and (min-width: 500px) {
             .banerh1 {
                 font-size: 30px !important;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list__item {
                 font-size: 30px;
                 font-weight: 500;
                 color: white;
             }
+
             .content__container__list {
                 margin-left: 10%;
                 margin-top: 0px;
             }
+
             .content__container {
                 height: 53px;
                 /* margin-top: 140px; */
             }
         }
+
         @media only screen and (max-width: 500px) and (min-width: 424px) {
             .banerh1 {
                 font-size: 25px !important;
                 padding-top: 4px;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list__item {
                 font-size: 25px;
                 font-weight: 500;
                 color: white;
             }
+
             .content__container {
                 height: 44px;
                 /* margin-top: 140px; */
             }
+
+            .content__container__list {
+                margin-left: 10%;
+                margin-top: 3.5px;
+            }
         }
+
         @media only screen and (max-width: 424px) and (min-width: 375px) {
             .banerh1 {
                 font-size: 21px !important;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list__item {
                 font-size: 21px;
                 font-weight: 500;
                 color: white;
             }
+
             .content__container {
                 height: 35px;
                 /* margin-top: 140px; */
             }
+
             .content__container__list {
                 margin-left: 7%;
                 margin-top: 0px;
             }
         }
+
         @media only screen and (max-width: 375px) and (min-width: 320px) {
             .banerh1 {
                 font-size: 18px !important;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list__item {
                 font-size: 18px;
                 font-weight: 500;
                 color: white;
             }
+
             .content__container {
                 height: 30px;
                 /* margin-top: 140px; */
             }
+
             .content__container__list {
                 margin-left: 6%;
                 margin-top: 0px;
@@ -538,21 +586,22 @@
         <div class="navBaner  navPad ">
             <nav class="navbar navbar-expand-lg   " id="navbar1">
                 <div class="container py-2">
-                    <a class="navbar-brand nav_aWidht" href="{{route('index')}}"><img src="{{asset('assets/frontend/img/logo1.png')}}" alt=""
-                            class="navlog"></a>
+                    <a class="navbar-brand nav_aWidht" href="{{ route('index') }}"><img
+                            src="{{ asset('assets/frontend/img/logo1.png') }}" alt="" class="navlog"></a>
                     <div class="nav_hide ">
                         <!--  -->
                         <button class="btn navOfbtn" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><img
-                                src="{{asset('assets/frontend/img/phonemenu.svg')}}" width="40px"
+                                src="{{ asset('assets/frontend/img/phonemenu.svg') }}" width="40px"
                                 alt="Website Menubar with 3 Vertical Lines Navigation Icon"
                                 title="Menubar Navigation with 3 Vertical Lines - webgurukul"></button>
                         <div class="offcanvas offcanvas-top navMSw h-100" tabindex="-1" id="offcanvasTop"
                             aria-labelledby="offcanvasTopLabel">
                             <div class="offcanvas-header navbgBlack">
                                 <p class="offcanvas-title " id="offcanvasTopLabel">
-                                    <a href="{{route('index')}}" class="text-decoration-none">
-                                        <img src="{{asset('assets/frontend/img/logo.webp')}}" width="200px" alt="Webgurukul Institute logo"
+                                    <a href="{{ route('index') }}" class="text-decoration-none">
+                                        <img src="{{ asset('assets/frontend/img/logo.webp') }}" width="200px"
+                                            alt="Webgurukul Institute logo"
                                             title="Webgurukul Institute - Empowering Education, Enhancing Futures">
                                     </a>
                                 </p>
@@ -563,25 +612,25 @@
                                 <ul class="ps-0">
                                     <li class="nav-item nav-link pe-4 pb-4 ">
                                         <a class="nav_a text-decoration-none  active navColorfix   navhtext  "
-                                            aria-current="page" href="{{route('index')}}"> Home
+                                            aria-current="page" href="{{ route('index') }}"> Home
                                         </a>
                                     </li>
 
                                     <li class="nav-item nav-link pe-4 pb-4 ">
                                         <a class="nav_a text-decoration-none  active  navhtext     " aria-current="page"
-                                            href="{{route('homeloan')}}"> Home Loan
+                                            href="{{ route('homeloan') }}"> Home Loan
                                         </a>
                                     </li>
 
                                     <li class="nav-item nav-link pe-4 pb-4">
                                         <a class="nav_a text-decoration-none  active  navhtext     " aria-current="page"
-                                            href="{{route('propertypage')}}">Why Choose Us
+                                            href="{{ route('propertypage') }}">Why Choose Us
                                         </a>
                                     </li>
                                     <li class="nav-item  pe-4 pb-4">
                                         <button class="btn px-4 py-2   rounded-pill navBtn" type="submit">
                                             <a class="navbtna   nav_a text-decoration-none  active  navhtext     "
-                                                aria-current="page" href="{{route('login')}}">Patner Login
+                                                aria-current="page" href="{{ route('login') }}">Patner Login
                                             </a>
                                         </button>
                                     </li>
@@ -602,7 +651,7 @@
                                     <li class="nav-item nav-link pt-2  ">
                                         <a class="nav_a text-decoration-none  active  navhtext  navCallIcon  "
                                             aria-current="page" href="tel:+911-800-700-6200">
-                                            <img src="{{asset('assets/frontend/img/navCall.svg')}}" alt="">
+                                            <img src="{{ asset('assets/frontend/img/navCall.svg') }}" alt="">
                                         </a>
                                     </li>
                                 </ul>
@@ -620,30 +669,30 @@
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                 <li class="nav-item nav-link me-3">
                                     <a class="nav_a text-decoration-none  active navColorfix   navhtext  "
-                                        aria-current="page" href="{{route('index')}}"> Home
+                                        aria-current="page" href="{{ route('index') }}"> Home
                                     </a>
                                 </li>
                                 <li class="nav-item nav-link me-3">
                                     <a class="nav_a text-decoration-none  active  navhtext     " aria-current="page"
-                                        href="{{route('homeloan')}}"> Home&nbsp;Loan
+                                        href="{{ route('homeloan') }}"> Home&nbsp;Loan
                                     </a>
                                 </li>
                                 <li class="nav-item nav-link me-3">
                                     <a class="nav_a text-decoration-none  active  navhtext     " aria-current="page"
-                                        href="{{route('propertypage')}}"> Why&nbsp;Choose&nbsp;Us
+                                        href="{{ route('propertypage') }}"> Why&nbsp;Choose&nbsp;Us
                                     </a>
                                 </li>
                                 <li class="nav-item me-3">
                                     <button class="btn px-4 py-2   rounded-pill navBtn" type="submit">
                                         <a class="navbtna   nav_a text-decoration-none  active  navhtext     "
-                                            aria-current="page" href="{{route('login')}}">Patner&nbsp;Login
+                                            aria-current="page" href="{{ route('login') }}">Patner&nbsp;Login
                                         </a>
                                     </button>
                                 </li>
                                 <li class="nav-item nav-link ">
                                     <a class="nav_a text-decoration-none  active  navhtext  navCallIcon  "
                                         aria-current="page" href="tel:+911-800-700-6200">
-                                        <img src="{{asset('assets/frontend/img/navCall.svg')}}" alt="">
+                                        <img src="{{ asset('assets/frontend/img/navCall.svg') }}" alt="">
                                     </a>
                                 </li>
                             </ul>
@@ -656,7 +705,7 @@
                 </div>
             </nav>
 
-                        <!-- baner -->
+            <!-- baner -->
             @if (session('success'))
                 <div class="py-5 mt-5">
 
@@ -667,15 +716,42 @@
                     </div>
                 </div>
             @endif
-            @if (session('error'))
-            <div class="py-5 mt-5">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
-            @endif
-            <!-- baner -->
+          <!-- Display validation errors -->
+@if ($errors->any())
+<div class="py-5 mt-5">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+@endif
+
+
+
+<!-- Display success message from session -->
+@if (session('success'))
+<div class="py-5 mt-5">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+@endif
+
+<!-- Display custom error from session -->
+@if (session('error'))
+<div class="py-5 mt-5">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+@endif
+
             @yield('banner')
         </div>
     </header>

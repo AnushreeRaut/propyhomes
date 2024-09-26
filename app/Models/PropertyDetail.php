@@ -11,7 +11,7 @@ class PropertyDetail extends Model
     protected $fillable = [
         'project_id',
         'title',
-        'value',
+        'image',
         'added_by',
         'updated_by',
     ];

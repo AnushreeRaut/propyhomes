@@ -18,10 +18,14 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
+Route::post('/subscribe/propy', [SubscriptionController::class, 'subscribe'])->name('subscribe.propy');
+Route::post('/check-email', [SubscriptionController::class, 'checkEmail'])->name('check.email');
+
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+
+Route::get('/projects/{id}/show', [ProjectController::class, 'show'])->name('projects.show');
 Route::get('/property/home', [HomeController::class, 'property'])->name('propertypage');
 Route::get('/home/loan', [HomeController::class, 'homeloan'])->name('homeloan');
 
@@ -53,4 +57,7 @@ Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('su
 Route::delete('/subscriptions/{id}', [SubscriptionController::class, 'destroy'])->name('subscriptions.destroy');
 
 Route::get('/project/create', [ProjectController::class, 'index'])->name('projects.index');
+
+Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
+
 });

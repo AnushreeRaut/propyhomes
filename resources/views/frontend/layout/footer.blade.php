@@ -53,13 +53,54 @@
                             </li>
                         </ul>
                         <p class="footerTexth2">Enter your e-mail to get the latest news of i-Dreamer</p>
-                        <form action="{{ route('subscribe') }}" method="POST">
+                        <form action="{{ route('subscribe.propy') }}" method="POST">
                             @csrf
                             <div class="input-group mb-3 py-4">
-                                <input type="email" name="email" class="form-control py-3 footerInputC" placeholder="Your e-mail" aria-label="Recipient's username" aria-describedby="button-addon2" required>
-                                <button class="btn footerbtnC px-3" type="submit" id="button-addon2">Subscribe</button>
+                                <input type="email" id="email" name="email" class="form-control py-3 footerInputC" placeholder="Your e-mail" aria-label="Recipient's username" aria-describedby="button-addon2" required>
+                                <button class="btn footerbtnC px-3" type="submit" id="button-addon2">SUBSCRIBE</button>
                             </div>
+                            <small id="email-error" style="color: red;"></small>
                         </form>
+
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <script>
+                        $(document).ready(function() {
+                            // Listen for keyup events on the email input field
+                            $('#email').on('keyup', function() {
+                                var email = $(this).val();
+                                var emailError = $('#email-error');
+
+                                // Basic email format validation using regex
+                                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                if (!emailPattern.test(email)) {
+                                    emailError.text('Please enter a valid email.');
+                                    return;
+                                } else {
+                                    emailError.text('');  // Clear any error if the format is valid
+                                }
+
+                                // Check if the email already exists in the database
+                                $.ajax({
+                                    url: "{{ route('check.email') }}",  // API route for email check
+                                    method: 'POST',
+                                    data: {
+                                        _token: "{{ csrf_token() }}",
+                                        email: email
+                                    },
+                                    success: function(response) {
+                                        if (response.exists) {
+                                            emailError.text('This email is already subscribed.');
+                                        } else {
+                                            emailError.text('');
+                                        }
+                                    },
+                                    error: function() {
+                                        emailError.text('An error occurred. Please try again.');
+                                    }
+                                });
+                            });
+                        });
+                        </script>
 
 
                     </div>
@@ -67,21 +108,21 @@
             </div>
         </div>
         <div class="w-100 footerBorder"></div>
-        <div class="container py-4">
+        <div class="container pt-4 pb-3">
             <div class="row">
                 <div class="col-md-4  d-flex justify-content-lg-start justify-content-center mb-4">
                     <img src="{{ asset('assets/frontend/img/logo.webp') }}" class="footerlogoImg" alt="">
                 </div>
                 <div class="col-md-4 mb-4   d-flex justify-content-center  align-items-center">
-                    <p class="footerCol2 mb-0"> © Copyright 2020 All Rights Reserved PROPY HOME</p>
+                    {{-- <p class="footerCol2 mb-0"> © Copyright 2020 All Rights Reserved PROPY HOME</p> --}}
                 </div>
                 <div class="col-md-4 mb-4 d-flex justify-content-center align-items-center justify-content-lg-end">
                     <div class="">
-                        <img src="{{ asset('assets/frontend/img/fb.svg') }}" alt="">
-                        <img src="{{ asset('assets/frontend/img/twitter.svg') }}" alt="">
-                        <img src="{{ asset('assets/frontend/img/instragram.svg') }}" alt="">
-                        <img src="{{ asset('assets/frontend/img/YouTube.svg') }}" alt="">
-                        <img src="{{ asset('assets/frontend/img/in.svg') }}" alt="">
+                        <a href="#" class="text-decoration-none   ">  <img src="{{ asset('assets/frontend/img/fb.svg') }}" alt=""></a>
+                        <a href="#" class="text-decoration-none   "><img src="{{ asset('assets/frontend/img/twitter.svg') }}" alt=""></a>
+                        <a href="#" class="text-decoration-none   "> <img src="{{ asset('assets/frontend/img/instragram.svg') }}" alt=""></a>
+                        <a href="#" class="text-decoration-none   "><img src="{{ asset('assets/frontend/img/YouTube.svg') }}" alt=""></a>
+                        <a href="#" class="text-decoration-none   "> <img src="{{ asset('assets/frontend/img/in.svg') }}" alt=""></a>
                     </div>
                 </div>
             </div>

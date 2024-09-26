@@ -22,7 +22,7 @@
                         <h1 class=" text-white">India's Most Trusted Real Estate Expert</h1>
 
                         <div class="d-flex justify-content-center align-items-center my-3 ">
-                            <h2> <img src="<?php echo e(asset('assets/frontend/img/p1build.png')); ?>" width="24px" alt="">
+                            <h2> <img src="<?php echo e(asset('assets/frontend/img/p1Protect.png')); ?>" width="24px" alt="">
                                 <span class="">Your Shield in Real Estate Deals</span>
                             </h2>
                         </div>
@@ -419,12 +419,12 @@
         <div class="container py-4">
 
             <div class="row py-5">
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-6 mb-4 pe-lg-5 pe-3">
                     <div class="">
                         <img src="<?php echo e(asset('assets/frontend/asset/img/p1threeP.png')); ?>" class="p1s3img" alt="">
                     </div>
                 </div>
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-6 mb-4 ps-lg-5 ps-3">
                     <div class="p1s3lineH">
                         <h2 class="text-white"> What Are We Aiming for?</h2>
                         <p class="text-white ">At PropertyPistol, our aim is to redefine the real estate experience in
@@ -468,7 +468,7 @@
 
             </div>
             <div class="text-center pb-4">
-                <img src="/asset/img/icicbank.png" width="236px" alt="">
+                <img src="<?php echo e(asset('assets/frontend/img/icicbank.png')); ?>" width="236px" alt="">
             </div>
             <p class="text-center text-light">We’ve recently secured 45 crore rupees in funding, with ICICI Bank and Baring Private
                 Equity Partners
@@ -483,67 +483,7 @@
     <!-- ========  section 3   END  ======== -->
 
     <!-- +++++++++++  section 4  +++++++++++ -->
-    <section class="section my-5">
-        <div class="">
-
-            <div class="sec1Before  mt-3">
-                <h2> <span class="headlineGrayC"> Our</span> <span class="headlineGoldC">Video</span></h2>
-            </div>
-
-            <div class="container pt-4">
-
-                <div class="owl-carousel owl-theme sec9owl">
-                    <div class="item me-3 mb-4">
-                        <div class="card border-0">
-
-                            <iframe width="100%" class="rounded-4 sec9iframe" height="230"
-                                src="https://www.youtube.com/embed/HzOlBi_iSEk?si=_RI81cgU_1P2F3Q5"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
-
-                            <div class="card-body">
-                                <h5 class="card-title p1s4Th5">Corporate Video</h5>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item me-3">
-                        <div class="card border-0">
-                            <iframe width="100%" class="rounded-4 sec9iframe" height="230"
-                                src="https://www.youtube.com/embed/fpDF3JAKuc4?si=YhYqnKxAi_VoVHfv"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <div class="card-body">
-                                <h5 class="card-title p1s4Th5">Home Buyer's Journey</h5>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item me-3">
-                        <div class="card border-0">
-                            <iframe width="100%" class="rounded-4 sec9iframe" height="230"
-                                src="https://www.youtube.com/embed/nmsp-tGNr-k?si=oBn-H1KsRl0F7Rwe"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <div class="card-body">
-                                <h5 class="card-title p1s4Th5">Message from our CEO</h5>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        </div>
-    </section>
+    
 
     <!-- ========  section 4  END  ======== -->
 

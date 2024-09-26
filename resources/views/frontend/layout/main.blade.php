@@ -1,5 +1,4 @@
 @include('frontend.layout.header')
 @include('auth.error-message')
-@include('auth.success-message')
 @yield('content')
 @include('frontend.layout.footer')

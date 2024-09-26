@@ -49,7 +49,7 @@
                                     id="income-value">2360000</span></h6>
                         </div>
                         <input id="income-range" type="range" value="50" min="0" max="100">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between pb-4">
                             <p class="p2s2Textp">₹ 10 K</p>
                             <h6 class="p2s2Textp  ">₹ 1 Cr</h6>
                         </div>
@@ -62,7 +62,7 @@
                         </div>
                         <input id="interest-range" class="irs-bar irs-bar--single" type="range" value="7" min="0"
                             max="15">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between pb-4">
                             <p class="p2s2Textp">0</p>
                             <h6 class="p2s2Textp  ">15%</h6>
                         </div>
@@ -74,7 +74,7 @@
                                     id="tenure-value">10</span> Years</h6>
                         </div>
                         <input id="tenure-range" type="range" value="10" min="1" max="30">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between pb-4">
                             <p class="p2s2Textp">1 Year</p>
                             <h6 class="p2s2Textp  ">30 Year</h6>
                         </div>
@@ -148,7 +148,7 @@
 
 
                     </div>
-                    <div class="">
+                    <div class="Home_s1_h">
                         <!-- <div class="result-card">
                             <h3>Loan Amount: ₹<span id="loan-amount">0</span></h3>
                             <h3>Total Interest Payable: ₹<span id="total-interest">0</span></h3>
@@ -159,9 +159,7 @@
                             <ul class="p2s1dote mb-0 ">
                                 <li>
                                     <p class=" p2s1a mb-1 ">
-                                        Latest
-                                        Properties
-
+                                        Loan Amount
                                     </p>
                                 </li>
                             </ul>
@@ -248,6 +246,7 @@
 <!-- ========  section 2   END  ======== -->
 <!-- +++++++++++  section 3  +++++++++++ -->
 <section class="section p2s3bgC">
+    <div class="p2_bgImg">
     <div class=" container py-5 px-2 px-lg-5  ">
         <div class="text-center">
             <h2 class="p2s3Th2">Banking Partners</h2>
@@ -287,6 +286,7 @@
 
 
 
+    </div>
     </div>
 </section>
 
@@ -425,7 +425,7 @@
 
 
         <h3 class="p2s4Th3 pt-5">Home Loan Eligibility</h3>
-        <div class="bd-example  mt-4 ">
+        <div class="bd-example  mt-4 pb-4">
             <div class="table-responsive ">
                 <table class="table align-middle ">
                     <thead class="">
@@ -510,7 +510,7 @@
                                     <li>
                                         <p class="mb-1 p2s4Tp ">A rented residence where he/she has resided for at
                                             least
-                                            a year prior to applying for a loand</p>
+                                            a year prior to applying for a loan</p>
 
                                     </li>
 
@@ -551,7 +551,7 @@
                 labels: ['Loan Amount', 'Total Interest Payable'],
                 datasets: [{
                     data: [345971194, 542328806], // Initial dummy data
-                    backgroundColor: ['#f3b36b', '#757574'], // Colors for the segments
+                    backgroundColor: ['#C8A864', '#757574'], // Colors for the segments
                 }]
             },
             options: {

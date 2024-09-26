@@ -25,8 +25,10 @@ return new class extends Migration
             $table->decimal('price_range_end', 10, 2)->nullable();
             $table->string('google_link')->nullable();
             $table->boolean('is_delete')->default(false);
-            $table->unsignedBigInteger('added_by');
-            $table->unsignedBigInteger('updated_by');
+            $table->unsignedBigInteger('added_by')->nullable();
+            ;
+            $table->unsignedBigInteger('updated_by')->nullable();
+            ;
             $table->timestamps();
         });
     }

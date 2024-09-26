@@ -29,39 +29,42 @@ var swiper = new Swiper(".mySwiper", {
 });
 // section 5
 $(".sec4owl-carousel").owlCarousel({
-  autoplay: true,
-  slideTransition: "linear",
-  autoplayTimeout: 7000,
-  autoplaySpeed: 7000,
-  stagePadding: 50,
-  loop: true,
-  margin: 20,
-  nav: false,
-  dots: false,
-  responsive: {
-    320: {
-      items: 1,
+    autoplay: true,
+    slideTransition: "linear",
+    autoplayTimeout: 3000,
+    autoplaySpeed: 3000,
+    stagePadding: 50,
+    loop: true,
+    margin: 20,
+    nav: false,
+    dots: false,
+    responsive: {
+      320: {
+        items: 1,
+      },
+      430: {
+        items: 2,
+      },
+      500: {
+        items: 2,
+      },
+      768: {
+        items: 3,
+      },
+      992: {
+        items: 4,
+      },
+      1200: {
+        items: 5,
+      },
+      1300: {
+        items: 5,
+      },
+      1400: {
+        items: 5,
+      },
     },
-    500: {
-      items: 1.5,
-    },
-    768: {
-      items: 2,
-    },
-    992: {
-      items: 3,
-    },
-    1200: {
-      items: 3,
-    },
-    1300: {
-      items: 3,
-    },
-    1400: {
-      items: 5,
-    },
-  },
-});
+  });
 //
 let ds1c1div = document.getElementById("ds1c1div");
 let navbarSupportedContent = document.getElementById("navbarSupportedContent");
@@ -73,4 +76,7 @@ function dbtn() {
   ds1c2div.classList.toggle("ds1col2bgc1");
   ds1c2Wid.classList.toggle("ds1c2Wid1");
 }
+
+
+// =====
 

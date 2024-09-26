@@ -6,15 +6,26 @@
 
 @section('banner')
     <!-- baner -->
-    <div class="banerdpa  ">
+    <div class="banerdpa">
         <div class=" banderImg ">
             <div class="container pt-2 pt-sm-5">
-                <div class="col-lg-6 col-12  px-lg-2 pt-3    pt-md-5 text-lg-start text-center banerPb">
+                <div class="col-lg-6 col-12  px-lg-2 pt-3 pt-md-5 text-lg-start text-center banerPb">
                     <p class="text-light banerP">Discover your dream home</p>
-                    <h1 class="banerh1 text-light"><span class="GoldC">With </span>Easy Home Loan Sanction</h1>
-                    <div class="searchbox-wrap">
+                    <!--  -->
+                    <div class="content"></div>
+                    <div class="content__container text-start">
+                        <p class="content__container__text GoldC banerh1 fs-1">With</p>
+                        <ul class="content__container__list  ">
+                            <li class="content__container__list__item">0% Brokerage Fee</li>
+                            <li class="content__container__list__item">Lowest Price Guaranteed</li>
+                            <li class="content__container__list__item">Easy Home Loan Sanction</li>
+                            <li class="content__container__list__item">0% Brokerage Fee</li>
+                        </ul>
+                    </div>
+                    <div class="searchbox-wrap  mt-3">
                         <input type="text" class="" placeholder="Search by location and project Name">
-                        <button class="banner-btn "><span class="rounded-pill fw-bold">Search</span> </button>
+                        <button class="banner-btn "><span class="rounded-pill fw-bold">Search</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -158,7 +169,6 @@
     </section>
     <!-- ========  section 1   END  ======== -->
 
-
     <!-- +++++++++++  section 2  +++++++++++ -->
 
     <!--  1 slider -->
@@ -168,13 +178,13 @@
             <h2> <span class="headlineGrayC"> Top Selling</span> <span class="headlineGoldC"> Projects</span></h2>
         </div>
         <!-- <div class="d-flex pt-5 mt-3">
-                    <div class="pt-1">
-                        <img src="assets/frontend/img/line.svg" alt="">
-                    </div>
-                    <div class="ps-3">
-                        <h2> <span class="headlineGrayC"> Top Selling</span> <span class="headlineGoldC"> Projects</span></h2>
-                    </div>
-                </div> -->
+                <div class="pt-1">
+                    <img src="assets/frontend/img/line.svg" alt="">
+                </div>
+                <div class="ps-3">
+                    <h2> <span class="headlineGrayC"> Top Selling</span> <span class="headlineGoldC"> Projects</span></h2>
+                </div>
+            </div> -->
         <div class="container  pb-5 pb-lg-1">
             <!-- Swiper -->
             <div class="swiper mySwiper">
@@ -212,16 +222,14 @@
                                     <div class="row pt-3 pb-0 px-2 rounded-3">
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Fit-to-Page.svg')}}" alt=""
+                                                        class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">480 Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bed.svg')}}" alt=""
                                                         class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -229,16 +237,14 @@
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bath.svg')}}" alt=""
                                                         class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">2 Bathroom</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Car-Cleaning.svg')}}"
                                                         alt="" class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -250,77 +256,68 @@
                             </a>
                         </div>
                     </div>
-                    <div class="swiper-slide ">
-                        <div class=" position-relative sec2Macard rounded-3 card-container  pt-3 z-1">
-                            <a href="{{ route('viewkrishna') }}" class="text-decoration-none">
-                                <div class="px-3 position-relative sec2dH overflow-visible ">
-                                    <div class="image-wrapper position-relative ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt rounded-3 px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 ">Krishna Prabha</h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
+
+                        @foreach($projects as $project)
+                            <div class="swiper-slide">
+                                <div class="position-relative sec2Macard rounded-3 card-container pt-3 z-1">
+                                    <a href="{{ route('projects.show', $project->id) }}" class="text-decoration-none">
+                                        <div class="px-3 position-relative sec2dH overflow-visible">
+                                            <div class="image-wrapper position-relative">
+                                                @if($project->cover_image)
+                                                    <img src="{{ asset($project->cover_image) }}" class="sec2ImgMai" alt="{{ $project->title }}">
+                                                @else
+                                                    <img src="{{ asset('path/to/default-image.jpg') }}" class="sec2ImgMai" alt="Default Image">
+                                                @endif
+                                                <div class="position-absolute sec2ImgD px-3 py-2">
+                                                    <h6 class="mb-0 sec2PriceText text-dark">Price ₹ {{ $project->price_range_start }} - ₹ {{ $project->price_range_end }}</h6>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
+                                        <div class="sec2pt rounded-3 px-3">
+                                            <div class="d-flex justify-content-between">
+                                                <h6 class="sec2Texth6 text-start mb-0">{{ $project->title }}</h6>
+                                                <p class="ps-2 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <span class="sec2SpanCr"><img src="{{ asset('assets/frontend/img/telephone-call.svg') }}" alt="" class=""></span>
                                                 </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
+                                            </div>
+                                            <div class="d-flex pt-1">
+                                                <p><img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}" class="pe-2 sec2ImgWS1" alt=""></p>
+                                                <p class="sec2Textp text-start">{{ $project->location }}</p>
+                                            </div>
+                                            <div class="sec2Bord w-100"></div>
+                                            <div class="row pt-3 pb-0 px-2 rounded-3">
+                                                <div class="col-6 mb-1">
+                                                    <div class="d-flex">
+                                                        <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}" alt="" class="sec2ImgWS"></p>
+                                                        <p class="sec2Textp text-start">{{ $project->area }} Sq Ft</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 mb-1">
+                                                    <div class="d-flex">
+                                                        <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Bed.svg') }}" alt="" class="sec2ImgWS"></p>
+                                                        <p class="sec2Textp text-start">{{ $project->bedrooms }} Bedroom</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 mb-1">
+                                                    <div class="d-flex">
+                                                        <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Bath.svg') }}" alt="" class="sec2ImgWS"></p>
+                                                        <p class="sec2Textp text-start">{{ $project->bathrooms }} Bathroom</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 mb-1">
+                                                    <div class="d-flex">
+                                                        <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}" alt="" class="sec2ImgWS"></p>
+                                                        <p class="sec2Textp text-start">{{ $project->parking }} Parking Space</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        <div class="position-absolute w-100 sec2Wihove z-n1"></div>
+                                    </a>
                                 </div>
-                                <div class="position-absolute  w-100 sec2Wihove z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
+                            </div>
+                        @endforeach
+              
                     <div class="swiper-slide ">
                         <div class=" position-relative sec2Macard rounded-3 card-container  pt-3 z-1">
                             <a href="{{ route('mahendra') }}" class="text-decoration-none">
@@ -351,19 +348,17 @@
                                         </p>
                                     </div>
                                     <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
+                                  <div class="row pt-3 pb-0 px-2 rounded-3">
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Fit-to-Page.svg')}}" alt=""
+                                                        class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">480 Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bed.svg')}}" alt=""
                                                         class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -371,16 +366,14 @@
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bath.svg')}}" alt=""
                                                         class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">2 Bathroom</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Car-Cleaning.svg')}}"
                                                         alt="" class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -422,19 +415,17 @@
                                         </p>
                                     </div>
                                     <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
+                                  <div class="row pt-3 pb-0 px-2 rounded-3">
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Fit-to-Page.svg')}}" alt=""
+                                                        class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">480 Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bed.svg')}}" alt=""
                                                         class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -442,16 +433,14 @@
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bath.svg')}}" alt=""
                                                         class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">2 Bathroom</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Car-Cleaning.svg')}}"
                                                         alt="" class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -493,19 +482,17 @@
                                         </p>
                                     </div>
                                     <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
+                                  <div class="row pt-3 pb-0 px-2 rounded-3">
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Fit-to-Page.svg')}}" alt=""
+                                                        class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">480 Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bed.svg')}}" alt=""
                                                         class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -513,16 +500,14 @@
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bath.svg')}}" alt=""
                                                         class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">2 Bathroom</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Car-Cleaning.svg')}}"
                                                         alt="" class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -566,19 +551,17 @@
                                         </p>
                                     </div>
                                     <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
+                                  <div class="row pt-3 pb-0 px-2 rounded-3">
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Fit-to-Page.svg')}}" alt=""
+                                                        class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">480 Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bed.svg')}}" alt=""
                                                         class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -586,16 +569,14 @@
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bath.svg')}}" alt=""
                                                         class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">2 Bathroom</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Car-Cleaning.svg')}}"
                                                         alt="" class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -626,12 +607,11 @@
                 <div class="swiper-wrapper  bg-white">
                     <div class="swiper-slide  bg-white">
                         <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewbalaji') }}" class="text-decoration-none">
+                            <a href="{{route('viewbalaji')}}" class="text-decoration-none">
 
                                 <div class="px-3 position-relative sec2dH overflow-visible  ">
                                     <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
+                                        <img src="{{asset('assets/frontend/img/Rectangle 23.webp')}}" class="sec2ImgMai" alt="Image">
                                         <div class="position-absolute  sec2ImgD px-3 py-2">
                                             <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
                                         </div>
@@ -641,14 +621,13 @@
                                     <div class="d-flex justify-content-between ">
                                         <h6 class="sec2Texth6 text-start mb-0 "> Balaji Paradise </h6>
                                         <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
+                                            <span class="sec2SpanCr  "><img src="{{asset('assets/frontend/img/telephone-call.svg')}}"
                                                     alt="" class=""></span>
                                         </p>
                                     </div>
                                     <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
+                                        <p> <img src="{{asset('assets/frontend/img/maps-and-flags.svg')}}" class="pe-2 sec2ImgWS1"
+                                                alt=""></p>
                                         <p class="sec2Textp text-start">
                                             Kandivali East,
                                             Mumbai, Maharashtra
@@ -658,16 +637,14 @@
                                     <div class="row pt-3 pb-0 px-2 rounded-3">
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Fit-to-Page.svg')}}" alt=""
+                                                        class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">480 Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bed.svg')}}" alt=""
                                                         class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -675,16 +652,14 @@
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bath.svg')}}" alt=""
                                                         class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">2 Bathroom</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Car-Cleaning.svg')}}"
                                                         alt="" class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -698,12 +673,11 @@
                     </div>
                     <div class="swiper-slide  bg-white">
                         <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewbella') }}" class="text-decoration-none">
+                            <a href="{{route('viewbella')}}" class="text-decoration-none">
 
                                 <div class="px-3 position-relative sec2dH overflow-visible  ">
                                     <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
+                                        <img src="{{asset('assets/frontend/img/Rectangle 23.webp')}}" class="sec2ImgMai" alt="Image">
                                         <div class="position-absolute  sec2ImgD px-3 py-2">
                                             <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
                                         </div>
@@ -713,14 +687,13 @@
                                     <div class="d-flex justify-content-between ">
                                         <h6 class="sec2Texth6 text-start mb-0 ">Bella</h6>
                                         <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
+                                            <span class="sec2SpanCr  "><img src="{{asset('assets/frontend/img/telephone-call.svg')}}"
                                                     alt="" class=""></span>
                                         </p>
                                     </div>
                                     <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
+                                        <p> <img src="{{asset('assets/frontend/img/maps-and-flags.svg')}}" class="pe-2 sec2ImgWS1"
+                                                alt=""></p>
                                         <p class="sec2Textp text-start">
                                             Kandivali East,
                                             Mumbai, Maharashtra
@@ -730,16 +703,14 @@
                                     <div class="row pt-3 pb-0 px-2 rounded-3">
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Fit-to-Page.svg')}}" alt=""
+                                                        class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">480 Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bed.svg')}}" alt=""
                                                         class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -747,16 +718,14 @@
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bath.svg')}}" alt=""
                                                         class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">2 Bathroom</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Car-Cleaning.svg')}}"
                                                         alt="" class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -770,12 +739,11 @@
                     </div>
                     <div class="swiper-slide  bg-white">
                         <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewmaelite') }}" class="text-decoration-none">
+                            <a href="{{route('viewmaelite')}}" class="text-decoration-none">
 
                                 <div class="px-3 position-relative sec2dH overflow-visible  ">
                                     <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
+                                        <img src="{{asset('assets/frontend/img/Rectangle 23.webp')}}" class="sec2ImgMai" alt="Image">
                                         <div class="position-absolute  sec2ImgD px-3 py-2">
                                             <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
                                         </div>
@@ -785,14 +753,13 @@
                                     <div class="d-flex justify-content-between ">
                                         <h6 class="sec2Texth6 text-start mb-0 ">Elites Park View</h6>
                                         <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
+                                            <span class="sec2SpanCr  "><img src="{{asset('assets/frontend/img/telephone-call.svg')}}"
                                                     alt="" class=""></span>
                                         </p>
                                     </div>
                                     <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
+                                        <p> <img src="{{asset('assets/frontend/img/maps-and-flags.svg')}}" class="pe-2 sec2ImgWS1"
+                                                alt=""></p>
                                         <p class="sec2Textp text-start">
                                             Kandivali East,
                                             Mumbai, Maharashtra
@@ -802,16 +769,14 @@
                                     <div class="row pt-3 pb-0 px-2 rounded-3">
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Fit-to-Page.svg')}}" alt=""
+                                                        class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">480 Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bed.svg')}}" alt=""
                                                         class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -819,16 +784,14 @@
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bath.svg')}}" alt=""
                                                         class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">2 Bathroom</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Car-Cleaning.svg')}}"
                                                         alt="" class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -842,12 +805,11 @@
                     </div>
                     <div class="swiper-slide  bg-white">
                         <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewvedant') }}" class="text-decoration-none">
+                            <a href="{{route('viewvedant')}}" class="text-decoration-none">
 
                                 <div class="px-3 position-relative sec2dH overflow-visible  ">
                                     <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
+                                        <img src="{{asset('assets/frontend/img/Rectangle 23.webp')}}" class="sec2ImgMai" alt="Image">
                                         <div class="position-absolute  sec2ImgD px-3 py-2">
                                             <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
                                         </div>
@@ -857,14 +819,13 @@
                                     <div class="d-flex justify-content-between ">
                                         <h6 class="sec2Texth6 text-start mb-0 ">Vedant Auqamarine</h6>
                                         <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
+                                            <span class="sec2SpanCr  "><img src="{{asset('assets/frontend/img/telephone-call.svg')}}"
                                                     alt="" class=""></span>
                                         </p>
                                     </div>
                                     <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
+                                        <p> <img src="{{asset('assets/frontend/img/maps-and-flags.svg')}}" class="pe-2 sec2ImgWS1"
+                                                alt=""></p>
                                         <p class="sec2Textp text-start">
                                             Kandivali East,
                                             Mumbai, Maharashtra
@@ -874,16 +835,14 @@
                                     <div class="row pt-3 pb-0 px-2 rounded-3">
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Fit-to-Page.svg')}}" alt=""
+                                                        class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">480 Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bed.svg')}}" alt=""
                                                         class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -891,16 +850,14 @@
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bath.svg')}}" alt=""
                                                         class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">2 Bathroom</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Car-Cleaning.svg')}}"
                                                         alt="" class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -914,12 +871,11 @@
                     </div>
                     <div class="swiper-slide  bg-white">
                         <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewbalaji') }}" class="text-decoration-none">
+                            <a href="{{route('viewbalaji')}}" class="text-decoration-none">
 
                                 <div class="px-3 position-relative sec2dH overflow-visible  ">
                                     <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
+                                        <img src="{{asset('assets/frontend/img/Rectangle 23.webp')}}" class="sec2ImgMai" alt="Image">
                                         <div class="position-absolute  sec2ImgD px-3 py-2">
                                             <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
                                         </div>
@@ -930,14 +886,13 @@
                                         <h6 class="sec2Texth6 text-start mb-0 ">Godrej Reserve
                                             Kandivali</h6>
                                         <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
+                                            <span class="sec2SpanCr  "><img src="{{asset('assets/frontend/img/telephone-call.svg')}}"
                                                     alt="" class=""></span>
                                         </p>
                                     </div>
                                     <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
+                                        <p> <img src="{{asset('assets/frontend/img/maps-and-flags.svg')}}" class="pe-2 sec2ImgWS1"
+                                                alt=""></p>
                                         <p class="sec2Textp text-start">
                                             Kandivali East,
                                             Mumbai, Maharashtra
@@ -947,16 +902,14 @@
                                     <div class="row pt-3 pb-0 px-2 rounded-3">
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Fit-to-Page.svg')}}" alt=""
+                                                        class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">480 Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bed.svg')}}" alt=""
                                                         class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -964,16 +917,14 @@
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bath.svg')}}" alt=""
                                                         class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">2 Bathroom</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Car-Cleaning.svg')}}"
                                                         alt="" class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -987,12 +938,11 @@
                     </div>
                     <div class="swiper-slide  bg-white">
                         <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewbalaji') }}" class="text-decoration-none">
+                            <a href="{{route('viewbalaji')}}" class="text-decoration-none">
 
                                 <div class="px-3 position-relative sec2dH overflow-visible  ">
                                     <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
+                                        <img src="{{asset('assets/frontend/img/Rectangle 23.webp')}}" class="sec2ImgMai" alt="Image">
                                         <div class="position-absolute  sec2ImgD px-3 py-2">
                                             <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
                                         </div>
@@ -1003,14 +953,13 @@
                                         <h6 class="sec2Texth6 text-start mb-0 ">Godrej Reserve
                                             Kandivali</h6>
                                         <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
+                                            <span class="sec2SpanCr  "><img src="{{asset('assets/frontend/img/telephone-call.svg')}}"
                                                     alt="" class=""></span>
                                         </p>
                                     </div>
                                     <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
+                                        <p> <img src="{{asset('assets/frontend/img/maps-and-flags.svg')}}" class="pe-2 sec2ImgWS1"
+                                                alt=""></p>
                                         <p class="sec2Textp text-start">
                                             Kandivali East,
                                             Mumbai, Maharashtra
@@ -1020,16 +969,14 @@
                                     <div class="row pt-3 pb-0 px-2 rounded-3">
                                         <div class="col-6 mb-1">
                                             <div class="d-flex ">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Fit-to-Page.svg')}}" alt=""
+                                                        class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">480 Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bed.svg')}}" alt=""
                                                         class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -1037,16 +984,14 @@
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Bath.svg')}}" alt=""
                                                         class=" sec2ImgWS"></p>
                                                 <p class="sec2Textp text-start">2 Bathroom</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
+                                                <p class="pe-3 pt-1"><img src="{{asset('assets/frontend/img/Car-Cleaning.svg')}}"
                                                         alt="" class=" sec2ImgWS">
                                                 </p>
                                                 <p class="sec2Textp text-start">2 Bedroom</p>
@@ -1096,35 +1041,48 @@
     </section>
     <!-- ========  section 4   END  ======== -->
 
-    <!-- +++++++++++  section 5  +++++++++++ -->
-    <section class="section sec5bgImg pt-5">
-        <div class="sec1Before mt-3">
-            <h2>
-                <span class="headlineGrayC"> Tie-up with </span>
-                <span class="headlineGoldC"> Clients</span>
-            </h2>
-        </div>
-        <div class="my-1 pt-5 pb-4">
-            <div class="owl-carousel sec4owl-carousel owl-theme">
-                <div class="item sec4item">
-                    <img src="{{ asset('assets/frontend/img/sec5img2.png') }}" width="100%" alt="">
-                </div>
-                <div class="item sec4item">
-                    <img src="{{ asset('assets/frontend/img/sec5img3.png') }}" width="100%" alt="">
-                </div>
-                <div class="item sec4item">
-                    <img src="{{ asset('assets/frontend/img/sec5img4.png') }}" width="100%" alt="">
-                </div>
-                <div class="item sec4item">
-                    <img src="{{ asset('assets/frontend/img/sec5img5.png') }}" width="100%" alt="">
-                </div>
-                <div class="item sec4item">
-                    <img src="{{ asset('assets/frontend/img/sec5img6.png') }}" width="100%" alt="">
-                </div>
+<!-- +++++++++++  section 5  +++++++++++ -->
+<section class="section sec5bgImg pt-5">
+    <div class="sec1Before  mt-3">
+        <h2> <span class="headlineGrayC"> Tie-Up With</span> <span class="headlineGoldC"> Client</span></h2>
+    </div>
+    <div class=" my-1  pt-5 pb-4">
+        <div class="owl-carousel sec4owl-carousel  owl-theme   pt-1 pb-2">
+            <div class="item sec4item   d-flex align-items-center rounded-3      my-2 ">
+                <img src="{{asset('assets/frontend/clientlogo/logovedant.png')}}" alt="" class="rounded-3 s5_img ">
+            </div>
+            <div class="item sec4item  my-2 d-flex align-items-center rounded-3       ">
+                <img src="{{asset('assets/frontend/clientlogo/logoelitePark.png')}}" alt="" class="rounded-3 s5_img ">
+            </div>
+            <div class="item sec4item  my-2 d-flex align-items-center rounded-3      ">
+                <img src="{{asset('assets/frontend/clientlogo/logobella.png')}}" alt="" class="rounded-3 s5_img ">
+            </div>
+            <div class="item sec4item  my-2 d-flex align-items-center rounded-3      ">
+                <img src="{{asset('assets/frontend/clientlogo/logobalaji.png')}}" alt="" class="rounded-3 s5_img ">
+            </div>
+            <div class="item sec4item  my-2 d-flex align-items-center rounded-3      ">
+                <img src="{{asset('assets/frontend/clientlogo/logoAnjaneya.png')}}" alt="" class="rounded-3 s5_img ">
+            </div>
+            <div class="item sec4item  my-2 d-flex align-items-center rounded-3      ">
+                <img src="{{asset('assets/frontend/clientlogo/logoinsightEdge.png')}}" alt="" class="rounded-3 s5_img ">
+            </div>
+            <div class="item sec4item  my-2 d-flex align-items-center rounded-3      ">
+                <img src="{{asset('assets/frontend/clientlogo/logoOrchidinfinity.png')}}" alt="" class="rounded-3 s5_img ">
+            </div>
+            <div class="item sec4item  my-2 d-flex align-items-center rounded-3      ">
+                <img src="{{asset('assets/frontend/clientlogo/logomahendra.png')}}" alt="" class="rounded-3 s5_img ">
+            </div>
+            <div class="item sec4item  my-2 d-flex align-items-center rounded-3      ">
+                <img src="{{asset('assets/frontend/clientlogo/logKrishna.png')}}" alt="" class="rounded-3 s5_img ">
+            </div>
+            <div class="item sec4item  my-2 d-flex align-items-center rounded-3      ">
+                <img src="{{asset('assets/frontend/clientlogo/logolotus.png')}}" alt="" class="rounded-3 s5_img ">
             </div>
         </div>
-    </section>
-    <!-- ========  section 5   END  ======== -->
+    </div>
+</section>
+<!-- ========  section 5   END  ======== -->
+
 
     <!-- +++++++++++  section 6  +++++++++++ -->
     <section class="section sec6BgC">
@@ -1137,14 +1095,6 @@
                             <p class="sec6Textp">Consult with the Real estate experts -</p>
 
 
-                            {{-- <div class="sec6searchbox-wrap">
-
-                                <input type="text" name="phone_number" class="" placeholder="Enter your number"
-                                    required>
-                                <button class="sec6banner-btn" type="submit">
-                                    <span class="rounded-pill">Call me back</span>
-                                </button>
-                            </div> --}}
                             <form action="{{ route('phone_requests.store') }}" method="POST">
                                 @csrf
                                 <div class="sec6searchbox-wrap">
@@ -1205,8 +1155,6 @@
                                 });
                             </script>
 
-
-
                         </div>
                     </div>
                     <div class="col-lg-6"></div>
@@ -1219,7 +1167,7 @@
     <!-- ========  section 6   END  ======== -->
 
     <!-- +++++++++++  section 7  +++++++++++ -->
-    <section class="section sec7bgC pt-5">
+    {{-- <section class="section sec7bgC pt-5">
         <div class="sec1Before mt-3">
             <h2> <span class="headlineGrayC"> Latest Blog </span> <span class="headlineGoldC">Posts</span></h2>
         </div>
@@ -1228,6 +1176,6 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- ========  section 7   END  ======== -->
 @endsection

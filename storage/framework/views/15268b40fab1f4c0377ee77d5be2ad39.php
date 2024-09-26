@@ -21,7 +21,7 @@
     <!-- ====== CSS-MQ ===== -->
     <link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/styleMQ.css')); ?>">
     <link rel="shortcut icon" href="<?php echo e(asset('assets/frontend/img/logo.png')); ?>" type="image/x-icon">
-        <!--  -->
+    <!--  -->
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -306,7 +306,7 @@
             border-radius: 50%;
             /* Round thumb */
             background: white;
-            border: 3px solid #C8A864 ;
+            border: 3px solid #C8A864;
             /* Color of the thumb */
             cursor: pointer;
         }
@@ -331,13 +331,14 @@
             /* Change the progress bar color when active */
         }
     </style>
-        <style>
+    <style>
         content {
             color: #fff;
             font-weight: bold;
             background-color: #34495E;
             position: relative;
         }
+
         .content__container {
             position: relative;
             height: 60px;
@@ -346,44 +347,55 @@
             /* background-color: aqua; */
             /* background: chartreuse; */
         }
+
         @keyframes opacity {
+
             0%,
             50% {
                 opacity: 0;
                 color: #1D1F20;
             }
         }
+
         @keyframes trans {
+
             0%,
             14.66% {
                 transform: translateY(0%)
             }
+
             16.66%,
             31.32% {
                 transform: translateY(-25%)
             }
+
             33.32%,
             47.98% {
                 transform: translateY(-50%)
             }
+
             49.98%,
             64.64% {
                 transform: translateY(-75%)
             }
+
             66.64%,
             81.30% {
                 transform: translateY(-50%)
             }
+
             83.30%,
             97.96% {
                 transform: translateY(-25%)
             }
         }
+
         .content__container__text {
             position: absolute;
             /* margin-left: 41%; */
             margin-top: 0px;
         }
+
         .content__container__list {
             position: absolute;
             list-style-type: none;
@@ -393,42 +405,54 @@
             animation-iteration-count: infinite;
             margin-top: 4px;
         }
+
         .content__container__list__item {
             font-size: 37px;
             font-weight: 500;
             color: white;
         }
+
         @media only screen and (max-width: 1400px) and (min-width: 1200px) {
             .content__container__list__item {
                 font-size: 32px;
                 font-weight: 500;
                 color: white;
             }
+
             .banerh1 {
                 padding-top: 4px;
                 font-size: 32px !important;
                 font-weight: var(--font-weight-700);
             }
+
+            .content__container {
+                height: 55px;
+            }
         }
+
         @media only screen and (max-width: 1200px) and (min-width: 992px) {
             .content__container__list__item {
                 font-size: 28px;
                 font-weight: 500;
                 color: white;
             }
+
             .banerh1 {
                 font-size: 32px !important;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list {
                 margin-left: 12%;
-                margin-top: 5px;
+                margin-top: 1.5px;
             }
+
             .content__container {
-                height: 50px;
+                height: 45px;
                 /* margin-top: 140px; */
             }
         }
+
         @media only screen and (max-width: 992px) and (min-width: 768px) {
             .banerh1 {
                 padding-top: 6px;
@@ -436,93 +460,117 @@
                 font-weight: var(--font-weight-700);
             }
         }
+
         @media only screen and (max-width: 768px) and (min-width: 576px) {
             .banerh1 {
                 font-size: 32px !important;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list__item {
                 font-size: 32px;
                 font-weight: 500;
                 color: white;
             }
+
             .content__container__list {
                 margin-left: 11%;
                 margin-top: 0px;
             }
+
             .content__container {
                 height: 54px;
                 /* margin-top: 140px; */
             }
         }
+
         @media only screen and (max-width: 576px) and (min-width: 500px) {
             .banerh1 {
                 font-size: 30px !important;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list__item {
                 font-size: 30px;
                 font-weight: 500;
                 color: white;
             }
+
             .content__container__list {
                 margin-left: 10%;
                 margin-top: 0px;
             }
+
             .content__container {
                 height: 53px;
                 /* margin-top: 140px; */
             }
         }
+
         @media only screen and (max-width: 500px) and (min-width: 424px) {
             .banerh1 {
                 font-size: 25px !important;
                 padding-top: 4px;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list__item {
                 font-size: 25px;
                 font-weight: 500;
                 color: white;
             }
+
             .content__container {
                 height: 44px;
                 /* margin-top: 140px; */
             }
+
+            .content__container__list {
+                margin-left: 10%;
+                margin-top: 3.5px;
+            }
         }
+
         @media only screen and (max-width: 424px) and (min-width: 375px) {
             .banerh1 {
                 font-size: 21px !important;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list__item {
                 font-size: 21px;
                 font-weight: 500;
                 color: white;
             }
+
             .content__container {
                 height: 35px;
                 /* margin-top: 140px; */
             }
+
             .content__container__list {
                 margin-left: 7%;
                 margin-top: 0px;
             }
         }
+
         @media only screen and (max-width: 375px) and (min-width: 320px) {
             .banerh1 {
                 font-size: 18px !important;
                 font-weight: var(--font-weight-700);
             }
+
             .content__container__list__item {
                 font-size: 18px;
                 font-weight: 500;
                 color: white;
             }
+
             .content__container {
                 height: 30px;
                 /* margin-top: 140px; */
             }
+
             .content__container__list {
                 margin-left: 6%;
                 margin-top: 0px;
@@ -538,8 +586,8 @@
         <div class="navBaner  navPad ">
             <nav class="navbar navbar-expand-lg   " id="navbar1">
                 <div class="container py-2">
-                    <a class="navbar-brand nav_aWidht" href="<?php echo e(route('index')); ?>"><img src="<?php echo e(asset('assets/frontend/img/logo1.png')); ?>" alt=""
-                            class="navlog"></a>
+                    <a class="navbar-brand nav_aWidht" href="<?php echo e(route('index')); ?>"><img
+                            src="<?php echo e(asset('assets/frontend/img/logo1.png')); ?>" alt="" class="navlog"></a>
                     <div class="nav_hide ">
                         <!--  -->
                         <button class="btn navOfbtn" type="button" data-bs-toggle="offcanvas"
@@ -552,7 +600,8 @@
                             <div class="offcanvas-header navbgBlack">
                                 <p class="offcanvas-title " id="offcanvasTopLabel">
                                     <a href="<?php echo e(route('index')); ?>" class="text-decoration-none">
-                                        <img src="<?php echo e(asset('assets/frontend/img/logo.webp')); ?>" width="200px" alt="Webgurukul Institute logo"
+                                        <img src="<?php echo e(asset('assets/frontend/img/logo.webp')); ?>" width="200px"
+                                            alt="Webgurukul Institute logo"
                                             title="Webgurukul Institute - Empowering Education, Enhancing Futures">
                                     </a>
                                 </p>
@@ -656,7 +705,7 @@
                 </div>
             </nav>
 
-                        <!-- baner -->
+            <!-- baner -->
             <?php if(session('success')): ?>
                 <div class="py-5 mt-5">
 
@@ -668,16 +717,44 @@
                     </div>
                 </div>
             <?php endif; ?>
-            <?php if(session('error')): ?>
-            <div class="py-5 mt-5">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <?php echo e(session('error')); ?>
+          <!-- Display validation errors -->
+<?php if($errors->any()): ?>
+<div class="py-5 mt-5">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <ul>
+            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <li><?php echo e($error); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+<?php endif; ?>
 
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
-            <?php endif; ?>
-            <!-- baner -->
+
+
+<!-- Display success message from session -->
+<?php if(session('success')): ?>
+<div class="py-5 mt-5">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?php echo e(session('success')); ?>
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+<?php endif; ?>
+
+<!-- Display custom error from session -->
+<?php if(session('error')): ?>
+<div class="py-5 mt-5">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?php echo e(session('error')); ?>
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+<?php endif; ?>
+
             <?php echo $__env->yieldContent('banner'); ?>
         </div>
     </header>

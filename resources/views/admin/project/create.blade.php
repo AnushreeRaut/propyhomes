@@ -32,7 +32,7 @@
         <div class="card p-4">
             <h1>Project</h1>
             <form id="multiStepForm" method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data">
-                @csrf
+                @csrf 
                 <div class="row">
                     <!-- Cover Image -->
                     <div class="col-lg-6">

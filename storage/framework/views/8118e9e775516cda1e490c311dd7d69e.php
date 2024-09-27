@@ -30,7 +30,7 @@
         <div class="card p-4">
             <h1>Project</h1>
             <form id="multiStepForm" method="POST" action="<?php echo e(route('projects.store')); ?>" enctype="multipart/form-data">
-                <?php echo csrf_field(); ?>
+                <?php echo csrf_field(); ?> 
                 <div class="row">
                     <!-- Cover Image -->
                     <div class="col-lg-6">

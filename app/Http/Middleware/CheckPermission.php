@@ -10,14 +10,13 @@ class CheckPermission
 {
     public function handle(Request $request, Closure $next, $permission)
     {
-        $user = Auth::user();
-
         // Check if the user has the required permission
-        if ($user->role->permissions->contains('permission_name', $permission)) {
-            return $next($request);
+        if (!$request->user() || !$request->user()->hasPermission($permission)) {
+            // Optionally, you can return a 403 response or redirect to a "no permission" page
+            abort(403, 'Unauthorized action.');
         }
 
-        return redirect()->route('index')->with('error', 'You do not have permission to access this page.');
+        return $next($request);
     }
 }
 

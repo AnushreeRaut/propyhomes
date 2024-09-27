@@ -25,39 +25,99 @@ Route::post('/check-email', [SubscriptionController::class, 'checkEmail'])->name
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::get('/projects/{id}/show', [ProjectController::class, 'show'])->name('projects.show');
-Route::get('/property/home', [HomeController::class, 'property'])->name('propertypage');
-Route::get('/home/loan', [HomeController::class, 'homeloan'])->name('homeloan');
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['permission:view_index'])->group(function () {
 
-Route::get('/lotusresidency', [TopProjectController::class, 'viewlotus'])->name('viewlotus');
-Route::get('/krishnaprabha', [TopProjectController::class, 'viewkrishna'])->name('viewkrishna');
-Route::get('/mahendra', [TopProjectController::class, 'viewmahendra'])->name('mahendra');
-Route::get('/orchid', [TopProjectController::class, 'vieworchid'])->name('orchid');
-Route::get('/insight', [TopProjectController::class, 'viewinsight'])->name('insight');
-Route::get('/anjaneja', [TopProjectController::class, 'viewanjaeja'])->name('anjaeja');
 
-Route::get('/balaji', [NewProjectController::class, 'viewbalaji'])->name('viewbalaji');
-Route::get('/bella', [NewProjectController::class, 'viewbella'])->name('viewbella');
-Route::get('/elite', [NewProjectController::class, 'viewmaelite'])->name('viewmaelite');
-Route::get('/vedant', [NewProjectController::class, 'viewvedant'])->name('viewvedant');
-Route::post('phone_requests', [PhoneRequestController::class, 'store'])->name('phone_requests.store');
+        Route::get('/projects/{id}/show', [ProjectController::class, 'show'])->name('projects.show');
+        Route::get('/property/home', [HomeController::class, 'property'])->name('propertypage');
+        Route::get('/home/loan', [HomeController::class, 'homeloan'])->name('homeloan');
 
+        Route::get('/lotusresidency', [TopProjectController::class, 'viewlotus'])->name('viewlotus');
+        Route::get('/krishnaprabha', [TopProjectController::class, 'viewkrishna'])->name('viewkrishna');
+        Route::get('/mahendra', [TopProjectController::class, 'viewmahendra'])->name('mahendra');
+        Route::get('/orchid', [TopProjectController::class, 'vieworchid'])->name('orchid');
+        Route::get('/insight', [TopProjectController::class, 'viewinsight'])->name('insight');
+        Route::get('/anjaneja', [TopProjectController::class, 'viewanjaeja'])->name('anjaeja');
+
+        Route::get('/balaji', [NewProjectController::class, 'viewbalaji'])->name('viewbalaji');
+        Route::get('/bella', [NewProjectController::class, 'viewbella'])->name('viewbella');
+        Route::get('/elite', [NewProjectController::class, 'viewmaelite'])->name('viewmaelite');
+        Route::get('/vedant', [NewProjectController::class, 'viewvedant'])->name('viewvedant');
+        Route::post('phone_requests', [PhoneRequestController::class, 'store'])->name('phone_requests.store');
+    });
+});
 
 Route::middleware(['auth'])->group(function () {
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
-Route::resource('employees', EmployeeController::class);
-Route::resource('references', ReferenceController::class);
-Route::resource('customers', CustomerController::class);
-Route::get('phone_requests', [PhoneRequestController::class, 'index'])->name('phone_requests.index');
-Route::delete('phone_requests/{id}', [PhoneRequestController::class, 'destroy'])->name('phone_requests.destroy');
+    // Dashboard route with specific permission
+    Route::get('/dashboard', [AuthController::class, 'dashboard'])
+        ->name('dashboard')
+        ->middleware('permission:view_dashboard');
 
-// Route::post('/customers/store', [CustomerController::class, 'store'])->name('customers.store');
-Route::post('/family/store', [FamilyController::class, 'store'])->name('family.store');
-Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
-Route::delete('/subscriptions/{id}', [SubscriptionController::class, 'destroy'])->name('subscriptions.destroy');
+    // Employee routes
+    Route::middleware(['permission:view_employee'])->group(function () {
+        Route::resource('employees', EmployeeController::class);
+    });
 
-Route::get('/project/create', [ProjectController::class, 'index'])->name('projects.index');
+    // Reference routes
+    Route::middleware(['permission:view_referral'])->group(function () {
+        Route::resource('references', ReferenceController::class);
+    });
 
-Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
+    // Customer routes
+    Route::middleware(['permission:view_customer'])->group(function () {
+        Route::resource('customers', CustomerController::class);
+    });
 
+    // Phone Requests routes
+    Route::middleware(['permission:view_phone'])->group(function () {
+        Route::get('phone_requests', [PhoneRequestController::class, 'index'])
+            ->name('phone_requests.index');
+        Route::delete('phone_requests/{id}', [PhoneRequestController::class, 'destroy'])
+            ->name('phone_requests.destroy');
+    });
+
+    // Family routes
+    Route::middleware(['permission:view_family'])->group(function () {
+        Route::post('/family/store', [FamilyController::class, 'store'])
+            ->name('family.store');
+    });
+
+    // Subscription routes
+    Route::middleware(['permission:view_reports'])->group(function () {
+        Route::get('/subscriptions', [SubscriptionController::class, 'index'])
+            ->name('subscriptions.index');
+        Route::delete('/subscriptions/{id}', [SubscriptionController::class, 'destroy'])
+            ->name('subscriptions.destroy');
+    });
+
+    // Project routes
+    Route::middleware(['permission:view_projects'])->group(function () {
+        Route::get('/project/create', [ProjectController::class, 'index'])
+            ->name('projects.index');
+            Route::get('/project/create/create', [ProjectController::class, 'index'])
+            ->name('projects.create');
+        Route::post('/projects/store', [ProjectController::class, 'store'])
+            ->name('projects.store');
+    });
 });
+
+
+// Route::middleware(['auth'])->group(function () {
+// Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+// Route::resource('employees', EmployeeController::class);
+// Route::resource('references', ReferenceController::class);
+// Route::resource('customers', CustomerController::class);
+// Route::get('phone_requests', [PhoneRequestController::class, 'index'])->name('phone_requests.index');
+// Route::delete('phone_requests/{id}', [PhoneRequestController::class, 'destroy'])->name('phone_requests.destroy');
+
+// // Route::post('/customers/store', [CustomerController::class, 'store'])->name('customers.store');
+// Route::post('/family/store', [FamilyController::class, 'store'])->name('family.store');
+// Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
+// Route::delete('/subscriptions/{id}', [SubscriptionController::class, 'destroy'])->name('subscriptions.destroy');
+
+// Route::get('/project/create', [ProjectController::class, 'index'])->name('projects.index');
+
+// Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
+
+// });

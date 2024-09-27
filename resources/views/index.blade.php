@@ -9,7 +9,7 @@
     <div class="banerdpa">
         <div class=" banderImg ">
             <div class="container pt-2 pt-sm-5">
-                <div class="col-lg-6 col-12  px-lg-2 pt-3 pt-md-5 text-lg-start text-center banerPb">
+                <div class="col-lg-6 col-6  px-lg-2 pt-3 pt-md-5 text-lg-start text-center banerPb">
                     <p class="text-light banerP">Discover your dream home</p>
                     <!--  -->
                     <div class="content"></div>
@@ -44,7 +44,7 @@
         </div>
         <div class="container my-1 py-5">
             <div class="row ">
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v1.png') }}" width="50%" alt=""
@@ -54,7 +54,7 @@
                         <p class="sectextp">2 Projects</p>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v2.png') }}" width="50%" alt=""
@@ -64,7 +64,7 @@
                         <p class="sectextp">3 Projects</p>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v3.png') }}" width="50%" alt=""
@@ -74,7 +74,7 @@
                         <p class="sectextp">1 Projects</p>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v4.png') }}" width="50%" alt=""
@@ -84,7 +84,7 @@
                         <p class="sectextp">1 Projects</p>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v5.png') }}" width="50%" alt=""
@@ -94,7 +94,7 @@
                         <p class="sectextp">2 Projects</p>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v6.png') }}" width="50%" alt=""
@@ -104,7 +104,7 @@
                         <p class="sectextp">3 Projects</p>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v7.png') }}" width="50%" alt=""
@@ -114,7 +114,7 @@
                         <p class="sectextp">4 Projects</p>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v8.png') }}" width="50%" alt=""
@@ -124,7 +124,7 @@
                         <p class="sectextp">2 Projects</p>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v9.png') }}" width="50%" alt=""
@@ -134,7 +134,7 @@
                         <p class="sectextp">1 Projects</p>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v10.png') }}" width="50%" alt=""
@@ -144,7 +144,7 @@
                         <p class="sectextp">2 Projects</p>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v11.png') }}" width="50%" alt=""
@@ -154,7 +154,7 @@
                         <p class="sectextp">1 Projects</p>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 mb-4 ">
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
                     <div class="text-center sec2bor rounded-3 py-2 h-100">
                         <div class="text-center">
                             <img src="{{ asset('assets/frontend/img/v12.png') }}" width="50%" alt=""

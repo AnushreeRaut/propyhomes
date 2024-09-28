@@ -695,6 +695,18 @@
                                         <img src="{{ asset('assets/frontend/img/navCall.svg') }}" alt="">
                                     </a>
                                 </li>
+                                <li class="nav-item nav-link ">
+                                    <a  class="nav_a text-decoration-none  active  navhtext" href="#">
+                                        <span class="" style="font-weight: 600">Profile</span>
+                                    </a>
+
+                                    <form id="logout-form" action="{{route('logout')}}" method="POST">
+                                        @csrf
+                                        <a class="dropdown-item dc2hover py-2 my-1 ps-4 mb-0" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <span class="" style="font-weight: 600">Logout</span>
+                                        </a>
+                                    </form>
+                                </li>
                             </ul>
                             <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

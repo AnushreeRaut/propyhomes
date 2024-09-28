@@ -14,9 +14,9 @@
         <div class="position-absolute top-0 start-0 bottom-0 end-0 p1s1lightC">
 
         </div>
-        <div class="container py-5 mt-3">
+        <div class="container py-5">
 
-            <div class="row py-5">
+            <div class="row py-1 py-lg-5">
                 <div class="col-lg-6 mb-4">
                     <div class="p1s1Div">
                         <h1 class=" text-white">India's Most Trusted Real Estate Expert</h1>
@@ -418,7 +418,7 @@
     <section class="section p1s3bgimg">
         <div class="container py-4">
 
-            <div class="row py-5">
+            <div class="row pt-5 pb-2 pb-lg-5">
                 <div class="col-lg-6 mb-4 pe-lg-5 pe-3">
                     <div class="">
                         <img src="{{asset('assets/frontend/asset/img/p1threeP.png')}}" class="p1s3img" alt="">
@@ -532,7 +532,7 @@
 
 
     <!-- +++++++++++  section 5  +++++++++++ -->
-    <section class="section">
+    <section class="section mt-5">
         <div class="sec1Before  mt-3 mb-5">
             <h2> <span class="headlineGrayC"> Our</span> <span class="headlineGoldC">Top Partners</span></h2>
         </div>

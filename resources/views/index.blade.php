@@ -37,6 +37,7 @@
 @extends('frontend.layout.main')
 
 @section('content')
+
     <!-- +++++++++++  section 1  +++++++++++ -->
     <section class="section pt-5">
         <div class="sec1Before  mt-3">
@@ -256,7 +257,6 @@
                             </a>
                         </div>
                     </div>
-
                         @foreach($projects as $project)
                             <div class="swiper-slide">
                                 <div class="position-relative sec2Macard rounded-3 card-container pt-3 z-1">

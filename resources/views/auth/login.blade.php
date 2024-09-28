@@ -42,8 +42,7 @@
             animation: fadeIn 1.2s ease-in-out;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             max-width: 400px;
-            width: 100%;
-            /* border: 5px solid red; */
+width: 100%;
         }
 
         .login-card:hover {
@@ -90,7 +89,6 @@
             margin-top: 10px;
         }
 
-        /* Animation */
         @keyframes fadeIn {
             0% {
                 opacity: 0;
@@ -103,19 +101,39 @@
             }
         }
 
-        /* hhhhhhh */
         .s1-buton1 {
             border: 3px solid transparent;
             background: linear-gradient(#C8A864, #C8A864) padding-box,
                 linear-gradient(120deg, #C8A864, black, black) border-box;
             border-radius: 30px;
         }
+.additional-btns {
+text-align: center;
+margin-top: 20px;
+}
+
+.additional-btn {
+background: linear-gradient(135deg, #A07A43, #C8A864);
+color: white;
+border: none;
+border-radius: 25px;
+padding: 10px 20px;
+font-size: 1rem;
+transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.additional-btn:hover {
+background: linear-gradient(135deg, black, grey);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
     </style>
 </head>
 
 <body>
+
     <img src="/assets/frontend/img/logo1.png" class="logo_Img" alt="">
-    <div class="login-card s1-buton1  ">
+    @include('auth.success-message')
+<div class="login-card s1-buton1">
         <h2 class="login-header">Login</h2>
         <form action="{{ route('login') }}" method="POST">
             @csrf <!-- This will generate the CSRF token field -->
@@ -139,7 +157,13 @@
             @endif
         </form>
 
-    </div>
+<!-- Additional buttons for sign-in or create an account -->
+        <!-- Additional buttons for sign-in or create an account -->
+        <div class="additional-btns">
+            <p class="text-white">Don't have an account? Create one now to explore all our properties!</p>
+            <a href="{{ route('register.form') }}" class="btn additional-btn text-white">Create an Account</a>
+</div>
+</div>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

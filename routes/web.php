@@ -10,29 +10,31 @@ use App\Http\Controllers\NewProjectController;
 use App\Http\Controllers\PhoneRequestController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ReferenceController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TopProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login.store');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('/subscribe/propy', [SubscriptionController::class, 'subscribe'])->name('subscribe.propy');
 Route::post('/check-email', [SubscriptionController::class, 'checkEmail'])->name('check.email');
 
-
+// Registration Route
+Route::get('/register/customer', function () {
+    return view('auth.register'); // Ensure you have this view file
+})->name('register.form');
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/property/home', [HomeController::class, 'property'])->name('propertypage');
+Route::get('/home/loan', [HomeController::class, 'homeloan'])->name('homeloan');
 
 Route::middleware(['auth'])->group(function () {
-    Route::middleware(['permission:view_index'])->group(function () {
-
-
+    // Route::middleware(['permission:view_index'])->group(function () {
         Route::get('/projects/{id}/show', [ProjectController::class, 'show'])->name('projects.show');
-        Route::get('/property/home', [HomeController::class, 'property'])->name('propertypage');
-        Route::get('/home/loan', [HomeController::class, 'homeloan'])->name('homeloan');
-
         Route::get('/lotusresidency', [TopProjectController::class, 'viewlotus'])->name('viewlotus');
         Route::get('/krishnaprabha', [TopProjectController::class, 'viewkrishna'])->name('viewkrishna');
         Route::get('/mahendra', [TopProjectController::class, 'viewmahendra'])->name('mahendra');
@@ -46,7 +48,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/vedant', [NewProjectController::class, 'viewvedant'])->name('viewvedant');
         Route::post('phone_requests', [PhoneRequestController::class, 'store'])->name('phone_requests.store');
     });
-});
+// });
 
 Route::middleware(['auth'])->group(function () {
     // Dashboard route with specific permission

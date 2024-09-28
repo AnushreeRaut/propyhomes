@@ -10,11 +10,11 @@
 <?php $__env->startSection('content'); ?>
  <!-- +++++++++++  section 1  +++++++++++ -->
 
- <section class="section position-relative pt-5">
+ <section class="section pt-5">
     <div class="p2s1bgimg p2s1height">
 
-        <div class="container pt-3 pt-sm-5 mt-3">
-            <div class="col-xl-7 pt-4 p2s1div">
+        <div class="container pt-3 pt-sm-5 mt-3 position-relative h-100">
+            <div class="col-xl-7 pt-3 pt-lg-4 p2s1div">
                 <h1>Home Loan Eligibility Calculator</h1>
 
                 <p>From finding to funding, we do it all! Be one step ahead to build your dream home. Use our
@@ -23,11 +23,8 @@
 
 
             </div>
-        </div>
-
-
-        <div class="row position-absolute top-100  translate-middle rounded-4 p-4    p2s2bgc">
-            <div class="col-lg-8 p-4">
+                    <div class="row position-absolute top-100  translate-middle rounded-4 p-4    p2s2bgc">
+            <div class="col-lg-8 home_s1_padding p-4">
                 <div class="p2s2pdiv">
                     <h2>Calculate how much Home Loan you can get</h2>
                     <!--  -->
@@ -148,7 +145,7 @@
 
 
                     </div>
-                    <div class="">
+                    <div class="Home_s1_h">
                         <!-- <div class="result-card">
                             <h3>Loan Amount: ₹<span id="loan-amount">0</span></h3>
                             <h3>Total Interest Payable: ₹<span id="total-interest">0</span></h3>
@@ -199,6 +196,10 @@
                 </div>
             </div>
         </div>
+        </div>
+
+
+
 
     </div>
 </section>

@@ -37,6 +37,7 @@
 
 
 <?php $__env->startSection('content'); ?>
+
     <!-- +++++++++++  section 1  +++++++++++ -->
     <section class="section pt-5">
         <div class="sec1Before  mt-3">
@@ -256,7 +257,6 @@
                             </a>
                         </div>
                     </div>
-
                         <?php $__currentLoopData = $projects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="swiper-slide">
                                 <div class="position-relative sec2Macard rounded-3 card-container pt-3 z-1">

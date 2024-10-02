@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('references', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
-            $table->string('mobile')->nullable();
+            $table->string('mobile')->unique()->nullable();
             $table->boolean('real_estate')->nullable()->default(false);
             $table->boolean('loan')->nullable()->default(false);
             $table->enum('real_estate_type', ['buy', 'sell', 'rent','other'])->nullable();; // Add your specific types

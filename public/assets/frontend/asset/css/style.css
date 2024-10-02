@@ -48,7 +48,7 @@ body {
   }
 }
 
-/* 
+/*
 #content {
   display: none;
 } */
@@ -2627,4 +2627,20 @@ tr .p2s4Tp {
 
 .my-float {
   margin-top: 16px;
+}
+.navlogutbtn {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-color: var(--color-white);
+    right: -10px;
+    top: 80px;
+    outline: 3px solid var(--color-white);
+    outline-offset: -1px;
+}
+.navlogutbtn ul {
+    list-style-type: none;
+}
+.navLogoutbtnC{
+    background-color: black;
 }

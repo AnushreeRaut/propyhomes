@@ -27,6 +27,11 @@ Route::get('/register/customer', function () {
     return view('auth.register'); // Ensure you have this view file
 })->name('register.form');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
+// Route to display verification form
+Route::get('/verify-code', [RegisterController::class, 'showVerifyForm'])->name('verify.code.form');
+
+// Route to handle verification code submission
+Route::post('/verify-code', [RegisterController::class, 'verifyCode'])->name('verify.code');
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/property/home', [HomeController::class, 'property'])->name('propertypage');
@@ -95,10 +100,12 @@ Route::middleware(['auth'])->group(function () {
 
     // Project routes
     Route::middleware(['permission:view_projects'])->group(function () {
-        Route::get('/project/create', [ProjectController::class, 'index'])
+        Route::get('/project/index', [ProjectController::class, 'index'])
             ->name('projects.index');
-            Route::get('/project/create/create', [ProjectController::class, 'index'])
+            Route::get('/project/form/create', [ProjectController::class, 'create'])
             ->name('projects.create');
+            Route::get('/project/form/{id}/view', [ProjectController::class, 'view'])
+            ->name('projects.view');
         Route::post('/projects/store', [ProjectController::class, 'store'])
             ->name('projects.store');
     });

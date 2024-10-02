@@ -42,7 +42,7 @@
             animation: fadeIn 1.2s ease-in-out;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             max-width: 400px;
-width: 100%;
+            width: 100%;
         }
 
         .login-card:hover {
@@ -107,63 +107,65 @@ width: 100%;
                 linear-gradient(120deg, #C8A864, black, black) border-box;
             border-radius: 30px;
         }
-.additional-btns {
-text-align: center;
-margin-top: 20px;
-}
 
-.additional-btn {
-background: linear-gradient(135deg, #A07A43, #C8A864);
-color: white;
-border: none;
-border-radius: 25px;
-padding: 10px 20px;
-font-size: 1rem;
-transition: background 0.3s ease, box-shadow 0.3s ease;
-}
+        .additional-btns {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-.additional-btn:hover {
-background: linear-gradient(135deg, black, grey);
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
+        .additional-btn {
+            background: linear-gradient(135deg, #A07A43, #C8A864);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .additional-btn:hover {
+            background: linear-gradient(135deg, black, grey);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
     </style>
 </head>
 
 <body>
 
     <img src="/assets/frontend/img/logo1.png" class="logo_Img" alt="">
-    @include('auth.success-message')
-<div class="login-card s1-buton1">
+    <div class="login-card s1-buton1">
         <h2 class="login-header">Login</h2>
         <form action="{{ route('login') }}" method="POST">
             @csrf <!-- This will generate the CSRF token field -->
 
             <div class="mb-4">
                 <label for="email" class="form-label text-white">Email</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email"
+                    required>
             </div>
             <div class="mb-4">
                 <label for="password" class="form-label text-white">Password</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
+                <input type="password" name="password" id="password" class="form-control"
+                    placeholder="Enter your password" required>
             </div>
             <div class="d-grid">
                 <button type="submit" class="btn login-btn btn-lg text-white">Login</button>
             </div>
 
             @if ($errors->any())
-            <div class="error-message">
-                <strong>{{ $errors->first() }}</strong>
-            </div>
+                <div class="error-message">
+                    <strong>{{ $errors->first() }}</strong>
+                </div>
             @endif
         </form>
 
-<!-- Additional buttons for sign-in or create an account -->
+        <!-- Additional buttons for sign-in or create an account -->
         <!-- Additional buttons for sign-in or create an account -->
         <div class="additional-btns">
             <p class="text-white">Don't have an account? Create one now to explore all our properties!</p>
             <a href="{{ route('register.form') }}" class="btn additional-btn text-white">Create an Account</a>
-</div>
-</div>
+        </div>
+    </div>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

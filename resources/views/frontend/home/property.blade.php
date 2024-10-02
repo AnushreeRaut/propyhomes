@@ -54,7 +54,7 @@
     <!-- ========  section 1   END  ======== -->
 
     <!-- +++++++++++  section 2  +++++++++++ -->
-    <section class="section2 my-5 py-1">
+    <section class="section2 py-1 black_C">
         <div class="p1s1Before  mt-3 mb-5">
             <h2 class="ps-md-0 ps-3"> <span class="headlineGrayC"> End-to-End </span> <span class="headlineGoldC"> Real
                     Estate Services
@@ -415,7 +415,7 @@
 
   <!-- ========  section 2   END  ======== -->
     <!-- +++++++++++  section 3  +++++++++++ -->
-    <section class="section p1s3bgimg">
+    <section class="section p1s3bgimg black_C">
         <div class="container py-4">
 
             <div class="row pt-5 pb-2 pb-lg-5">
@@ -577,7 +577,7 @@
 
             </div> -->
 
-            <div class="row ">
+            {{-- <div class="row ">
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-5  ">
                     <div class=" p1s5div  text-center">
                         <img src="{{asset('assets/frontend/asset/img/Shapoorji-Pallonji-Logo.png')}}" width="100%" alt="">
@@ -638,9 +638,121 @@
                         <img src="{{asset('assets/frontend/asset/img/mahindra_logo_2.png')}}" width="100%" alt="">
                     </div>
                 </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div text-center ">
+                        <img src="{{asset('assets/frontend/asset/img/mahindra_logo_2.png')}}" width="100%" alt="">
+                    </div>
+                </div>
+            </div> --}}
+
+            <div class="row">
+                <!-- <div class="col-lg-2 col-md-4 col-sm-6 mb-5   ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="/asset/img/logoelitePark.png" width="100%" class="rounded-2" height="" class="p1s5img" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5   ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="/asset/img/logobella.png" width="100%" class="rounded-2" class="p1s5img" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5   ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="/asset/img/logobalaji.png" width="100%" class="rounded-2" class="p1s5img" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5   ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="/asset/img/logoAnjaneya.png" width="100%" class="rounded-2" class="p1s5img" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5   ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="/asset/img/logoinsightEdge.png" width="100%" class="rounded-2" class="p1s5img" alt="">
+                    </div>
+                </div> -->
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div text-center  ">
+                        <img src="{{asset('assets/frontend/clientlogo/Mahendra_Regalia.png')}}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div text-center  ">
+                        <img src="{{asset('assets/frontend/clientlogo/bella.png')}}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div text-center  ">
+                        <img src="{{asset('assets/frontend/clientlogo/VEDANT_AOUAjVLEPOSTE.png')}}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div text-center  ">
+                        <img src="{{asset('assets/frontend/clientlogo/Anjaneya_Crest.png')}}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div text-center  ">
+                        <img src="{{asset('assets/frontend/clientlogo/Krishna_Prabha.png')}}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+{{-- =================================================================================================== --}}
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div text-center  ">
+                        <img src="{{ asset('assets/frontend/clientlogo/logovedant.png') }}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="{{ asset('assets/frontend/clientlogo/logoelitePark.png') }}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div text-center  ">
+                        <img src="{{ asset('assets/frontend/clientlogo/logobella.png') }}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="{{ asset('assets/frontend/clientlogo/logobalaji.png') }}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="{{ asset('assets/frontend/clientlogo/logoAnjaneya.png') }}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="{{ asset('assets/frontend/clientlogo/logoinsightEdge.png') }}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="{{ asset('assets/frontend/clientlogo/logoOrchidinfinity.png') }}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="{{ asset('assets/frontend/clientlogo/logomahendra.png') }}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div  text-center ">
+                        <img src="{{ asset('assets/frontend/clientlogo/logKrishna.png') }}" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div>
+                <!-- <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div text-center  ">
+                        <img src="assets/frontend/img/assetz.webp" width="80%" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-5 d-flex align-items-center justify-content-center ">
+                    <div class=" p1s5div text-center  ">
+                        <img src="/asset/img/mahindra_logo_2.webp" width="100%" class="rounded-2" alt="">
+                    </div>
+                </div> -->
             </div>
-
-
 
         </div>
 

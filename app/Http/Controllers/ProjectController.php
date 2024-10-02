@@ -12,7 +12,17 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+
     public function index()
+    {
+        // Fetch all projects from the database
+        $projects = Project::all();
+
+        // Pass projects data to the view
+        return view('admin.project.index', compact('projects'));
+    }
+
+    public function create()
     {
         return view('admin.project.create');
     }
@@ -28,6 +38,19 @@ class ProjectController extends Controller
         $propertyUnits = $project->propertyUnits; // Fetch property units from the project
 
         return view('frontend.newproject.projectfile', compact('project', 'outdoorFeatures', 'propertyUnits'));
+    }
+
+    public function view($id)
+    {
+        // Fetch the project along with its related details
+        $project = Project::with(['propertyDetail', 'outdoorFeatures', 'propertyUnits'])
+                          ->findOrFail($id);
+
+        // Get outdoor features and property units related to the project
+        $outdoorFeatures = $project->outdoorFeatures; // Fetch outdoor features from the project
+        $propertyUnits = $project->propertyUnits; // Fetch property units from the project
+
+        return view('admin.project.view', compact('project', 'outdoorFeatures', 'propertyUnits'));
     }
 
 

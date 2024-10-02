@@ -16,11 +16,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('mobile')->nullable();
+            $table->string('mobile')->unique()->nullable();
             $table->string('password');
             $table->string('department')->nullable();
             $table->string('team')->nullable();
             $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('cascade');
+            $table->string('verification_code')->nullable();
+            $table->boolean('is_verified')->default(false);
+            $table->boolean('is_active')->default(true);
             $table->integer('added_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->rememberToken();

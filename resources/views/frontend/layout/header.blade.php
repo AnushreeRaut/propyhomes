@@ -29,6 +29,265 @@
     <!--  -->
 
     <style>
+        .searchbox-wrap {
+            display: flex;
+            width: 100%;
+            margin: 8% auto;
+            background-color: #00000030;
+            border-radius: 35px;
+            border: 1px solid #ffffff;
+            box-sizing: border-box;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.19);
+
+            input {
+                flex: 1;
+                padding: 23px 25px;
+                font-size: 1em;
+                border: none;
+                border-top-left-radius: 35px;
+                border-bottom-left-radius: 35px;
+                background-color: #00000030;
+                color: var(--color-white);
+                box-sizing: border-box;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .banner-btn {
+                background-color: #00000030;
+                padding: 0 9px;
+                border-top-right-radius: 35px;
+                border-bottom-right-radius: 35px;
+                /* box-shadow: 5px 4px 6px rgba(0, 0, 0, 0.19); */
+                border: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: end;
+
+                span {
+                    display: inline-block;
+                    font-size: 0.9em;
+                    /* text-transform: uppercase; */
+                    font-weight: var(--font-weight-600);
+                    color: #000000;
+                    border: 2px solid transparent;
+                    background: linear-gradient(90deg, #e9e09b 0%, #a07a43 100%) padding-box,
+                        linear-gradient(#dbcc8a 0%, #a58149 100%) border-box;
+                    border-radius: 30px;
+                    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.19);
+                    padding: 10px 30px;
+                    box-sizing: border-box;
+                    border-radius: 50%;
+
+                    &:hover {
+                        background-color: #d6121f;
+                        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.19);
+                    }
+                }
+            }
+
+            @media (max-width: 1200px) {
+                margin: 5% auto;
+            }
+
+            @media (max-width: 992px) {
+                /* flex-direction: column; */
+                margin: 4% auto;
+                width: 90%;
+
+                input {
+                    padding: 18px 20px;
+                    font-size: 0.9em;
+                }
+
+                .banner-btn {
+                    width: 20%;
+
+                    justify-content: end;
+
+                    /* border-radius: 35px; */
+                    /* margin-top: 10px; */
+                    span {
+                        padding: 10px 20px;
+                        font-size: 0.8em;
+                    }
+                }
+            }
+
+            @media (max-width: 768px) {
+                margin: 3% auto;
+
+                input {
+                    padding: 15px 18px;
+                    font-size: 0.95em;
+                }
+
+                .banner-btn {
+                    width: 21%;
+
+                    /* margin-top: 8px; */
+                    span {
+                        padding: 8px 18px;
+                        font-size: 0.7em;
+                    }
+                }
+            }
+
+            @media (max-width: 576px) {
+                margin: 2% auto;
+
+                input {
+                    padding: 15px 15px;
+                    font-size: 0.9em;
+                }
+
+                .banner-btn {
+                    width: 20%;
+
+                    /* margin-top: 5px; */
+                    span {
+                        padding: 6px 15px;
+                        font-size: 0.6em;
+                    }
+                }
+            }
+
+            @media (max-width: 455px) {
+                margin: 2% auto;
+
+                input {
+                    padding: 15px 15px;
+                    font-size: 0.82em;
+                }
+
+                .banner-btn {
+                    width: 22%;
+
+                    /* margin-top: 5px; */
+                    span {
+                        padding: 6px 15px;
+                        font-size: 0.6em;
+                    }
+                }
+            }
+
+            @media (max-width: 422px) {
+                margin: 2% auto;
+
+                input {
+                    padding: 16px 15px;
+                    font-size: 0.77em;
+                }
+
+                .banner-btn {
+                    width: 24%;
+
+                    /* margin-top: 5px; */
+                    span {
+                        padding: 6px 15px;
+                        font-size: 0.6em;
+                    }
+                }
+            }
+
+            @media (max-width: 406px) {
+                margin: 2% auto;
+
+                input {
+                    padding: 16px 15px;
+                    font-size: 0.72em;
+                }
+
+                .banner-btn {
+                    width: 25%;
+
+                    span {
+                        padding: 6px 15px;
+                        font-size: 0.6em;
+                    }
+                }
+            }
+
+            @media (max-width: 383px) {
+                margin: 2% auto;
+
+                input {
+                    padding: 16px 15px;
+                    font-size: 0.66em;
+                }
+
+                .banner-btn {
+                    width: 26%;
+
+                    /* margin-top: 5px; */
+                    span {
+                        padding: 6px 15px;
+                        font-size: 0.6em;
+                    }
+                }
+            }
+
+            @media (max-width: 367px) {
+                margin: 2% auto;
+
+                input {
+                    padding: 17px 15px;
+                    font-size: 0.63em;
+                }
+
+                .banner-btn {
+                    width: 28%;
+
+                    /* margin-top: 5px; */
+                    span {
+                        padding: 6px 15px;
+                        font-size: 0.6em;
+                    }
+                }
+            }
+
+            @media (max-width: 360px) {
+                margin: 2% auto;
+
+                input {
+                    padding: 17px 15px;
+                    font-size: 0.59em;
+                }
+
+                .banner-btn {
+                    width: 28%;
+
+                    /* margin-top: 5px; */
+                    span {
+                        padding: 6px 15px;
+                        font-size: 0.6em;
+                    }
+                }
+            }
+
+            @media (max-width: 344px) {
+                margin: 2% auto;
+
+                input {
+                    padding: 17px 15px;
+                    font-size: 0.55em;
+                }
+
+                .banner-btn {
+                    width: 29%;
+
+                    /* margin-top: 5px; */
+                    span {
+                        padding: 6px 15px;
+                        font-size: 0.6em;
+                    }
+                }
+            }
+        }
+
         input[type="range"] {
             width: 100%;
             margin: 10px 0;
@@ -57,18 +316,35 @@
         }
 
 
+
         .p2s2bgc {
-            background: #fffdf8;
+            background: #FFFDF8;
             box-shadow: 0px 0px 10px 0px #00000040;
-            width: 90%;
-            left: 50.5%;
+            width: 98%;
+            margin-left: 0.5px;
+            left: 50%;
         }
 
+        /*  */
+        .Home_s1_h {
+            height: 75px;
+        }
 
+        .home_s1_padding {
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 60px;
+        }
 
-
-
-        @media only screen and (max-width: 1400px) {}
+        @media only screen and (min-width: 1400px) {
+            .p2s2bgc {
+                background: #FFFDF8;
+                box-shadow: 0px 0px 10px 0px #00000040;
+                width: 98%;
+                /* left: 1%; */
+            }
+        }
 
         @media only screen and (max-width: 1400px) and (min-width: 1200px) {
             .p2s2padding {
@@ -76,27 +352,47 @@
             }
 
             .p2s2bgc {
+                /* left: 50.8%; */
+            }
 
-                left: 50.8%;
+            .Home_s1_h {
+                height: 90px;
             }
         }
 
-
+        /* @media only screen and (max-width: 1400px) and (min-width: 992px) {
+        } */
         @media only screen and (max-width: 1200px) and (min-width: 992px) {
             .p2s2padding {
                 padding-top: 430px;
             }
 
             .p2s2bgc {
-
-                left: 51%;
+                /* left: 51%; */
             }
 
+            .Home_s1_h {
+                height: 90px;
+            }
 
+            .home_s1_padding {
+                padding-left: 10px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                padding-right: 40px;
+            }
+        }
+
+        @media only screen and (max-width: 992px) {
+            .home_s1_padding {
+                padding-left: 0px;
+                padding-top: 10px;
+                padding-bottom: 20px;
+                padding-right: 0px;
+            }
         }
 
         @media only screen and (max-width: 992px) and (min-width: 768px) {
-
             .p2s2padding {
                 padding-top: 700px;
             }
@@ -106,19 +402,30 @@
             }
 
             .p2s2bgc {
+                /* left: 51.4%; */
+            }
 
-                left: 51.4%;
+            .Home_s1_h {
+                height: 90px;
+                /* background: chartreuse; */
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .p2s2bgc {
+                /* left: 52%; */
+                width: 96%;
+                margin-left: 0px;
             }
         }
 
         @media only screen and (max-width: 768px) and (min-width: 576px) {
-
             .p2s2padding {
                 padding-top: 700px;
             }
 
             .p2s1height {
-                height: 840px;
+                height: 860px;
             }
 
             .p2s1bgimg {
@@ -126,20 +433,16 @@
                 background: black;
             }
 
-            .p2s2bgc {
-
-                left: 51.8%;
+            .Home_s1_h {
+                height: 90px;
+                /* background: chartreuse; */
             }
-
         }
 
         @media only screen and (max-width: 576px) and (min-width: 500px) {
-
             .p2s2padding {
                 padding-top: 700px;
             }
-
-
 
             .p2s1bgimg {
                 background-image: none;
@@ -148,13 +451,15 @@
             }
 
             .p2s2bgc {
-
-                left: 52%;
+                /* left: 52%; */
+                /* width: 94%; */
             }
 
+            /*  */
+            .p2s1height {
+                height: 815px;
+            }
         }
-
-
 
         @media only screen and (max-width: 500px) and (min-width: 425px) {
             .p2s2padding {
@@ -168,22 +473,49 @@
             }
 
             .p2s2bgc {
+                /* left: 52.7%; */
+            }
 
-                left: 52.7%;
+            .Home_s1_h {
+                height: 70px;
+                /* background: chartreuse; */
+            }
+
+            /*  */
+        }
+
+        @media only screen and (max-width: 500px) and (min-width: 482px) {
+            .p2s1height {
+                height: 820px;
             }
         }
 
+        @media only screen and (max-width: 482px) and (min-width:454px) {
+            .p2s1height {
+                height: 860px;
+            }
+        }
 
+        @media only screen and (max-width: 454px) and (min-width:424px) {
+            .p2s1height {
+                height: 870px;
+            }
+        }
 
         @media only screen and (max-width: 424px) and (min-width: 375px) {
-
             .p2s2bgc {
+                /* left: 52.8%; */
+            }
 
-                left: 52.8%;
+            .Home_s1_h {
+                height: 80px;
+                /* background: chartreuse; */
+            }
+
+            .p2s1height {
+                height: 900px !important;
             }
         }
-
-
 
         @media only screen and (max-width: 424px) and (min-width: 375px) {}
 
@@ -197,6 +529,10 @@
                 background: black;
                 height: 930px;
             }
+
+            .p2s1height {
+                height: 910px !important;
+            }
         }
 
         @media only screen and (max-width: 388px) and (min-width: 375px) {
@@ -208,6 +544,10 @@
                 background-image: none;
                 background: black;
                 height: 960px;
+            }
+
+            .p2s1height {
+                height: 900px !important;
             }
         }
 
@@ -223,12 +563,26 @@
             }
 
             .p2s2bgc {
+                /* left: 52.9%; */
+            }
 
-                left: 52.9%;
+            .Home_s1_h {
+                height: 100px;
+                /* background: chartreuse; */
             }
         }
 
+        @media only screen and (max-width: 375px) and (min-width: 360px) {
+            .p2s1height {
+                height: 930px !important;
+            }
+        }
 
+        @media only screen and (max-width: 360px) and (min-width: 320px) {
+            .p2s1height {
+                height: 950px !important;
+            }
+        }
 
         /*  */
 
@@ -576,6 +930,34 @@
                 margin-top: 0px;
             }
         }
+
+        .navlogutbtn {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background-color: var(--color-white);
+            right: -10px;
+            top: 80px;
+            outline: 3px solid var(--color-white);
+            outline-offset: -1px;
+        }
+
+        .navlogutbtn ul {
+            list-style-type: none;
+        }
+
+        .navLogoutbtnC {
+            background-color: black;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .d-block {
+            display: block;
+            /* or inline-block depending on your layout */
+        }
     </style>
 
 </head>
@@ -584,7 +966,7 @@
     <!-- +++++++++++  section-navigationbar  +++++++++++ -->
     <header>
         <div class="navBaner  navPad ">
-            <nav class="navbar navbar-expand-lg   " id="navbar1">
+            <nav class="navbar navbar-expand-lg pt-1" id="navbar1">
                 <div class="container py-2">
                     <a class="navbar-brand nav_aWidht" href="{{ route('index') }}"><img
                             src="{{ asset('assets/frontend/img/logo1.png') }}" alt="" class="navlog"></a>
@@ -648,11 +1030,46 @@
                                             <img src="asset/img/telephone-call.svg" alt="">
                                         </a>
                                     </li> -->
-                                    <li class="nav-item nav-link pt-2  ">
+                                    <li class="nav-item nav-link pt-2 ` ">
                                         <a class="nav_a text-decoration-none  active  navhtext  navCallIcon  "
                                             aria-current="page" href="tel:+911-800-700-6200">
                                             <img src="{{ asset('assets/frontend/img/navCall.svg') }}" alt="">
                                         </a>
+                                    </li>
+                                    <li class="nav-item nav-link pt-3  ">
+                                        <p class="">
+                                            <a class="nav_a text-decoration-none  position-relative active  navhtext  navCallIcon  "
+                                                aria-current="page" data-bs-toggle="collapse" href="#collapseExample"
+                                                role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                <img src="{{ asset('assets/frontend/img/MoveUp.svg') }}"
+                                                    alt="">
+                                            </a>
+                                        </p>
+                                        <div class="collapse" id="collapseExample">
+                                            <div class="card card-body navLogoutbtnC">
+                                                <ul class="ps-0 pt-3">
+                                                    <li class="nav-item nav-link">
+                                                        <div class=" ">
+                                                            <div class="  ">
+                                                                <a class="nav_a text-decoration-none  active position-relative navhtext   ds1Nicon  "
+                                                                    aria-current="page" href="#">
+                                                                    <img src="{{ asset('assets/frontend/asset/img/User.svg') }}"
+                                                                        class="" alt="">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li class="">
+                                                    <li class="dc2hover mt-3 nav-item nav-link ">
+                                                        <form id="logout-form" action="{{ route('logout') }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            <p class="py-2 mb-0"> <a href="#"
+                                                                    class="text-decoration-none">Logout</a> </p>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -695,18 +1112,36 @@
                                         <img src="{{ asset('assets/frontend/img/navCall.svg') }}" alt="">
                                     </a>
                                 </li>
-                                <li class="nav-item nav-link ">
-                                    <a  class="nav_a text-decoration-none  active  navhtext" href="#">
-                                        <span class="" style="font-weight: 600">Profile</span>
-                                    </a>
-
-                                    <form id="logout-form" action="{{route('logout')}}" method="POST">
-                                        @csrf
-                                        <a class="dropdown-item dc2hover py-2 my-1 ps-4 mb-0" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <span class="" style="font-weight: 600">Logout</span>
+                                @auth
+                                    <li class="nav-item nav-link">
+                                        <a class="nav_a text-decoration-none position-relative active navhtext navCallIcon"
+                                            href="#" onclick="logout()">
+                                            <img src="{{ asset('assets/frontend/img/MoveUp.svg') }}" alt="">
                                         </a>
-                                    </form>
-                                </li>
+                                        <div class="navlogutbtn rounded-1 d-none" id="logoutdiv">
+                                            <ul class="ps-0 pt-3">
+                                                <li>
+                                                    <div class="text-center">
+                                                        <a class="nav_a text-decoration-none active position-relative navhtext ds1Nicon"
+                                                            href="#">
+                                                            <img src="{{ asset('assets/frontend/asset/img/User.svg') }}"
+                                                                alt="">
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li class="dc2hover mt-3 text-center">
+                                                    <form id="logout-form" action="{{ route('logout') }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="btn">Logout</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                @endauth
+
+
                             </ul>
                             <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -717,54 +1152,23 @@
                 </div>
             </nav>
 
+
+
             <!-- baner -->
-            @if (session('success'))
-                <div class="py-5 mt-5">
-
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                            aria-label="Close"></button>
-                    </div>
-                </div>
-            @endif
-          <!-- Display validation errors -->
-@if ($errors->any())
-<div class="py-5 mt-5">
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-</div>
-@endif
-
-
-
-<!-- Display success message from session -->
-@if (session('success'))
-<div class="py-5 mt-5">
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-</div>
-@endif
-
-<!-- Display custom error from session -->
-@if (session('error'))
-<div class="py-5 mt-5">
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('error') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-</div>
-@endif
-
             @yield('banner')
         </div>
     </header>
     <!-- ========  section-x-navigationbar END  ======== -->
+    <script>
+        let logoutDiv = document.getElementById('logoutdiv');
+
+        function logout() {
+            if (logoutDiv.classList.contains('d-none')) {
+                logoutDiv.classList.remove('d-none');
+                logoutDiv.classList.add('d-block');
+            } else {
+                logoutDiv.classList.remove('d-block');
+                logoutDiv.classList.add('d-none');
+            }
+        }
+    </script>

@@ -28,56 +28,87 @@
                         <div class="p2s2pdiv">
                             <h2>Calculate how much Home Loan you can get</h2>
                             <!--  -->
-                            <div class="pt-4 pe-1 pe-xl-5">
+
+                            <!-- <div class="meter-info">
+                            <p>Progress: <output id="meter--progress">0%</output></p>
+
+                            <h1 id="div1">0%</h1>
+                            <input id="meter--ranger" type="range" value="24" min="0" max="100">
+                        </div> -->
+
+                            <div class=" pt-4 pe-1 pe-xl-5">
+
+
                                 <!-- Progress Bar 1: Monthly Net Income -->
                                 <div class="d-flex justify-content-between">
                                     <p class="p2s2Textp">Monthly Net Income</p>
-                                    <input type="number" class="p2s2Texth6 ps-3" id="income-value-input" value="2360000"
-                                        min="10000" max="10000000" />
+                                    <h6 class="p2s2Textp  p2s1DBorder text-end ">₹<span class="p2s2Texth6 ps-3"
+                                            id="income-value">2360000</span></h6>
                                 </div>
                                 <input id="income-range" type="range" value="50" min="0" max="100">
                                 <div class="d-flex justify-content-between pb-4">
                                     <p class="p2s2Textp">₹ 10 K</p>
-                                    <h6 class="p2s2Textp">₹ 1 Cr</h6>
+                                    <h6 class="p2s2Textp  ">₹ 1 Cr</h6>
                                 </div>
 
                                 <!-- Progress Bar 2: Interest Rate -->
                                 <div class="d-flex justify-content-between">
                                     <p class="p2s2Textp">Interest Rates</p>
-                                    <input type="number" class="p2s2Texth6" id="interest-value-input" value="3"
-                                        min="0" max="15" step="0.1" />
+                                    <h6 class="p2s2Texth6 p2s1DBorder  text-end"><span class=" "
+                                            id="interest-value">3</span>%</h6>
                                 </div>
                                 <input id="interest-range" class="irs-bar irs-bar--single" type="range" value="7"
                                     min="0" max="15">
                                 <div class="d-flex justify-content-between pb-4">
                                     <p class="p2s2Textp">0</p>
-                                    <h6 class="p2s2Textp">15%</h6>
+                                    <h6 class="p2s2Textp  ">15%</h6>
                                 </div>
 
                                 <!-- Progress Bar 3: Tenure (Years) -->
                                 <div class="d-flex justify-content-between">
                                     <p class="p2s2Textp">Tenure (Years)</p>
-                                    <input type="number" class="p2s2Texth6" id="tenure-value-input" value="10"
-                                        min="1" max="30" />
+                                    <h6 class="p2s2Texth6 p2s1DBorder text-end"><span class="p2s2Texth6 "
+                                            id="tenure-value">10</span> Years</h6>
                                 </div>
                                 <input id="tenure-range" type="range" value="10" min="1" max="30">
                                 <div class="d-flex justify-content-between pb-4">
                                     <p class="p2s2Textp">1 Year</p>
-                                    <h6 class="p2s2Textp">30 Year</h6>
+                                    <h6 class="p2s2Textp  ">30 Year</h6>
                                 </div>
 
                                 <!-- Progress Bar 4: Other EMI -->
                                 <div class="d-flex justify-content-between">
                                     <p class="p2s2Textp">Other EMI’s</p>
-                                    <input type="number" class="p2s2Texth6 ps-3" id="emi-value-input" value="123000"
-                                        min="0" max="500000" />
+                                    <h6 class="p2s2Textp p2s1DBorder text-end">₹<span class="p2s2Texth6 ps-3"
+                                            id="emi-value">123000</span></h6>
                                 </div>
                                 <input id="emi-range" type="range" value="5000" min="0" max="50000">
                                 <div class="d-flex justify-content-between">
                                     <p class="p2s2Textp">0</p>
-                                    <h6 class="p2s2Textp">5 Lac</h6>
+                                    <h6 class="p2s2Textp  ">5 Lac</h6>
                                 </div>
 
+
+
+
+                                <!-- Loan and Interest Results -->
+                                <!-- <div class="d-flex justify-content-between">
+                                <ul class="p2s1dote mb-0">
+                                    <li>
+                                        <p class="p2s1a mb-1">Loan Amount</p>
+                                    </li>
+                                </ul>
+                                <p class="p2s1a mb-1">₹<span id="loan-amount">0</span></p>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <ul class="p2s1dote mb-0">
+                                    <li>
+                                        <p class="p2s1a mb-1">Total Interest Payable</p>
+                                    </li>
+                                </ul>
+                                <p class="p2s1a mb-1">₹<span id="total-interest">0</span></p>
+                            </div> -->
                             </div>
                         </div>
                     </div>
@@ -91,16 +122,16 @@
                             <div class="  ">
                                 <!-- Placeholder for the pie chart -->
                                 <!-- <div class="pb-3 pt-2">
-                                                <div class="chart-container">
-                                                    <svg width="200" height="200">
-                                                        <circle cx="100" cy="100" r="80" fill="none" stroke="#d3d3d3"
-                                                            stroke-width="20" />
-                                                        <circle id="progress-circle" cx="100" cy="100" r="80" fill="none"
-                                                            stroke="#FFD700" stroke-width="20" stroke-dasharray="502"
-                                                            stroke-dashoffset="502" />
-                                                    </svg>
-                                                </div>
-                                            </div> -->
+                                <div class="chart-container">
+                                    <svg width="200" height="200">
+                                        <circle cx="100" cy="100" r="80" fill="none" stroke="#d3d3d3"
+                                            stroke-width="20" />
+                                        <circle id="progress-circle" cx="100" cy="100" r="80" fill="none"
+                                            stroke="#FFD700" stroke-width="20" stroke-dasharray="502"
+                                            stroke-dashoffset="502" />
+                                    </svg>
+                                </div>
+                            </div> -->
 
                                 <!-- Pie Chart Container -->
                                 <div class="pie-chart">
@@ -116,9 +147,9 @@
                             </div>
                             <div class="Home_s1_h">
                                 <!-- <div class="result-card">
-                                                <h3>Loan Amount: ₹<span id="loan-amount">0</span></h3>
-                                                <h3>Total Interest Payable: ₹<span id="total-interest">0</span></h3>
-                                            </div> -->
+                                <h3>Loan Amount: ₹<span id="loan-amount">0</span></h3>
+                                <h3>Total Interest Payable: ₹<span id="total-interest">0</span></h3>
+                            </div> -->
 
                                 <div class="d-flex justify-content-between">
 
@@ -514,445 +545,226 @@
 
     <!-- ========  section 4   END  ======== -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+   <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Verify Your Email</h2>
+        <form action="{{ route('verify.code') }}" method="POST">
+            @csrf
+            <input type="hidden" name="email" value="{{ request()->query('email') }}">
+            <div class="mb-3">
+                <label for="verification_code" class="form-label">Enter Verification Code</label>
+                <input type="text" class="form-control" id="verification_code" name="verification_code" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Verify</button>
+        </form>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>email</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/asset/img/logo.png" type="image/x-icon">
+    <!-- Font Awesome for eye icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: black;
+            background: linear-gradient(135deg, black 50%, #A07A43 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .logo_Img {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 250px;
+        }
+        @media screen and (max-width: 992px) {
+            .logo_Img {
+                width: 180px;
+            }
+        }
+        .register-card {
+            background: linear-gradient(135deg, #C8A864, #A07A43);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 1.2s ease-in-out;
+            max-width: 550px;
+            width: 100%;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .register-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+        }
+        .register-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .form-control {
+            border: 2px solid #A07A43;
+            border-radius: 20px;
+            padding: 15px 20px;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #C8A864;
+        }
+        .password-toggle {
+            position: relative;
+        }
+        .password-toggle .toggle-icon {
+            position: absolute;
+            top: 68%;
+            right: 18px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #A07A43;
+            font-size: 1.2rem;
+        }
+        .register-btn {
+            background: linear-gradient(135deg, #A07A43, #C8A864);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 20px;
+            font-size: 1.3rem;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        .register-btn:hover {
+            background: linear-gradient(135deg, black, grey);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .s1-buton1 {
+            border: 3px solid transparent;
+            background: linear-gradient(#C8A864, #C8A864) padding-box,
+                linear-gradient(120deg, #C8A864, black, black) border-box;
+            border-radius: 30px;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .register-card {
+                padding: 40px 20px;
+                max-width: 90%;
+            }
+            .register-header {
+                font-size: 2rem;
+            }
+            .logo_Img {
+                width: 150px;
+            }
+        }
+        /* .email_btn {
+            background: #1E1E1E;
+            border: 2px solid #A07A43;
+            margin: 0 10px;
+            border-radius: 50px;
+        } */
+        .email_btn {
+            background: #1E1E1E;
+            border: 2px solid #A07A43;
+            color: white;
+            border-radius: 50px;
+            padding: 10px 40px;
+        }
+        .email_btn:hover {
+            background: linear-gradient(90deg, #E9E09B 0%, #A07A43 100%);
+            border: 2px solid #A07A43;
+        }
+        /* .email_btn:hover .navbtna {
+            color: #000000;
+        } */
+        .emial_text {
+            font-weight: 600;
+            /* color: black;
+            -webkit-text-stroke: 1px #A07A43;
+            text-shadow: 0px 2px 4px #A07A43; */
+        }
+    </style>
+</head>
+<body>
+    <img src="/asset/img/logo1.png" class="logo_Img" alt="Logo">
+    <!-- <img src="/assets/frontend/img/logo1.png" class="logo_Img" alt="Logo"> -->
+    <!-- @include('auth.success-message') -->
+    <div class="register-card s1-buton1">
+        <h2 class="emial_text">Verify Your Email</h2>
+
+        <!-- Display validation errors -->
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form action="{{ route('verify.code') }}" method="POST">
+            @csrf
+            <input type="hidden" name="email" value="{{ request()->query('email') }}">
+            <div class="mb-3">
+                <label for="verification_code" class="form-label">Enter Verification Code</label>
+                <input type="text" class="form-control" id="verification_code" name="verification_code" required>
+            </div>
+            <button type="submit" class="btn  email_btn">Verify</button>
+        </form>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Toggle password visibility -->
     <script>
-        // Select DOM elements for Pie Chart
-        const ctx = document.getElementById('pie-chart').getContext('2d');
-        const pieChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Loan Amount', 'Total Interest Payable'],
-                datasets: [{
-                    data: [0, 0], // Initial dummy data
-                    backgroundColor: ['#C8A864', '#757574'], // Colors for the segments
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false // Hide default legend
-                    }
-                }
+        function togglePasswordVisibility(fieldId) {
+            var field = document.getElementById(fieldId);
+            var icon = field.nextElementSibling.querySelector('i');
+            if (field.type === "password") {
+                field.type = "text";
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = "password";
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
             }
-        });
-
-        // Select the range input elements
-        const incomeRange = document.getElementById('income-range');
-        const interestRange = document.getElementById('interest-range');
-        const tenureRange = document.getElementById('tenure-range');
-        const emiRange = document.getElementById('emi-range');
-
-        // Select the dynamic value elements above each range
-        const incomeValueInput = document.getElementById('income-value-input');
-        const interestValueInput = document.getElementById('interest-value-input');
-        const tenureValueInput = document.getElementById('tenure-value-input');
-        const emiValueInput = document.getElementById('emi-value-input');
-
-        // Select the elements displaying loan and interest details
-        const loanAmountElement = document.getElementById('loan-amount');
-        const totalInterestElement = document.getElementById('total-interest');
-        const dynamicAmountElement = document.getElementById('dynamic-amount');
-
-        // Select the EMI display h6 element
-        const emiDisplay = document.querySelector('#emi-display');
-
-        // Constants
-        const MAX_TENURE_MONTHS = 30 * 12; // 30 years in months
-        const MAX_EMI_PERCENTAGE = 0.5; // 50% of income can be assumed for EMI
-
-        // Function to update loan details and calculations
-        function updateLoanDetails() {
-            const income = parseFloat(incomeValueInput.value); // Monthly income
-            const interestRate = parseFloat(interestValueInput.value) / 12 / 100; // Monthly interest rate
-            const tenure = parseFloat(tenureValueInput.value) * 12; // Tenure in months
-            const otherEMI = parseFloat(emiValueInput.value); // Existing EMI
-
-            // Calculate maximum allowable EMI based on income
-            const maxEMI = income * MAX_EMI_PERCENTAGE;
-
-            // Ensure other EMI does not exceed the calculated maximum EMI
-            if (otherEMI >= maxEMI) {
-                emiDisplay.innerHTML = "Other EMIs exceed allowable limit!";
-                loanAmountElement.innerText = "0";
-                totalInterestElement.innerText = "0";
-                return;
-            }
-
-            // Loan amount calculation based on allowable EMI
-            const loanAmount = (maxEMI - otherEMI) * tenure; // Calculate loan amount
-
-            // EMI calculation
-            const numerator = loanAmount * interestRate * Math.pow(1 + interestRate, tenure);
-            const denominator = Math.pow(1 + interestRate, tenure) - 1;
-
-            // Prevent division by zero
-            if (denominator === 0) {
-                emiDisplay.innerHTML = "Invalid calculation"; // Handle edge case
-                return;
-            }
-
-            const calculatedEMI = numerator / denominator;
-
-            // Calculate total interest
-            const totalInterest = (calculatedEMI * tenure) - loanAmount;
-
-            // Update loan and interest values
-            loanAmountElement.innerText = loanAmount.toLocaleString('en-IN');
-            totalInterestElement.innerText = totalInterest.toLocaleString('en-IN');
-
-            // Update EMI display (₹xx,xxx / Month)
-            emiDisplay.innerHTML = `₹${Math.round(calculatedEMI).toLocaleString('en-IN')} / <span>Month</span>`;
-
-            // Update total amount (loan + interest)
-            const totalAmount = loanAmount + totalInterest;
-            dynamicAmountElement.innerText = totalAmount.toLocaleString('en-IN');
-
-            // Update pie chart
-            pieChart.data.datasets[0].data = [loanAmount, totalInterest];
-            pieChart.update();
         }
-
-        // Function to update range backgrounds
-        function updateRangeBackground(range) {
-            const value = range.value;
-            const min = range.min ? range.min : 0;
-            const max = range.max ? range.max : 100;
-            const percentage = (value - min) / (max - min) * 100;
-
-            // Create a gradient background based on the value
-            range.style.background = `linear-gradient(to right, #C8A864 ${percentage}%, #e0e0e0 ${percentage}%)`;
-            range.style.height = '3px';
-        }
-
-        // Attach input event listeners to range sliders and number inputs
-        incomeRange.addEventListener('input', function() {
-            incomeValueInput.value = incomeRange.value * 10000; // Adjust value
-            updateLoanDetails();
-            updateRangeBackground(incomeRange);
-        });
-
-        interestRange.addEventListener('input', function() {
-            interestValueInput.value = interestRange.value;
-            updateLoanDetails();
-            updateRangeBackground(interestRange);
-        });
-
-        tenureRange.addEventListener('input', function() {
-            tenureValueInput.value = tenureRange.value;
-            updateLoanDetails();
-            updateRangeBackground(tenureRange);
-        });
-
-        emiRange.addEventListener('input', function() {
-            emiValueInput.value = emiRange.value;
-            updateLoanDetails();
-            updateRangeBackground(emiRange);
-        });
-
-        // Initialize values on page load
-        window.onload = function() {
-            updateLoanDetails();
-            updateRangeBackground(incomeRange);
-            updateRangeBackground(interestRange);
-            updateRangeBackground(tenureRange);
-            updateRangeBackground(emiRange);
-        };
-
-        // Attach input event listeners to number inputs for manual input
-        incomeValueInput.addEventListener('input', updateLoanDetails);
-        interestValueInput.addEventListener('input', updateLoanDetails);
-        tenureValueInput.addEventListener('input', updateLoanDetails);
-        emiValueInput.addEventListener('input', updateLoanDetails);
-
-        // Select all range inputs and attach event listeners for background update
-        const ranges = document.querySelectorAll('input[type="range"]');
-        ranges.forEach(range => {
-            updateRangeBackground(range); // Initialize background
-            range.addEventListener('input', () => updateRangeBackground(range)); // Update background on input
-        });
     </script>
-
-
-    {{-- <script>
-        // Select DOM elements for Pie Chart
-        const ctx = document.getElementById('pie-chart').getContext('2d');
-        const pieChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Loan Amount', 'Total Interest Payable'],
-                datasets: [{
-                    data: [0, 0], // Initial dummy data
-                    backgroundColor: ['#C8A864', '#757574'], // Colors for the segments
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false // Hide default legend
-                    }
-                }
-            }
-        });
-
-        // Select the range input elements
-        const incomeRange = document.getElementById('income-range');
-        const interestRange = document.getElementById('interest-range');
-        const tenureRange = document.getElementById('tenure-range');
-        const emiRange = document.getElementById('emi-range');
-
-        // Select the dynamic value elements above each range
-        const incomeValueInput = document.getElementById('income-value-input');
-        const interestValueInput = document.getElementById('interest-value-input');
-        const tenureValueInput = document.getElementById('tenure-value-input');
-        const emiValueInput = document.getElementById('emi-value-input');
-
-        // Select the elements displaying loan and interest details
-        const loanAmountElement = document.getElementById('loan-amount');
-        const totalInterestElement = document.getElementById('total-interest');
-        const dynamicAmountElement = document.getElementById('dynamic-amount');
-
-        // Select the EMI display h6 element
-        const emiDisplay = document.querySelector('.p2s2col2btn h6');
-
-        // Constants
-        const MAX_TENURE_MONTHS = 30 * 12; // 30 years in months
-
-        // Function to update loan details and calculations
-        function updateLoanDetails() {
-            const income = parseFloat(incomeValueInput.value); // Monthly income
-            const interestRate = parseFloat(interestValueInput.value) / 12 / 100; // Monthly interest rate
-            const tenure = parseFloat(tenureValueInput.value) * 12; // Tenure in months
-            const emi = parseFloat(emiValueInput.value); // Existing EMI
-
-            // Calculate loan amount
-            const loanAmount = (income - emi) * tenure;
-
-            // EMI calculation
-            const numerator = loanAmount * interestRate * Math.pow(1 + interestRate, tenure);
-            const denominator = Math.pow(1 + interestRate, tenure) - 1;
-            const calculatedEMI = numerator / denominator;
-
-            // Calculate total interest
-            const totalInterest = (calculatedEMI * tenure) - loanAmount;
-
-            // Update loan and interest values
-            loanAmountElement.innerText = loanAmount.toLocaleString('en-IN');
-            totalInterestElement.innerText = totalInterest.toLocaleString('en-IN');
-
-            // Update EMI display (₹xx,xxx / Month)
-            emiDisplay.innerHTML = `₹${Math.round(calculatedEMI).toLocaleString('en-IN')} / <span>Month</span>`;
-
-            // Update total amount (loan + interest)
-            const totalAmount = loanAmount + totalInterest;
-            dynamicAmountElement.innerText = totalAmount.toLocaleString('en-IN');
-
-            // Update pie chart
-            pieChart.data.datasets[0].data = [loanAmount, totalInterest];
-            pieChart.update();
-        }
-
-        // Function to update range backgrounds
-        function updateRangeBackground(range) {
-            const value = range.value;
-            const min = range.min ? range.min : 0;
-            const max = range.max ? range.max : 100;
-            const percentage = (value - min) / (max - min) * 100;
-
-            // Create a gradient background based on the value
-            range.style.background = `linear-gradient(to right, #C8A864 ${percentage}%, #e0e0e0 ${percentage}%)`;
-            range.style.height = '3px';
-        }
-
-        // Attach input event listeners to range sliders and number inputs
-        incomeRange.addEventListener('input', function() {
-            incomeValueInput.value = incomeRange.value * 10000; // Adjust value
-            updateLoanDetails();
-            updateRangeBackground(incomeRange);
-        });
-
-        interestRange.addEventListener('input', function() {
-            interestValueInput.value = interestRange.value;
-            updateLoanDetails();
-            updateRangeBackground(interestRange);
-        });
-
-        tenureRange.addEventListener('input', function() {
-            tenureValueInput.value = tenureRange.value;
-            updateLoanDetails();
-            updateRangeBackground(tenureRange);
-        });
-
-        emiRange.addEventListener('input', function() {
-            emiValueInput.value = emiRange.value;
-            updateLoanDetails();
-            updateRangeBackground(emiRange);
-        });
-
-        // Initialize values on page load
-        window.onload = function() {
-            updateLoanDetails();
-            updateRangeBackground(incomeRange);
-            updateRangeBackground(interestRange);
-            updateRangeBackground(tenureRange);
-            updateRangeBackground(emiRange);
-        };
-
-        // Attach input event listeners to number inputs for manual input
-        incomeValueInput.addEventListener('input', updateLoanDetails);
-        interestValueInput.addEventListener('input', updateLoanDetails);
-        tenureValueInput.addEventListener('input', updateLoanDetails);
-        emiValueInput.addEventListener('input', updateLoanDetails);
-
-        // Select all range inputs and attach event listeners for background update
-        const ranges = document.querySelectorAll('input[type="range"]');
-        ranges.forEach(range => {
-            updateRangeBackground(range); // Initialize background
-            range.addEventListener('input', () => updateRangeBackground(range)); // Update background on input
-        });
-    </script> --}}
-
-    {{--
-    <script>
-        // Select DOM elements for Pie Chart
-        const ctx = document.getElementById('pie-chart').getContext('2d');
-        const pieChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Loan Amount', 'Total Interest Payable'],
-                datasets: [{
-                    data: [345971194, 542328806], // Initial dummy data
-                    backgroundColor: ['#C8A864', '#757574'], // Colors for the segments
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false // Hide default legend
-                    }
-                }
-            }
-        });
-
-        // Select the range input elements
-        const incomeRange = document.getElementById('income-range');
-        const interestRange = document.getElementById('interest-range');
-        const tenureRange = document.getElementById('tenure-range');
-        const emiRange = document.getElementById('emi-range');
-
-        // Select the dynamic value elements above each range
-        const incomeValue = document.getElementById('income-value');
-        const interestValue = document.getElementById('interest-value');
-        const tenureValue = document.getElementById('tenure-value');
-        const emiValue = document.getElementById('emi-value');
-
-        // Select the elements displaying loan and interest details
-        const loanAmountElement = document.getElementById('loan-amount');
-        const totalInterestElement = document.getElementById('total-interest');
-        const dynamicAmountElement = document.getElementById('dynamic-amount');
-
-        // Select the EMI display h6 element
-        const emiDisplay = document.querySelector('.p2s2col2btn h6');
-
-        // Constants
-        const MAX_LOAN_AMOUNT = 10000000; // Maximum loan amount
-        const MAX_TENURE_MONTHS = 30 * 12; // 30 years in months
-
-        // Select the new input fields
-        const incomeInput = document.getElementById('income-value-input');
-        const interestInput = document.getElementById('interest-value-input');
-        const tenureInput = document.getElementById('tenure-value-input');
-        const emiInput = document.getElementById('emi-value-input');
-
-        // Update loan details based on both range and input fields
-        function updateLoanDetails() {
-            const income = incomeInput.value ? parseInt(incomeInput.value) : 10000;
-            const interestRate = interestInput.value / 12 / 100;
-            const tenure = tenureInput.value ? parseInt(tenureInput.value) * 12 : 12;
-            const emi = emiInput.value ? parseInt(emiInput.value) : 0;
-
-            // Calculate loan amount
-            const loanAmount = (income - emi) * tenure;
-
-            // EMI calculation
-            const numerator = loanAmount * interestRate * Math.pow(1 + interestRate, tenure);
-            const denominator = Math.pow(1 + interestRate, tenure) - 1;
-            const calculatedEMI = numerator / denominator;
-
-            // Calculate total interest
-            const totalInterest = (calculatedEMI * tenure) - loanAmount;
-
-            // Update loan and interest values
-            loanAmountElement.innerText = loanAmount.toLocaleString('en-IN');
-            totalInterestElement.innerText = totalInterest.toLocaleString('en-IN');
-
-            // Update EMI display
-            emiDisplay.innerHTML = `₹${Math.round(calculatedEMI).toLocaleString('en-IN')} / <span>Month</span>`;
-
-            // Update total amount
-            const totalAmount = loanAmount + totalInterest;
-            dynamicAmountElement.innerText = totalAmount.toLocaleString('en-IN');
-
-            // Update pie chart
-            pieChart.data.datasets[0].data = [loanAmount, totalInterest];
-            pieChart.update();
-
-            // Update range values to match the input fields
-            incomeRange.value = income / 10000;
-            interestRange.value = interestInput.value;
-            tenureRange.value = tenureInput.value;
-            emiRange.value = emi;
-        }
-
-        // Attach input event listeners to both ranges and input fields
-        incomeRange.addEventListener('input', () => {
-            incomeInput.value = incomeRange.value * 10000;
-            updateLoanDetails();
-        });
-
-        interestRange.addEventListener('input', () => {
-            interestInput.value = interestRange.value;
-            updateLoanDetails();
-        });
-
-        tenureRange.addEventListener('input', () => {
-            tenureInput.value = tenureRange.value;
-            updateLoanDetails();
-        });
-
-        emiRange.addEventListener('input', () => {
-            emiInput.value = emiRange.value;
-            updateLoanDetails();
-        });
-
-        incomeInput.addEventListener('input', updateLoanDetails);
-        interestInput.addEventListener('input', updateLoanDetails);
-        tenureInput.addEventListener('input', updateLoanDetails);
-        emiInput.addEventListener('input', updateLoanDetails);
-
-        // Initialize values on page load
-        window.onload = updateLoanDetails;
-
-
-        // input progress bar color
-
-        function updateRangeBackground(range) {
-            const value = range.value;
-            const min = range.min ? range.min : 0;
-            const max = range.max ? range.max : 100;
-            const percentage = (value - min) / (max - min) * 100;
-
-            // Create a gradient background based on the value
-            range.style.background = `linear-gradient(to right, #C8A864 ${percentage}%, #e0e0e0 ${percentage}%)`;
-            range.style.height = '3px';
-        }
-
-        // Select all range inputs and attach event listeners
-        const ranges = document.querySelectorAll('input[type="range"]');
-        ranges.forEach(range => {
-            updateRangeBackground(range); // Initialize background
-            range.addEventListener('input', () => updateRangeBackground(range)); // Update background on input
-        });
-    </> --}}
-@endsection
+</body>
+</html>

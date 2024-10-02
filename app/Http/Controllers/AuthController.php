@@ -18,81 +18,7 @@ class AuthController extends Controller
          return view('admin.dashboard');  // Ensure you have a login view
      }
 
-     // Handle login request
-    //  public function login(Request $request)
-    //  {
-    //      // Validate the form inputs
-    //      $credentials = $request->validate([
-    //          'email' => 'required|email',
-    //          'password' => 'required',
-    //      ]);
 
-    //      // Attempt to authenticate the user
-    //      if (Auth::attempt($credentials)) {
-    //          $request->session()->regenerate();
-
-    //          // Redirect to the intended page
-    //          return redirect()->intended('/dashboard');
-    //      }
-
-    //      // If authentication fails
-    //      return back()->withErrors([
-    //          'email' => 'The provided credentials do not match our records.',
-    //      ]);
-    //  }
-
-    // public function login(Request $request)
-    // {
-    //     // Validate the form inputs
-    //     $credentials = $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-    //     ]);
-
-    //     // Attempt to authenticate the user
-    //     if (Auth::attempt($credentials)) {
-    //         $request->session()->regenerate();
-
-    //         // Redirect to the intended page
-    //         return redirect()->intended('/dashboard');
-    //     }
-
-    //     // If authentication fails
-    //     return back()->withErrors([
-    //         'email' => 'The provided credentials do not match our records.',
-    //     ]);
-    // }
-
-    // public function login(Request $request)
-    // {
-    //     // Validate the form inputs
-    //     $credentials = $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-    //     ]);
-
-    //     // Attempt to authenticate the user
-    //     if (Auth::attempt($credentials)) {
-    //         $request->session()->regenerate();
-
-    //         // Get the authenticated user
-    //         $user = Auth::user();
-
-    //         // Check the role_id of the user (assuming 2 is the role_id for 'customer')
-    //         if ($user->role_id == 5) { // Assuming 2 is the role_id for 'customer'
-    //             // Redirect customer to the lotus page
-    //             return redirect()->route('viewlotus');
-    //         }
-
-    //         // Redirect other roles to the dashboard
-    //         return redirect()->intended('/dashboard');
-    //     }
-
-    //     // If authentication fails
-    //     return back()->withErrors([
-    //         'email' => 'The provided credentials do not match our records.',
-    //     ]);
-    // }
 
     public function login(Request $request)
     {
@@ -131,17 +57,6 @@ class AuthController extends Controller
         ]);
     }
 
-
-    // Logout user
-    //  public function logout(Request $request)
-    //  {
-    //      Auth::logout();
-
-    //      $request->session()->invalidate();
-    //      $request->session()->regenerateToken();
-
-    //      return redirect('/login');
-    //  }4
 
     // Logout user
     public function logout(Request $request)

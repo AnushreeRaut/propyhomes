@@ -8,18 +8,26 @@
                         <ul class="pyit-yesimg ">
                             <li> <p class=""> <a href="#" class="footetTextp text-decoration-none"> Latest Properties</a> </p> </li>
                         </ul>
-                        <div class="d-flex align-items-center footerCard  ">
-                            <div class="flex-shrink-0 p-3"> <img src="{{ asset('assets/frontend/img/footerImg.png') }}" width="58px" alt="..."> </div>
+                        <div class="d-flex align-items-center footerCard ">
+                            <div class="flex-shrink-0 p-3">
+                                <img src="{{asset('assets/frontend/asset/img/mainImg.png')}}" width="
+                    58px" alt="...">
+                            </div>
                             <div class="flex-grow-1 ms-3">
-                                <h2 class="footerTexth2 "> Retail Store Southwest 186th Street <br> </h2>
-                                <h3 class="GoldC footerTexth2">From $120/month</h3>
+                                <h2 class="footerTexth2 ">Lotus Residency<br>
+                                </h2>
+                                <h3 class="GoldC footerTexth2">From ₹120/month</h3>
                             </div>
                         </div>
                         <div class="d-flex align-items-center footerCard  mt-3">
-                            <div class="flex-shrink-0 p-3"> <img src="{{ asset('assets/frontend/img/footerImg.png') }}" width="58px" alt="..."> </div>
+                            <div class="flex-shrink-0 p-3">
+                                <img src="{{asset('assets/frontend/img/KrishnaPrabhabg.png')}}" width="
+                    58px" alt="...">
+                            </div>
                             <div class="flex-grow-1 ms-3">
-                                <h2 class="footerTexth2 "> Retail Store Southwest 186th Street <br> </h2>
-                                <h3 class="GoldC footerTexth2">From $120/month</h3>
+                                <h2 class="footerTexth2 "> Krishna Prabha <br>
+                                </h2>
+                                <h3 class="GoldC footerTexth2">From ₹120/month</h3>
                             </div>
                         </div>
                     </div>

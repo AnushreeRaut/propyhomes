@@ -36,7 +36,7 @@ class ReferenceController extends Controller
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
-            'mobile' => 'nullable|string',
+            'mobile' => 'nullable|string|unique:references',
             'real_estate' => 'nullable|boolean',
             'loan' => 'nullable|boolean',
             'real_estate_type' => 'nullable|in:buy,sell,rent,other',
@@ -96,7 +96,7 @@ class ReferenceController extends Controller
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
-            'mobile' => 'nullable|string',
+            'mobile' => 'nullable|string|unique:references',
             'real_estate' => 'nullable|boolean',
             'loan' => 'nullable|boolean',
             'real_estate_type' => 'nullable|in:buy,sell,rent,other',

@@ -71,11 +71,14 @@ class ReferenceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
-    }
+        // Find the reference by ID, along with the user relationships
+        $reference = Reference::with('addedBy', 'updatedBy')->findOrFail($id);
 
+        // Return the view and pass the reference data
+        return view('admin.reference.view', compact('reference'));
+    }
     /**
      * Show the form for editing the specified resource.
      */

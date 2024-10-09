@@ -63,7 +63,7 @@
 
         .form-control {
             border: 2px solid #A07A43;
-            border-radius: 20px;
+            border-radius: 10px;
             padding: 15px 20px;
         }
 
@@ -97,8 +97,8 @@
         }
 
         .register-btn:hover {
-            background: linear-gradient(135deg, black, grey);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(90deg, #e9e09b 0%, #a07a43 100%);
+            border: 2px solid #a07a43;
         }
 
         .error-message {
@@ -154,22 +154,26 @@
             <div class="row">
                 <div class="mb-4 col-12 col-md-6">
                     <label for="name" class="form-label text-white">Name</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name"
+                        required>
                 </div>
 
                 <div class="mb-4 col-12 col-md-6">
                     <label for="email" class="form-label text-white">Email</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email"
+                        required>
                 </div>
 
                 <div class="mb-4 col-12 col-md-6">
                     <label for="mobile" class="form-label text-white">Mobile</label>
-                    <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Enter your mobile number" required>
+                    <input type="text" name="mobile" id="mobile" class="form-control"
+                        placeholder="Enter your mobile number" required>
                 </div>
 
                 <div class="mb-4 col-12 col-md-6 password-toggle">
                     <label for="password" class="form-label text-white">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
+                    <input type="password" name="password" id="password" class="form-control"
+                        placeholder="Enter your password" required>
                     <span class="toggle-icon" onclick="togglePasswordVisibility('password')">
                         <i class="fas fa-eye"></i>
                     </span>
@@ -177,7 +181,8 @@
 
                 <div class="mb-4 col-12 col-md-6 password-toggle">
                     <label for="password_confirmation" class="form-label text-white">Confirm Password</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirm your password" required>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
+                        placeholder="Confirm your password" required>
                     <span class="toggle-icon" onclick="togglePasswordVisibility('password_confirmation')">
                         <i class="fas fa-eye"></i>
                     </span>

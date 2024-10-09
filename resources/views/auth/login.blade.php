@@ -61,8 +61,8 @@
         }
 
         .login-btn:hover {
-            background: linear-gradient(135deg, black, grey);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(90deg, #e9e09b 0%, #a07a43 100%);
+            border: 2px solid #a07a43;
         }
 
         .login-header {
@@ -75,7 +75,7 @@
 
         .form-control {
             border: 2px solid #A07A43;
-            border-radius: 20px;
+            border-radius: 10px;
             padding: 12px 20px;
         }
 
@@ -124,8 +124,8 @@
         }
 
         .additional-btn:hover {
-            background: linear-gradient(135deg, black, grey);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(90deg, #e9e09b 0%, #a07a43 100%);
+            border: 2px solid #a07a43;
         }
     </style>
 </head>
@@ -153,9 +153,9 @@
             </div>
 
             @if ($errors->any())
-                <div class="error-message">
-                    <strong>{{ $errors->first() }}</strong>
-                </div>
+            <div class="error-message">
+                <strong>{{ $errors->first() }}</strong>
+            </div>
             @endif
         </form>
 

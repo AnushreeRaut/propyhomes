@@ -51,9 +51,9 @@
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ $reference->id }}">
                                                     <!-- View Button -->
                                                     <li>
-                                                        {{-- <a class="dropdown-item text-success" href="{{ route('refrences.destroy', $reference->id) }}">
+                                                        <a class="dropdown-item text-success" href="{{ route('references.show', $reference->id) }}">
                                                             <i class="fa-solid fa-eye"></i> View
-                                                        </a> --}}
+                                                        </a>
                                                     </li>
 
                                                     <!-- Edit Button -->

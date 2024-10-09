@@ -50,6 +50,12 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
+    public function showcustomer(User $user)
+    {
+        $users = User::all();
+        return view('admin.employee.index', compact('users'));
+    }
+
     // Show the form for editing the specified user
     public function edit(User $user)
     {

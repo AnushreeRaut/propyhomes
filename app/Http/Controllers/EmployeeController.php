@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,6 +16,11 @@ class EmployeeController extends Controller
        $employees = User::all();
        return view('admin.employee.index', compact('employees'));
    }
+   public function show()
+    {
+        $user = Auth::user();
+        return view('profile', compact('user'));
+    }
 
    // Show the form for creating a new user
    public function create()

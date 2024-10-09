@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Hash;
 use Illuminate\Http\Request;
+use Mail;
 
 class AuthController extends Controller
 {
@@ -81,6 +83,29 @@ class AuthController extends Controller
         return redirect('/login')->with('success', 'You have logged out successfully.');
     }
 
+    public function changePassword(Request $request)
+    {
+        // Validate input
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|confirmed|min:8',
+        ]);
 
+        $user = Auth::user();
+
+        // Check if current password is correct
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->with('error', 'Current password is incorrect.');
+        }
+
+        // Update the password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        // Send password change notification email
+        Mail::to($user->email)->send(new \App\Mail\PasswordChangedMail($user));
+
+        return back()->with('success', 'Password changed successfully!');
+    }
 
 }

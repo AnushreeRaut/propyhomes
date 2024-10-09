@@ -34,9 +34,13 @@
             <span style="font-weight: 600;color: white;">Project Management</span>
         </a>
         <div id="collapseProject" class="collapse ds1col1bgc" aria-labelledby="headingProject" data-parent="#accordionSidebar">
-            <div class="textcolr2 py-2 collapse-inner rounded">
+            {{-- <div class="textcolr2 py-2 collapse-inner rounded">
                 <a class="collapse-item text-white" href="{{ route('projects.index') }}">Projects</a>
                 <a class="collapse-item text-white" href="{{ route('projects.create') }}">Add Project</a>
+            </div> --}}
+            <div class="textcolr2 py-2 collapse-inner rounded">
+                <a class="collapse-item text-white" href="{{ route('properties.index') }}">Property</a>
+                <a class="collapse-item text-white" href="{{ route('properties.create') }}">Add Project</a>
             </div>
         </div>
     @endcan
@@ -89,3 +93,17 @@
 </li>
 
 <!-- Divider -->
+
+<!-- Nav Item - Reference Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed ds1col1SB w-100" href="#" data-toggle="collapse" data-target="#collapseArea" aria-expanded="true" aria-controls="collapseArea">
+        <img src="{{ asset('assets/frontend/img/DashboardReference.svg') }}" alt="">
+        <span style="font-weight: 600;color: white;">Masters</span>
+    </a>
+    <div id="collapseArea" class="collapse ds1col1bgc" aria-labelledby="headingReference" data-parent="#accordionSidebar">
+        <div class="textcolr2 py-2 collapse-inner rounded">
+            <a class="collapse-item text-white" href="{{ route('areas.index') }}">Area</a>
+            <a class="collapse-item text-white" href="{{ route('landmarks.index') }}">Landmark</a>
+        </div>
+    </div>
+</li>

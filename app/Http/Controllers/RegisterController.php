@@ -33,6 +33,7 @@ class RegisterController extends Controller {
             'password' => Hash::make($request->password),
             'verification_code' => $verificationCode,  // Store verification code in the database
             'is_verified' => false,  // User is unverified until they verify their account
+            'role_id' => 4, // Set the default role ID for a customer
         ]);
 
         // Send the verification code via email

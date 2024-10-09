@@ -1,14 +1,11 @@
 @extends('admin.layout.layout')
 
-{{-- @section('links')
-@endsection --}}
-
 @section('content')
     <div id="content" class="p-4">
         <!-- Dashboard Header -->
         <h1 class="ds1col1texth1">Add Reference</h1>
-          <!-- Back Button -->
-          <div class="text-right">
+        <!-- Back Button -->
+        <div class="text-right">
             <button style="background-color: #c8a864" type="button" class="btn btn-sm rounded-3 px-3 text-white" onclick="history.back()">
                 <i class="fas fa-arrow-left text-white"></i> Back to previous
             </button>
@@ -27,7 +24,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('references.store') }}" method="POST">
+        <form id="referenceForm" action="{{ route('references.store') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="col-lg-6">
@@ -35,6 +32,7 @@
                         <label for="name" class="form-label dpage5label">Name</label>
                         <input type="text" class="form-control dpage5input" id="name" name="name"
                             placeholder="Enter here..." value="{{ old('name') }}" required>
+                        <small class="text-danger" id="nameError" style="display:none;"></small>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -42,6 +40,7 @@
                         <label for="mobile" class="form-label dpage5label">Mobile Number</label>
                         <input type="text" class="form-control dpage5input" id="mobile" name="mobile"
                             placeholder="Enter here..." value="{{ old('mobile') }}" required>
+                        <small class="text-danger" id="mobileError" style="display:none;"></small>
                     </div>
                 </div>
             </div>
@@ -61,6 +60,7 @@
                     </label>
                 </div>
             </div>
+            <small class="text-danger" id="checkboxError" style="display:none;"></small>
             <div class="row mt-4">
                 <div class="col-lg-12 mb-4">
                     <!-- Real Estate Type Dropdown -->
@@ -87,13 +87,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col-lg-12">
-                    <div class="mb-4">
-
-                    </div>
-                </div>
-            </div>
             <div class="mb-3">
                 <label for="comment" class="form-label">Comments</label>
                 <textarea class="form-control dpage5input" id="comment" name="comment" rows="3"></textarea>
@@ -102,6 +95,7 @@
                 Submit
             </button>
         </form>
+
         <!-- JavaScript -->
         <script>
             function toggleDropdowns() {
@@ -110,18 +104,58 @@
                 const realEstateDropdown = document.getElementById('realEstateDropdown');
                 const loanDropdown = document.getElementById('loanDropdown');
                 // Show or hide the Real Estate dropdown
-                if (realEstateCheckbox.checked) {
-                    realEstateDropdown.style.display = 'block';
-                } else {
-                    realEstateDropdown.style.display = 'none';
-                }
+                realEstateDropdown.style.display = realEstateCheckbox.checked ? 'block' : 'none';
                 // Show or hide the Loan dropdown
-                if (loanCheckbox.checked) {
-                    loanDropdown.style.display = 'block';
-                } else {
-                    loanDropdown.style.display = 'none';
-                }
+                loanDropdown.style.display = loanCheckbox.checked ? 'block' : 'none';
             }
+
+            document.getElementById('referenceForm').addEventListener('input', function () {
+                validateForm();
+            });
+
+            function validateForm() {
+                // Reset error messages
+                document.getElementById('nameError').style.display = 'none';
+                document.getElementById('mobileError').style.display = 'none';
+                document.getElementById('checkboxError').style.display = 'none';
+
+                let isValid = true;
+
+                // Validate Name
+                const name = document.getElementById('name').value.trim();
+                const nameRegex = /^[a-zA-Z\s]+$/; // Only letters and spaces allowed
+                if (name.length < 3 || !nameRegex.test(name)) {
+                    document.getElementById('nameError').innerText = 'Name must be at least 3 characters long and cannot contain numbers.';
+                    document.getElementById('nameError').style.display = 'block';
+                    isValid = false;
+                }
+
+                // Validate Mobile Number
+                const mobile = document.getElementById('mobile').value.trim();
+                const mobileRegex = /^[0-9]{10}$/; // Allow only 10 digits
+                if (!mobileRegex.test(mobile)) {
+                    document.getElementById('mobileError').innerText = 'Mobile number must be 10 digits long and contain only numbers.';
+                    document.getElementById('mobileError').style.display = 'block';
+                    isValid = false;
+                }
+
+                // Validate Checkbox
+                const realEstateChecked = document.getElementById('realEstate').checked;
+                const loanChecked = document.getElementById('loan').checked;
+                if (!realEstateChecked && !loanChecked) {
+                    document.getElementById('checkboxError').innerText = 'Please select at least one option.';
+                    document.getElementById('checkboxError').style.display = 'block';
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            document.getElementById('referenceForm').addEventListener('submit', function (event) {
+                if (!validateForm()) {
+                    event.preventDefault(); // Prevent form submission if invalid
+                }
+            });
         </script>
     </div>
 @endsection

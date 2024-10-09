@@ -15,18 +15,88 @@
                     <div class="content"></div>
                     <div class="content__container text-start">
                         <p class="content__container__text GoldC banerh1 fs-1">With</p>
-                        <ul class="content__container__list  ">
+                        <ul class="content__container__list">
                             <li class="content__container__list__item">0% Brokerage Fee</li>
                             <li class="content__container__list__item">Lowest Price Guaranteed</li>
                             <li class="content__container__list__item">Easy Home Loan Sanction</li>
                             <li class="content__container__list__item">0% Brokerage Fee</li>
                         </ul>
                     </div>
-                    <div class="searchbox-wrap  mt-3">
+                    {{-- <div class="searchbox-wrap  mt-3">
                         <input type="text" class="" placeholder="Search by location and project Name">
                         <button class="banner-btn "><span class="rounded-pill fw-bold">Search</span>
                         </button>
+                    </div> --}}
+
+                    <div class="mb-3 mt-4">
+                        <input type="text" class="form-control input-index" id="searchInput"
+                            placeholder="Example input placeholder">
                     </div>
+                    <div id="newDivContainer" style="display: none;" class="mt-3 input-border  p-3">
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label text-light">Locality</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control input_dInput " placeholder=""
+                                    id="inputEmail3">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label text-light">Budget</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control  input_dInput " id="inputEmail3">
+                            </div>
+                            <!-- <div class="col-sm-5">
+                                <input type="email" class="form-control  input_dInput " id="inputEmail3">
+                            </div> -->
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3"
+                                class="col-sm-3 col-form-label text-light">No&nbsp;of&nbsp;rooms </label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control  input_dInput " id="inputEmail3">
+                            </div>
+                            <!-- <div class="col-sm-5">
+                                <input type="email" class="form-control  input_dInput " id="inputEmail3">
+                            </div> -->
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <div class="">
+                                <a class="input-btn text-decoration-none" href="{{route('search')}}"><span class="rounded-pill fw-bold">Search</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- <div class="d-flex mb-3">
+                            <label for="inputEmail3" class=" col-form-label text-white">Locality</label>
+                            <div class="">
+                                <input type="email" class="form-control" id="inputEmail3">
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <label for="inputEmail3" class=" col-form-label text-white">Price range</label>
+                            <div class="">
+                                <input type="email" class="form-control" id="inputEmail3">
+                            </div>
+                            <div class="">
+                                <input type="email" class="form-control" id="inputEmail3">
+                            </div>
+                        </div> -->
+                        <!-- <div class="row">
+                            <div class="col-6 mb-2">
+                                <label>Land Address:</label>
+                                <input type="text" placeholder="Enter land address" class="form-control">
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label>Name:</label>
+                                <input type="text" placeholder="Enter name" class="form-control">
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label>Age:</label>
+                                <input type="number" placeholder="Enter age" class="form-control">
+                            </div>
+                        </div> -->
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -37,10 +107,231 @@
 @extends('frontend.layout.main')
 
 @section('content')
+
+    <!-- +++++++++++  section 2  +++++++++++ -->
+<!--  2 slider -->
+<section class="section sec2bgColor1 pt-4 pt-lg-5 pb-4   ">
+
+
+ <!-- Top Selling Projects Section -->
+@if ($topSellingProjects->isNotEmpty())
+<section class="section sec2bgColor pt-4 pt-lg-5 pb-4">
+    <div class="sec1Before mt-3 mb-4 mb-lg-5">
+        <h2><span class="headlineGrayC">Top Selling</span> <span class="headlineGoldC">Projects</span></h2>
+    </div>
+    <div class="container pb-5 pb-lg-1">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                @foreach ($topSellingProjects as $property)
+                    <div class="swiper-slide">
+                        <div class="position-relative sec2Macard rounded-3 card-container pt-3 z-1">
+                            <a href="{{ route('properties.show.prop', $property->id) }}" class="text-decoration-none">
+                                <div class="px-3 position-relative sec2dH overflow-visible">
+                                    <div class="image-wrapper position-relative">
+                                        @foreach ($property->images as $propertyImage)
+                                            @if ($propertyImage->propertyImage->imageCategory->category_name === 'Cover Image')
+                                                <img src="{{ asset($propertyImage->propertyImage->image) }}" width="100%" alt="Cover Image">
+                                                @break
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <div class="position-absolute sec2ImgD px-3 py-2">
+                                        <h6 class="mb-0 sec2PriceText text-dark">
+                                            Price ₹ {{ $property->formatted_price_range_start }} - ₹ {{ $property->formatted_price_range_end }}
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="sec2pt rounded-3 px-3">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="sec2Texth6 text-start mb-0">{{ $property->title }}</h6>
+                                    </div>
+                                    @foreach ($property->locations as $location)
+                                        <div class="d-flex pt-1">
+                                            <p><img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}" class="pe-2 sec2ImgWS1" alt=""></p>
+                                            <p class="sec2Textp text-start">
+                                                {{ $location->city->name }}, {{ $location->state->name }}, {{ $location->country->name }}
+                                            </p>
+                                        </div>
+                                    @endforeach
+                                    <div class="sec2Bord w-100"></div>
+                                    <div class="row pt-3 pb-0 px-2 rounded-3">
+                                        <div class="col-6 mb-1">
+                                            <div class="d-flex">
+                                                <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}" alt="" class="sec2ImgWS"></p>
+                                                <p class="sec2Textp text-start">{{ $property->size }} Sq Ft</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-1">
+                                            <div class="d-flex">
+                                                <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Bed.svg') }}" alt="" class="sec2ImgWS"></p>
+                                                <p class="sec2Textp text-start">{{ $property->bhk_type }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="position-absolute w-100 sec2Wihove z-n1"></div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+@endif
+
+<!-- Newly Launched Projects Section -->
+@if ($newlyLaunchedProjects->isNotEmpty())
+<section class="section sec2bgColor pt-4 pt-lg-5 pb-4">
+    <div class="sec1Before mt-3 mb-4 mb-lg-5">
+        <h2><span class="headlineGrayC">Newly Launched</span> <span class="headlineGoldC">Projects</span></h2>
+    </div>
+    <div class="container pb-5 pb-lg-1">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+
+                @foreach ($newlyLaunchedProjects as $property)
+                <div class="swiper-slide">
+                    <div class="position-relative sec2Macard rounded-3 card-container pt-3 z-1">
+                        <a href="{{ route('properties.show.prop', $property->id) }}" class="text-decoration-none">
+                            <div class="px-3 position-relative sec2dH overflow-visible">
+                                <div class="image-wrapper position-relative">
+                                    @foreach ($property->images as $propertyImage)
+                                        @if ($propertyImage->propertyImage->imageCategory->category_name === 'Cover Image')
+                                            <img src="{{ asset($propertyImage->propertyImage->image) }}" width="100%" alt="Cover Image">
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <div class="position-absolute sec2ImgD px-3 py-2">
+                                    <h6 class="mb-0 sec2PriceText text-dark">
+                                        Price ₹ {{ $property->formatted_price_range_start }} - ₹ {{ $property->formatted_price_range_end }}
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="sec2pt rounded-3 px-3">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="sec2Texth6 text-start mb-0">{{ $property->title }}</h6>
+                                </div>
+                                @foreach ($property->locations as $location)
+                                    <div class="d-flex pt-1">
+                                        <p><img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}" class="pe-2 sec2ImgWS1" alt=""></p>
+                                        <p class="sec2Textp text-start">
+                                            {{ $location->city->name }}, {{ $location->state->name }}, {{ $location->country->name }}
+                                        </p>
+                                    </div>
+                                @endforeach
+                                <div class="sec2Bord w-100"></div>
+                                <div class="row pt-3 pb-0 px-2 rounded-3">
+                                    <div class="col-6 mb-1">
+                                        <div class="d-flex">
+                                            <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}" alt="" class="sec2ImgWS"></p>
+                                            <p class="sec2Textp text-start">{{ $property->size }} Sq Ft</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-1">
+                                        <div class="d-flex">
+                                            <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Bed.svg') }}" alt="" class="sec2ImgWS"></p>
+                                            <p class="sec2Textp text-start">{{ $property->bhk_type }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="position-absolute w-100 sec2Wihove z-n1"></div>
+                        </a>
+                    </div>
+                </div>
+
+                @endforeach
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+@endif
+
+<!-- Recent Properties Section -->
+@if ($recentProperties->isNotEmpty())
+<section class="section sec2bgColor pt-4 pt-lg-5 pb-4">
+    <div class="sec1Before mt-3 mb-4 mb-lg-5">
+        <h2><span class="headlineGrayC">Recently Added</span> <span class="headlineGoldC">Properties</span></h2>
+    </div>
+    <div class="container pb-5 pb-lg-1">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                @foreach ($recentProperties as $property)
+                <div class="swiper-slide">
+                    <div class="position-relative sec2Macard rounded-3 card-container pt-3 z-1">
+                        <a href="{{ route('properties.show.prop', $property->id) }}" class="text-decoration-none">
+                            <div class="px-3 position-relative sec2dH overflow-visible">
+                                <div class="image-wrapper position-relative">
+                                    @foreach ($property->images as $propertyImage)
+                                        @if ($propertyImage->propertyImage->imageCategory->category_name === 'Cover Image')
+                                            <img src="{{ asset($propertyImage->propertyImage->image) }}" width="100%" alt="Cover Image">
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <div class="position-absolute sec2ImgD px-3 py-2">
+                                    <h6 class="mb-0 sec2PriceText text-dark">
+                                        Price ₹ {{ $property->formatted_price_range_start }} - ₹ {{ $property->formatted_price_range_end }}
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="sec2pt rounded-3 px-3">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="sec2Texth6 text-start mb-0">{{ $property->title }}</h6>
+                                </div>
+                                @foreach ($property->locations as $location)
+                                    <div class="d-flex pt-1">
+                                        <p><img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}" class="pe-2 sec2ImgWS1" alt=""></p>
+                                        <p class="sec2Textp text-start">
+                                            {{ $location->city->name }}, {{ $location->state->name }}, {{ $location->country->name }}
+                                        </p>
+                                    </div>
+                                @endforeach
+                                <div class="sec2Bord w-100"></div>
+                                <div class="row pt-3 pb-0 px-2 rounded-3">
+                                    <div class="col-6 mb-1">
+                                        <div class="d-flex">
+                                            <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}" alt="" class="sec2ImgWS"></p>
+                                            <p class="sec2Textp text-start">{{ $property->size }} Sq Ft</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-1">
+                                        <div class="d-flex">
+                                            <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Bed.svg') }}" alt="" class="sec2ImgWS"></p>
+                                            <p class="sec2Textp text-start">{{ $property->bhk_type }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="position-absolute w-100 sec2Wihove z-n1"></div>
+                        </a>
+                    </div>
+                </div>
+
+                @endforeach
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+@endif
+
+
+    <!-- ========  section 2   END  ======== -->
     <!-- +++++++++++  section 1  +++++++++++ -->
     <section class="section pt-5">
         <div class="sec1Before  mt-3">
-            <h2> <span class="headlineGrayC"> Choose</span> <span class="headlineGoldC"> Your City</span></h2>
+            <h2> <span class="headlineGrayC"> Choose</span> <span class="headlineGoldC"> Your Locality</span></h2>
         </div>
         <div class="container my-1 py-5">
             <div class="row ">
@@ -168,921 +459,6 @@
         </div>
     </section>
     <!-- ========  section 1   END  ======== -->
-    <!-- +++++++++++  section 2  +++++++++++ -->
-
-    <!--  1 slider -->
-    <!--  1 slider -->
-    <section class="section sec2bgColor pt-4 pt-lg-5 pb-4   ">
-        <div class="sec1Before  mt-3 mb-4 mb-lg-5">
-            <h2> <span class="headlineGrayC"> Top Selling</span> <span class="headlineGoldC"> Projects</span></h2>
-        </div>
-        <!-- <div class="d-flex pt-5 mt-3">
-                    <div class="pt-1">
-                        <img src="assets/frontend/img/line.svg" alt="">
-                    </div>
-                    <div class="ps-3">
-                        <h2> <span class="headlineGrayC"> Top Selling</span> <span class="headlineGoldC"> Projects</span></h2>
-                    </div>
-                </div> -->
-        <div class="container  pb-5 pb-lg-1">
-            <!-- Swiper -->
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    @foreach ($projects as $project)
-                        <div class="swiper-slide">
-                            <div class="position-relative sec2Macard rounded-3 card-container pt-3 z-1">
-                                <a href="{{ route('projects.show', $project->id) }}" class="text-decoration-none">
-                                    <div class="px-3 position-relative sec2dH overflow-visible">
-                                        <div class="image-wrapper position-relative">
-                                            @if ($project->cover_image)
-                                                <img src="{{ asset($project->cover_image) }}" class="sec2ImgMai"
-                                                    alt="{{ $project->title }}">
-                                            @else
-                                                <img src="{{ asset('path/to/default-image.jpg') }}" class="sec2ImgMai"
-                                                    alt="Default Image">
-                                            @endif
-                                            <div class="position-absolute sec2ImgD px-3 py-2">
-                                                <h6 class="mb-0 sec2PriceText text-dark">
-                                                    Price ₹ {{ $project->formatted_price_range_start }} - ₹ {{ $project->formatted_price_range_end }}
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sec2pt rounded-3 px-3">
-                                        <div class="d-flex justify-content-between">
-                                            <h6 class="sec2Texth6 text-start mb-0">{{ $project->title }}</h6>
-                                            <p class="ps-2 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                <span class="sec2SpanCr"><img
-                                                        src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                        alt="" class=""></span>
-                                            </p>
-                                        </div>
-                                        <div class="d-flex pt-1">
-                                            <p><img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                    class="pe-2 sec2ImgWS1" alt=""></p>
-                                            <p class="sec2Textp text-start">{{ $project->location }}</p>
-                                        </div>
-                                        <div class="sec2Bord w-100"></div>
-                                        <div class="row pt-3 pb-0 px-2 rounded-3">
-                                            <div class="col-6 mb-1">
-                                                <div class="d-flex">
-                                                    <p class="pe-3 pt-1"><img
-                                                            src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                            alt="" class="sec2ImgWS"></p>
-                                                    <p class="sec2Textp text-start">{{ $project->area }} Sq Ft</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 mb-1">
-                                                <div class="d-flex">
-                                                    <p class="pe-3 pt-1"><img
-                                                            src="{{ asset('assets/frontend/img/Bed.svg') }}"
-                                                            alt="" class="sec2ImgWS"></p>
-                                                    <p class="sec2Textp text-start">{{ $project->bedrooms }} Bedroom</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 mb-1">
-                                                <div class="d-flex">
-                                                    <p class="pe-3 pt-1"><img
-                                                            src="{{ asset('assets/frontend/img/Bath.svg') }}"
-                                                            alt="" class="sec2ImgWS"></p>
-                                                    <p class="sec2Textp text-start">{{ $project->bathrooms }} Bathroom</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 mb-1">
-                                                <div class="d-flex">
-                                                    <p class="pe-3 pt-1"><img
-                                                            src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                            alt="" class="sec2ImgWS"></p>
-                                                    <p class="sec2Textp text-start">{{ $project->parking }} Parking Space
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="position-absolute w-100 sec2Wihove z-n1"></div>
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
-                    <div class="swiper-slide ">
-                        <div class=" position-relative sec2Macard rounded-3 card-container pt-3 z-1">
-                            <a href="{{ route('viewlotus') }}" class="text-decoration-none">
-                                <div class="px-3 position-relative sec2dH overflow-visible  ">
-                                    <div class="image-wrapper position-relative ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark ">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt rounded-3  px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 "> Lotus Residency</h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-absolute  w-100 sec2Wihove z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
-
-
-                    <div class="swiper-slide ">
-                        <div class=" position-relative sec2Macard rounded-3 card-container  pt-3 z-1">
-                            <a href="{{ route('mahendra') }}" class="text-decoration-none">
-                                <div class="px-3 position-relative sec2dH overflow-visible ">
-                                    <div class="image-wrapper position-relative ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt rounded-3 px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 ">Mahendra Regalia</h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-absolute  w-100 sec2Wihove z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide ">
-                        <div class=" position-relative sec2Macard rounded-3 card-container  pt-3 z-1">
-                            <a href="{{ route('orchid') }}" class="text-decoration-none">
-                                <div class="px-3 position-relative sec2dH overflow-visible ">
-                                    <div class="image-wrapper position-relative ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt rounded-3 px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 ">Orchid Infinity</h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-absolute  w-100 sec2Wihove z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide ">
-                        <div class=" position-relative sec2Macard rounded-3 card-container  pt-3 z-1">
-                            <a href="{{ route('insight') }}" class="text-decoration-none">
-                                <div class="px-3 position-relative sec2dH overflow-visible ">
-                                    <div class="image-wrapper position-relative ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt rounded-3 px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 ">Insight Edge</h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-absolute  w-100 sec2Wihove z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide ">
-                        <div class=" position-relative sec2Macard rounded-3 card-container  pt-3 z-1">
-                            <a href="{{ route('anjaeja') }}" class="text-decoration-none">
-
-                                <div class="px-3 position-relative sec2dH overflow-visible ">
-                                    <div class="image-wrapper position-relative ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt rounded-3 px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 ">Anjaneya
-                                            Crest</h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-absolute  w-100 sec2Wihove z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <!--  2 slider -->
-    <section class="section sec2bgColor1 pt-4 pt-lg-5 pb-4   ">
-        <div class="sec1Before  mt-3 mb-4 mb-lg-5">
-            <h2> <span class="headlineGrayC"> Newly Launched</span> <span class="headlineGoldC"> Projects</span></h2>
-        </div>
-        <div class="container  pb-5 pb-lg-1">
-            <!-- Swiper -->
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper  bg-white">
-                    <div class="swiper-slide  bg-white">
-                        <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewbalaji') }}" class="text-decoration-none">
-
-                                <div class="px-3 position-relative sec2dH overflow-visible  ">
-                                    <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt sec2pt1 rounded-3  px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 "> Balaji Paradise </h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-absolute  w-100 sec2Wihove sec2Wihove1 z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide  bg-white">
-                        <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewbella') }}" class="text-decoration-none">
-
-                                <div class="px-3 position-relative sec2dH overflow-visible  ">
-                                    <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt sec2pt1 rounded-3  px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 ">Bella</h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-absolute  w-100 sec2Wihove sec2Wihove1 z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide  bg-white">
-                        <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewmaelite') }}" class="text-decoration-none">
-
-                                <div class="px-3 position-relative sec2dH overflow-visible  ">
-                                    <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt sec2pt1 rounded-3  px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 ">Elites Park View</h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-absolute  w-100 sec2Wihove sec2Wihove1 z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide  bg-white">
-                        <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewvedant') }}" class="text-decoration-none">
-
-                                <div class="px-3 position-relative sec2dH overflow-visible  ">
-                                    <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt sec2pt1 rounded-3  px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 ">Vedant Auqamarine</h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-absolute  w-100 sec2Wihove sec2Wihove1 z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide  bg-white">
-                        <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewbalaji') }}" class="text-decoration-none">
-
-                                <div class="px-3 position-relative sec2dH overflow-visible  ">
-                                    <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt sec2pt1 rounded-3  px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 ">Godrej Reserve
-                                            Kandivali</h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-absolute  w-100 sec2Wihove sec2Wihove1 z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide  bg-white">
-                        <div class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                            <a href="{{ route('viewbalaji') }}" class="text-decoration-none">
-
-                                <div class="px-3 position-relative sec2dH overflow-visible  ">
-                                    <div class="image-wrapper position-relative  ">
-                                        <img src="{{ asset('assets/frontend/img/Rectangle 23.webp') }}"
-                                            class="sec2ImgMai" alt="Image">
-                                        <div class="position-absolute  sec2ImgD px-3 py-2">
-                                            <h6 class="mb-0 sec2PriceText text-dark">Price ₹ 2.25Cr ₹ 2.5 Cr</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sec2pt sec2pt1 rounded-3  px-3 ">
-                                    <div class="d-flex justify-content-between ">
-                                        <h6 class="sec2Texth6 text-start mb-0 ">Godrej Reserve
-                                            Kandivali</h6>
-                                        <p class="ps-2  mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span class="sec2SpanCr  "><img
-                                                    src="{{ asset('assets/frontend/img/telephone-call.svg') }}"
-                                                    alt="" class=""></span>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex  pt-1">
-                                        <p> <img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
-                                                class="pe-2 sec2ImgWS1" alt=""></p>
-                                        <p class="sec2Textp text-start">
-                                            Kandivali East,
-                                            Mumbai, Maharashtra
-                                        </p>
-                                    </div>
-                                    <div class="sec2Bord w-100"></div>
-                                    <div class="row pt-3 pb-0 px-2 rounded-3">
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex ">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}"
-                                                        alt="" class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">480 Sq Ft</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bed.svg') }}" alt=""
-                                                        class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Bath.svg') }}" alt=""
-                                                        class=" sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">2 Bathroom</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-1">
-                                            <div class="d-flex">
-                                                <p class="pe-3 pt-1"><img
-                                                        src="{{ asset('assets/frontend/img/Car-Cleaning.svg') }}"
-                                                        alt="" class=" sec2ImgWS">
-                                                </p>
-                                                <p class="sec2Textp text-start">2 Bedroom</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-absolute  w-100 sec2Wihove sec2Wihove1 z-n1 "></div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-    <!-- ========  section 2   END  ======== -->
-
     <!-- +++++++++++  section 4  +++++++++++ -->
     <section class="section sec4bgImg py-4">
         <div class="text-center py-5 container">
@@ -1115,7 +491,7 @@
     <!-- +++++++++++  section 5  +++++++++++ -->
     <section class="section sec5bgImg pt-5">
         <div class="sec1Before  mt-3">
-            <h2> <span class="headlineGrayC"> Tie-Up With</span> <span class="headlineGoldC"> Client</span></h2>
+            <h2> <span class="headlineGrayC"> Tie-Up With</span> <span class="headlineGoldC"> Developers</span></h2>
         </div>
         <div class=" my-1  pt-5 pb-4">
             <div class="owl-carousel sec4owl-carousel  owl-theme   pt-1 pb-2">
@@ -1259,4 +635,5 @@
         </div>
     </section> --}}
     <!-- ========  section 7   END  ======== -->
+
 @endsection

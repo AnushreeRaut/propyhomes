@@ -1,7 +1,7 @@
 @include('frontend.layout.header')
     <!-- baner -->
     @if (session('success'))
-    <div class="py-5 mt-5">
+    <div class="py-2 mt-2">
 
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -12,7 +12,7 @@
 @endif
 <!-- Display custom error from session -->
 @if (session('error'))
-    <div class="py-5 mt-5">
+    <div class="py-2 mt-2">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{ session('error') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert"

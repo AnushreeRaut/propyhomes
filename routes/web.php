@@ -1,14 +1,19 @@
 <?php
 
 
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LandmarkController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\NewProjectController;
+use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\PhoneRequestController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SubscriptionController;
@@ -36,9 +41,8 @@ Route::post('/verify-code', [RegisterController::class, 'verifyCode'])->name('ve
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/property/home', [HomeController::class, 'property'])->name('propertypage');
 Route::get('/home/loan', [HomeController::class, 'homeloan'])->name('homeloan');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 
-Route::middleware(['auth'])->group(function () {
-    // Route::middleware(['permission:view_index'])->group(function () {
         Route::get('/projects/{id}/show', [ProjectController::class, 'show'])->name('projects.show');
         Route::get('/lotusresidency', [TopProjectController::class, 'viewlotus'])->name('viewlotus');
         Route::get('/krishnaprabha', [TopProjectController::class, 'viewkrishna'])->name('viewkrishna');
@@ -52,18 +56,32 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/elite', [NewProjectController::class, 'viewmaelite'])->name('viewmaelite');
         Route::get('/vedant', [NewProjectController::class, 'viewvedant'])->name('viewvedant');
         Route::post('phone_requests', [PhoneRequestController::class, 'store'])->name('phone_requests.store');
-    });
-// });
+
 
 Route::middleware(['auth'])->group(function () {
-    // Dashboard route with specific permission
+    // Dashboard route with specific permissio
+    Route::resource('areas', AreaController::class);
+    Route::resource('landmarks', LandmarkController::class);
+    Route::resource('properties', PropertyController::class);
+    Route::get('/properties/{property}/view', [PropertyController::class, 'view'])->name('properties.view');
+
+    Route::get('/properties/{id}/show', [PropertyController::class, 'show'])->name('properties.show.prop');
+
+    Route::get('/api/states/{countryId}', [LocationController::class, 'getStates']);
+    Route::get('/api/cities/{stateId}', [LocationController::class, 'getCities']);
+
     Route::get('/dashboard', [AuthController::class, 'dashboard'])
         ->name('dashboard')
         ->middleware('permission:view_dashboard');
+        Route::post('/profile/change-password', [AuthController::class, 'changePassword'])->name('profile.change-password');
+        Route::post('/password/send-otp/{employee_id}', [PasswordChangeController::class, 'sendOTP'])->name('password.update');
+        Route::get('/otp/verify/{employee_id}', [PasswordChangeController::class, 'showOTPForm'])->name('otp.verify.form');
+        Route::post('/otp/verify', [PasswordChangeController::class, 'verifyOTP'])->name('otp.verify');
 
     // Employee routes
     Route::middleware(['permission:view_employee'])->group(function () {
         Route::resource('employees', EmployeeController::class);
+        Route::get('/profile', [EmployeeController::class, 'show'])->name('profile.show');
     });
 
     // Reference routes

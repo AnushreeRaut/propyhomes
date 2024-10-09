@@ -899,6 +899,19 @@ class CustomerController extends Controller
     //         return redirect()
     //             ->back()
     //             ->with('error', 'Failed to update details: ' . $e->getMessage());
-    //     }
-    // }
+
+
+    public function destroy($id)
+    {
+
+        $customer = Customer::find($id);
+
+        if ($customer) {
+            $customer->delete();
+            return redirect()->back()->with('success', 'customer deleted successfully!');
+        } else {
+            return redirect()->back()->with('error', 'customer not found!');
+        }
+    }
+
 }

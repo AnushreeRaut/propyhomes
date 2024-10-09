@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('verification_code')->nullable();
             $table->boolean('is_verified')->default(false);
             $table->boolean('is_active')->default(true);
+            $table->string('otp_code')->nullable();
             $table->integer('added_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->rememberToken();

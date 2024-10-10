@@ -17,17 +17,27 @@ class ContactController extends Controller
     // Store a newly created contact
     public function store(Request $request)
     {
+        // Validate the incoming request
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:contacts',
+            'email' => 'required|email|unique:contacts,email', // Specify the column for unique validation
             'phone' => 'required|string|max:15',
             'interest' => 'required|string',
         ]);
 
-        Contact::create($request->all());
+        // Attempt to create the contact
+        try {
+            Contact::create($request->all());
 
-        return redirect()->route('contacts.index')->with('success', 'Contact created successfully.');
+            // Redirect to the index page with a success message
+            return redirect()->back()->with('success', 'Contact created successfully.');
+
+        } catch (\Exception $e) {
+            // Redirect back with a custom error message
+            return redirect()->back()->with('error', 'Failed to create contact. Please try again.')->withInput();
+        }
     }
+
     public function destroy(Contact $contact)
     {
         $contact->delete();

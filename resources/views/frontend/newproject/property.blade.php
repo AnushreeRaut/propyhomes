@@ -7,6 +7,8 @@
 @endsection
 
 @section('content')
+@include('auth.success-message')
+@include('auth.error-message')
     <!-- +++++++++++  section 1  +++++++++++ -->
     <section class="mt-5" style="margin-top: 114px !important;">
         <div class="container mb-5 mt-5">
@@ -504,8 +506,15 @@
                     <div class="rounded-2 Detail-psec2bordeI w-100 Detail-inputPlace mt-4 px-3 py-4">
                         <form action="{{ route('contacts.store') }}" method="POST">
                             @csrf
-                            <input class="form-control mb-3" type="text" name="name" placeholder="Name" aria-label="input" required>
-                            <input class="form-control mb-3" type="email" name="email" placeholder="Email" aria-label="input" required>
+
+                            @if(session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+
+                            <input class="form-control mb-3 Detail-form-control" type="text" name="name" placeholder="Name" required>
+                            <input class="form-control mb-3 Detail-form-control" type="email" name="email" placeholder="Email" required>
 
                             <div class="container Detail-dropdown px-0 rounded-2">
                                 <div class="dropdown-container rounded-2">
@@ -517,7 +526,7 @@
                                     </select>
                                 </div>
                                 <div class="input-container Detail-inpute-div">
-                                    <input type="text" name="phone" class="form-control w-100 border-0" placeholder="First name" aria-label="First name" required>
+                                    <input type="text" name="phone" class="form-control w-100 border-0" placeholder="Phone" required>
                                 </div>
                             </div>
 
@@ -549,6 +558,8 @@
                             </div>
                         </div>
                     </div>
+
+
 
 
 
@@ -627,5 +638,69 @@
         captionText.innerHTML = dots[slideIndex - 1].alt;
     }
 </script>
+<script>
+    // Real-time validation
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        // Prevent form submission
+        event.preventDefault();
+
+        // Clear previous error messages
+        clearErrors();
+
+        // Validate fields
+        let isValid = true;
+
+        // Validate name
+        const name = document.getElementById('name');
+        if (name.value.trim() === '') {
+            showError(name, 'Name is required');
+            isValid = false;
+        }
+
+        // Validate email
+        const email = document.getElementById('email');
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (email.value.trim() === '') {
+            showError(email, 'Email is required');
+            isValid = false;
+        } else if (!emailPattern.test(email.value.trim())) {
+            showError(email, 'Invalid email format');
+            isValid = false;
+        }
+
+        // Validate phone
+        const phone = document.getElementById('phone');
+        if (phone.value.trim() === '') {
+            showError(phone, 'Phone number is required');
+            isValid = false;
+        } else if (isNaN(phone.value.trim()) || phone.value.trim().length < 10) {
+            showError(phone, 'Invalid phone number');
+            isValid = false;
+        }
+
+        // If all validations pass, submit the form
+        if (isValid) {
+            this.submit();
+        }
+    });
+
+    // Function to display error messages
+    function showError(input, message) {
+        const error = document.createElement('div');
+        error.className = 'text-danger mb-2';
+        error.innerText = message;
+        input.classList.add('is-invalid');
+        input.parentNode.insertBefore(error, input.nextSibling);
+    }
+
+    // Function to clear error messages
+    function clearErrors() {
+        const errors = document.querySelectorAll('.text-danger');
+        errors.forEach(error => error.remove());
+        const inputs = document.querySelectorAll('.form-control, .form-select');
+        inputs.forEach(input => input.classList.remove('is-invalid'));
+    }
+    </script>
 <!-- <div class=" p-4 rounded-2 psec2borde w-100  position-sticky topfixed"> --
+
 @endsection

@@ -501,69 +501,53 @@
                     </div>
 
 
-                    <div class="  rounded-2 Detail-psec2bordeI w-100 Detail-inputPlace  mt-4 px-3 py-4 ">
+                    <div class="rounded-2 Detail-psec2bordeI w-100 Detail-inputPlace mt-4 px-3 py-4">
+                        <form action="{{ route('contacts.store') }}" method="POST">
+                            @csrf
+                            <input class="form-control mb-3" type="text" name="name" placeholder="Name" aria-label="input" required>
+                            <input class="form-control mb-3" type="email" name="email" placeholder="Email" aria-label="input" required>
 
-                        <input class="form-control mb-3 " type="text" placeholder="Name"
-                            aria-label="readonly input example" readonly>
-                        <input class="form-control mb-3 " type="text" placeholder="Email"
-                            aria-label="readonly input example" readonly>
-
-                        <div class="container Detail-dropdown px-0 rounded-2">
-                            <div class="dropdown-container rounded-2  ">
-                                <select class="dropdown Detail-select rounded-2">
-                                    <option value="+91">+91</option>
-                                    <option value="+91">+91</option>
-                                    <option value="+91">+91</option>
-                                    <!-- You can add more country codes here if needed -->
-                                </select>
+                            <div class="container Detail-dropdown px-0 rounded-2">
+                                <div class="dropdown-container rounded-2">
+                                    <select name="country_code" class="dropdown Detail-select rounded-2">
+                                        <option value="+91">+91</option>
+                                        <option value="+1">+1</option>
+                                        <option value="+44">+44</option>
+                                        <!-- Add more country codes as needed -->
+                                    </select>
+                                </div>
+                                <div class="input-container Detail-inpute-div">
+                                    <input type="text" name="phone" class="form-control w-100 border-0" placeholder="First name" aria-label="First name" required>
+                                </div>
                             </div>
-                            <div class="input-container Detail-inpute-div ">
-                                <input type="text" class="form-control w-100 border-0"
-                                    placeholder="First name" aria-label="First name">
-                                <!-- <input type="text" class="input-field Detail-inpute " placeholder="Enter your number"> -->
+
+                            <p class="fw-semibold mt-3 Detail-textIntere">Interested in</p>
+                            <select name="interest" class="form-select mb-3" required>
+                                <option value="Buying">Buying</option>
+                                <option value="Selling">Selling</option>
+                                <option value="Home Loan">Home Loan</option>
+                            </select>
+
+                            <div class="d-grid gap-2 mt-3">
+                                <button class="btn Detail-btnCN" type="submit">Contact Now</button>
                             </div>
-                        </div>
+                        </form>
 
-                        <p class="fw-semibold mt-3 Detail-textIntere">Interested in</p>
-                        <a class="btn Detail-btnBSH rounded-pill mb-2" href="#" role="button">Buying</a>
-                        <a class="btn Detail-btnBSH rounded-pill mb-2" href="#" role="button">Selling</a>
-                        <a class="btn Detail-btnBSH rounded-pill mb-2" href="#" role="button">Home
-                            Loan</a>
-
-
-
-                        <div class="d-grid gap-2 mt-3">
-                            <button class="btn Detail-btnCN" type="button">Contact Now</button>
-
-                        </div>
-                        <!-- ***************************************************************************************************************************************************************** -->
-                        <div class=" Detail-div3R  mt-4">
-                            <div class="Detail-div3 text-center p-2  rounded-3 mb-1 pt-3 ">
-                                <img src="assets/frontend/img/percent1.png" width="50px" class="pb-1"
-                                    alt="">
-
-                                <h5 class="Detail-div3T">Zero
-                                    Brokerage</h5>
-
+                        <!-- Additional Information Section -->
+                        <div class="Detail-div3R mt-4">
+                            <div class="Detail-div3 text-center p-2 rounded-3 mb-1 pt-3">
+                                <img src="assets/frontend/img/percent1.png" width="50px" class="pb-1" alt="">
+                                <h5 class="Detail-div3T">Zero Brokerage</h5>
                             </div>
-                            <div class="Detail-div3 text-center p-2  rounded-3 mb-1 pt-3">
+                            <div class="Detail-div3 text-center p-2 rounded-3 mb-1 pt-3">
                                 <img src="assets/frontend/img/headphone1.svg" alt="">
-
-                                <h5 class="Detail-div3T">Full Service
-                                    Support</h5>
-
+                                <h5 class="Detail-div3T">Full Service Support</h5>
                             </div>
-                            <div class="Detail-div3 text-center p-2  rounded-3 mb-1 pt-3">
+                            <div class="Detail-div3 text-center p-2 rounded-3 mb-1 pt-3">
                                 <img src="assets/frontend/img/batter1.svg" alt="">
-
-                                <h5 class="Detail-div3T">Lowest Price
-                                    Guaranteed</h5>
-
+                                <h5 class="Detail-div3T">Lowest Price Guaranteed</h5>
                             </div>
-
                         </div>
-
-
                     </div>
 
 

@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FamilyController;
@@ -46,7 +47,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/property/home', [HomeController::class, 'property'])->name('propertypage');
 Route::get('/home/loan', [HomeController::class, 'homeloan'])->name('homeloan');
 
-
+Route::resource('contacts', ContactController::class);
         Route::get('/projects/{id}/show', [ProjectController::class, 'show'])->name('projects.show');
         Route::get('/lotusresidency', [TopProjectController::class, 'viewlotus'])->name('viewlotus');
         Route::get('/krishnaprabha', [TopProjectController::class, 'viewkrishna'])->name('viewkrishna');

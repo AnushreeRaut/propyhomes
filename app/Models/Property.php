@@ -9,7 +9,7 @@ class Property extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'property_type', 'recent_property', 'newly_added_property', 'top_projects', 'bhk_type', 'price_range_start', 'price_range_end', 'possession_status', 'size', 'video', 'added_by', 'updated_by', 'is_delete'];
+    protected $fillable = ['title', 'property_type', 'recent_property', 'newly_added_property', 'top_projects', 'bhk_type', 'price_range_start', 'price_range_end', 'possession_status', 'size', 'video', 'added_by', 'updated_by', 'is_delete', 'flat_area', 'project_completion_date', 'rera', 'no_of_flats', 'no_of_floors'];
 
     public function propertyLocation()
     {
@@ -71,6 +71,9 @@ class Property extends Model
     {
         return $this->belongsToMany(Landmark::class, 'property_landmark', 'property_id', 'landmark_id');
     }
-
-
+    // In Property Model
+    public function specialHighlights()
+    {
+        return $this->belongsToMany(SpecialHighlight::class, 'property_special_highlight');
+    }
 }

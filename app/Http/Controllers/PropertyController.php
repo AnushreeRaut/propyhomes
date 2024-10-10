@@ -17,6 +17,7 @@ use App\Models\PropertyRelatedImage;
 use App\Models\PropertyRelatedLocation;
 use App\Models\PropertyRelatedUtility;
 use App\Models\PropertyUtility;
+use App\Models\SpecialHighlight;
 use App\Models\State;
 use DB;
 use Illuminate\Http\Request;
@@ -51,17 +52,18 @@ class PropertyController extends Controller
             'landmarks', // Eager load the landmarks via the pivot
             'amenities',
             'utilities',
-            'images'
+            'images',
         ])->findOrFail($id);
 
         return view('admin.property.show', compact('property'));
     }
 
-
     public function create()
     {
         // Fetch existing amenities to display as checkboxes in the form
         $existingAmenities = PropertyAmenity::all();
+        // Fetch existing special highlights
+        $existingHighlights = SpecialHighlight::all();
 
         // Fetch existing cities, states, countries, areas, and landmarks
         $cities = City::all();
@@ -80,6 +82,7 @@ class PropertyController extends Controller
         return view(
             'admin.property.create',
             compact(
+                'existingHighlights',
                 'existingAmenities',
                 'cities',
                 'states',
@@ -247,9 +250,13 @@ class PropertyController extends Controller
                 'bhk_type' => $propertyData['bhk_type'],
                 'price_range_start' => $propertyData['price_range_start'],
                 'price_range_end' => $propertyData['price_range_end'],
-
                 'size' => $propertyData['size'],
                 'video' => $propertyData['video'] ?? null,
+                'flat_area' => $propertyData['flat_area'], // New field
+                'project_completion_date' => $propertyData['project_completion_date'], // New field
+                'rera' => isset($propertyData['rera']), // New field
+                'no_of_flats' => $propertyData['no_of_flats'], // New field
+                'no_of_floors' => $propertyData['no_of_floors'], // New field
                 'added_by' => auth()->user()->id,
             ]);
 
@@ -377,8 +384,41 @@ class PropertyController extends Controller
                     }
                 }
             }
+            // Step 8: Store New Special Highlights
+            if ($request->has('highlights.existing')) {
+                foreach ($request->input('highlights.existing') as $existingHighlightId) {
+                    DB::table('property_special_highlight')->insert([
+                        'property_id' => $newProperty->id,
+                        'special_highlight_id' => $existingHighlightId,
+                        'is_true' => true,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
 
-            return redirect()->back()->with('success', 'Property and related details have been saved successfully!');
+            if ($request->has('highlights')) {
+                foreach ($request->input('highlights') as $index => $highlightSet) {
+                    if (isset($highlightSet['new']) && !empty($highlightSet['new']['name'])) {
+                        $newHighlightData = [
+                            'name' => $highlightSet['new']['name'],
+                            'added_by' => auth()->user()->id,
+                        ];
+
+                        $newHighlight = SpecialHighlight::create($newHighlightData);
+
+                        // Relate the newly created special highlight with the property
+                        DB::table('property_special_highlight')->insert([
+                            'property_id' => $newProperty->id,
+                            'special_highlight_id' => $newHighlight->id,
+                            'is_true' => true,
+                            'created_at' => now(),
+                            'updated_at' => now(),
+                        ]);
+                    }
+                }
+            }
+            return redirect()->route('properties.index')->with('success', 'Property and related details have been saved successfully!');
         } catch (\Exception $e) {
             return redirect()
                 ->back()
@@ -584,13 +624,20 @@ class PropertyController extends Controller
             'locations.city',
             'locations.state',
             'locations.country',
-            'landmarks' // Eager load the landmarks related via the pivot
+            'landmarks',
+            'specialHighlights', // Eager load the landmarks related via the pivot
         ])->findOrFail($id);
 
         // Get the embed URL for the video
         $embedUrl = $this->getEmbedUrl($property->video);
 
-        return view('frontend.newproject.property', compact('property', 'embedUrl'));
+    // Fetch the latest 2 recently added properties
+    $footerProperties = Property::where('recent_property', true)
+    ->orderBy('created_at', 'desc') // Order by creation date
+    ->take(2) // Limit to 2 properties
+    ->with('images.propertyImage.imageCategory') // Eager load the images with their categories
+    ->get();
+        return view('frontend.newproject.property', compact('property', 'embedUrl','footerProperties'));
     }
 
     private function getEmbedUrl($videoUrl)
@@ -950,6 +997,7 @@ class PropertyController extends Controller
             'amenities',
             'utilities',
             'images.propertyImage.imageCategory', // Eager load images with their categories
+            'specialHighlights' // Load special highlights
         ])->findOrFail($id);
 
         // Group images by their categories
@@ -969,9 +1017,13 @@ class PropertyController extends Controller
         // Fetch the property amenities that are already related to this property
         $propertyAmenities = $property->amenities->pluck('id')->toArray(); // Array of existing amenity IDs
 
+    // Fetch existing highlights
+    $existingHighlights = SpecialHighlight::all();
+    $propertyHighlights = $property->specialHighlights->pluck('id')->toArray(); // Get associated highlights
         // Fetch all landmarks associated with this property
         $propertyLandmarks = DB::table('property_landmark')->where('property_id', $id)->pluck('landmark_id')->toArray(); // Get an array of associated landmark IDs
-        return view('admin.property.edit', compact('property', 'groupedImages', 'countries', 'states', 'cities', 'areas', 'landmarks', 'imageCategories', 'existingAmenities', 'propertyAmenities', 'propertyLandmarks'));
+        return view('admin.property.edit', compact('property', 'groupedImages', 'countries', 'states', 'cities', 'areas', 'landmarks', 'imageCategories', 'existingAmenities', 'propertyAmenities', 'propertyLandmarks','existingHighlights',
+        'propertyHighlights'));
     }
     public function update(Request $request, $id)
     {
@@ -1008,7 +1060,9 @@ class PropertyController extends Controller
             // Step 3: Update Property Landmarks (Pivot Table)
             if ($request->has('locations.landmark_id')) {
                 // Delete old landmarks for this property
-                DB::table('property_landmark')->where('property_id', $property->id)->delete();
+                DB::table('property_landmark')
+                    ->where('property_id', $property->id)
+                    ->delete();
 
                 // Insert new landmarks
                 foreach ($request->input('locations.landmark_id') as $landmarkId) {
@@ -1081,6 +1135,47 @@ class PropertyController extends Controller
                     }
                 }
             }
+   // First, delete old highlights for this property
+   DB::table('property_special_highlight')
+   ->where('property_id', $property->id)
+   ->delete();
+
+// Insert selected existing highlights
+if ($request->has('highlights.existing')) {
+   foreach ($request->input('highlights.existing') as $existingHighlightId) {
+       DB::table('property_special_highlight')->insert([
+           'property_id' => $property->id,
+           'special_highlight_id' => $existingHighlightId,
+           'is_true' => true,
+           'created_at' => now(),
+           'updated_at' => now(),
+       ]);
+   }
+}
+
+// Handle new highlights
+if ($request->has('highlights')) {
+   foreach ($request->input('highlights') as $index => $highlightSet) {
+       if (isset($highlightSet['new']) && !empty($highlightSet['new']['name'])) {
+           $newHighlightData = [
+               'name' => $highlightSet['new']['name'],
+               'added_by' => auth()->user()->id,
+           ];
+
+           // Create new highlight
+           $newHighlight = SpecialHighlight::create($newHighlightData);
+
+           // Relate the newly created highlight with the property
+           DB::table('property_special_highlight')->insert([
+               'property_id' => $property->id,
+               'special_highlight_id' => $newHighlight->id,
+               'is_true' => true,
+               'created_at' => now(),
+               'updated_at' => now(),
+           ]);
+       }
+   }
+}
 
             // Step 7: Update or Replace Property Images
             if ($request->has('images')) {
@@ -1130,7 +1225,9 @@ class PropertyController extends Controller
 
             return redirect()->route('properties.index')->with('success', 'Property and related details have been updated successfully!');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'An error occurred while updating the property: ' . $e->getMessage());
+            return redirect()
+                ->back()
+                ->with('error', 'An error occurred while updating the property: ' . $e->getMessage());
         }
     }
 

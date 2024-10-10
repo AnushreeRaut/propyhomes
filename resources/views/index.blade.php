@@ -9,7 +9,7 @@
     <div class="banerdpa">
         <div class=" banderImg ">
             <div class="container pt-2 pt-sm-5">
-                <div class="col-lg-6 col-12  px-lg-2 pt-3 pt-md-5 text-lg-start text-center banerPb">
+                <div class="col-lg-7 col-12  px-lg-2 pt-3 pt-md-5 text-lg-start text-center banerPb">
                     <p class="text-light banerP">Discover your dream home</p>
                     <!--  -->
                     <div class="content"></div>
@@ -22,49 +22,22 @@
                             <li class="content__container__list__item">0% Brokerage Fee</li>
                         </ul>
                     </div>
+                    <div class="index-search-container px-3 mt-3">
+                        <input type="text" placeholder="Search by location" class="index-search-input">
+                        <input type="text" placeholder="Budget" class="index-search-input">
+                        <input type="text" placeholder="No of rooms" class="index-search-input">
+                        <button class="input-btn "><span class="rounded-pill fw-bold">Search</span>
+                        </button>
+                    </div>
+
+
                     {{-- <div class="searchbox-wrap  mt-3">
                         <input type="text" class="" placeholder="Search by location and project Name">
                         <button class="banner-btn "><span class="rounded-pill fw-bold">Search</span>
                         </button>
                     </div> --}}
 
-                    <div class="mb-3 mt-4">
-                        <input type="text" class="form-control input-index" id="searchInput"
-                            placeholder="Example input placeholder">
-                    </div>
-                    <div id="newDivContainer" style="display: none;" class="mt-3 input-border  p-3">
-                        <div class="row mb-3">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label text-light">Locality</label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control input_dInput " placeholder=""
-                                    id="inputEmail3">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label text-light">Budget</label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control  input_dInput " id="inputEmail3">
-                            </div>
-                            <!-- <div class="col-sm-5">
-                                <input type="email" class="form-control  input_dInput " id="inputEmail3">
-                            </div> -->
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputEmail3"
-                                class="col-sm-3 col-form-label text-light">No&nbsp;of&nbsp;rooms </label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control  input_dInput " id="inputEmail3">
-                            </div>
-                            <!-- <div class="col-sm-5">
-                                <input type="email" class="form-control  input_dInput " id="inputEmail3">
-                            </div> -->
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <div class="">
-                                <a class="input-btn text-decoration-none" href="{{route('search')}}"><span class="rounded-pill fw-bold">Search</span>
-                                </a>
-                            </div>
-                        </div>
+
                         <!-- <div class="d-flex mb-3">
                             <label for="inputEmail3" class=" col-form-label text-white">Locality</label>
                             <div class="">
@@ -123,25 +96,33 @@
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 @foreach ($topSellingProjects as $property)
-                    <div class="swiper-slide">
+                    <div class="swiper-slide ">
                         <div class="position-relative sec2Macard rounded-3 card-container pt-3 z-1">
                             <a href="{{ route('properties.show.prop', $property->id) }}" class="text-decoration-none">
                                 <div class="px-3 position-relative sec2dH overflow-visible">
                                     <div class="image-wrapper position-relative">
                                         @foreach ($property->images as $propertyImage)
                                             @if ($propertyImage->propertyImage->imageCategory->category_name === 'Cover Image')
-                                                <img src="{{ asset($propertyImage->propertyImage->image) }}" width="100%" alt="Cover Image">
+                                            <img src="{{ asset($propertyImage->propertyImage->image) }}" alt="Cover Image" class="sec2ImgMai">
+                                            <!-- Check if the property is RERA approved and display a badge -->
+                                            @if ($property->rera)
+                                            <!-- Small box or icon for RERA approval using Font Awesome -->
+                                            <div class="rera-approval-badge position-absolute bottom-0 end-0 bg-success text-white p-1 rounded">
+                                                <i class="fas fa-check-circle me-1"></i> <!-- Font Awesome Icon -->
+                                                <span>RERA Approved</span>
+                                            </div>
+                                            @endif
                                                 @break
                                             @endif
                                         @endforeach
                                     </div>
                                     <div class="position-absolute sec2ImgD px-3 py-2">
                                         <h6 class="mb-0 sec2PriceText text-dark">
-                                            Price ₹ {{ $property->formatted_price_range_start }} - ₹ {{ $property->formatted_price_range_end }}
+                                            Starting Price ₹ {{ $property->formatted_price_range_start }}
                                         </h6>
                                     </div>
                                 </div>
-                                <div class="sec2pt rounded-3 px-3">
+                                <div class="sec2pt rounded-3 px-3 index-swiper-slide">
                                     <div class="d-flex justify-content-between">
                                         <h6 class="sec2Texth6 text-start mb-0">{{ $property->title }}</h6>
                                     </div>
@@ -149,7 +130,7 @@
                                         <div class="d-flex pt-1">
                                             <p><img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}" class="pe-2 sec2ImgWS1" alt=""></p>
                                             <p class="sec2Textp text-start">
-                                                {{ $location->city->name }}, {{ $location->state->name }}, {{ $location->country->name }}
+                                                {{ $location->area->area_name }}, {{ $location->city->name }}, {{ $location->state->name }}
                                             </p>
                                         </div>
                                     @endforeach
@@ -158,7 +139,7 @@
                                         <div class="col-6 mb-1">
                                             <div class="d-flex">
                                                 <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}" alt="" class="sec2ImgWS"></p>
-                                                <p class="sec2Textp text-start">{{ $property->size }} Sq Ft</p>
+                                                <p class="sec2Textp text-start">{{ $property->flat_area }} Sq Ft</p>
                                             </div>
                                         </div>
                                         <div class="col-6 mb-1">
@@ -201,18 +182,26 @@
                                 <div class="image-wrapper position-relative">
                                     @foreach ($property->images as $propertyImage)
                                         @if ($propertyImage->propertyImage->imageCategory->category_name === 'Cover Image')
-                                            <img src="{{ asset($propertyImage->propertyImage->image) }}" width="100%" alt="Cover Image">
+<img src="{{ asset($propertyImage->propertyImage->image) }}" width="100%" alt="Cover Image" class="sec2ImgMai">
+<!-- Check if the property is RERA approved and display a badge -->
+@if ($property->rera)
+<!-- Small box or icon for RERA approval using Font Awesome -->
+<div class="rera-approval-badge position-absolute bottom-0 end-0 bg-success text-white p-1 rounded">
+    <i class="fas fa-check-circle me-1"></i> <!-- Font Awesome Icon -->
+    <span>RERA Approved</span>
+</div>
+@endif
                                             @break
                                         @endif
                                     @endforeach
                                 </div>
                                 <div class="position-absolute sec2ImgD px-3 py-2">
                                     <h6 class="mb-0 sec2PriceText text-dark">
-                                        Price ₹ {{ $property->formatted_price_range_start }} - ₹ {{ $property->formatted_price_range_end }}
+Starting Price ₹:{{ $property->formatted_price_range_start }}
                                     </h6>
                                 </div>
                             </div>
-                            <div class="sec2pt rounded-3 px-3">
+<div class="sec2pt rounded-3 px-3 index-swiper-slide">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="sec2Texth6 text-start mb-0">{{ $property->title }}</h6>
                                 </div>
@@ -220,7 +209,7 @@
                                     <div class="d-flex pt-1">
                                         <p><img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}" class="pe-2 sec2ImgWS1" alt=""></p>
                                         <p class="sec2Textp text-start">
-                                            {{ $location->city->name }}, {{ $location->state->name }}, {{ $location->country->name }}
+                                            {{ $location->area->area_name }},  {{ $location->city->name }}, {{ $location->state->name }}
                                         </p>
                                     </div>
                                 @endforeach
@@ -229,7 +218,7 @@
                                     <div class="col-6 mb-1">
                                         <div class="d-flex">
                                             <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}" alt="" class="sec2ImgWS"></p>
-                                            <p class="sec2Textp text-start">{{ $property->size }} Sq Ft</p>
+                                            <p class="sec2Textp text-start">{{ $property->flat_area }} Sq Ft</p>
                                         </div>
                                     </div>
                                     <div class="col-6 mb-1">
@@ -272,18 +261,26 @@
                                 <div class="image-wrapper position-relative">
                                     @foreach ($property->images as $propertyImage)
                                         @if ($propertyImage->propertyImage->imageCategory->category_name === 'Cover Image')
-                                            <img src="{{ asset($propertyImage->propertyImage->image) }}" width="100%" alt="Cover Image">
+<img src="{{ asset($propertyImage->propertyImage->image) }}" width="100%" alt="Cover Image" class="sec2ImgMai">
+<!-- Check if the property is RERA approved and display a badge -->
+@if ($property->rera)
+<!-- Small box or icon for RERA approval using Font Awesome -->
+<div class="rera-approval-badge position-absolute bottom-0 end-0 bg-success text-white p-1 rounded">
+    <i class="fas fa-check-circle me-1"></i> <!-- Font Awesome Icon -->
+    <span>RERA Approved</span>
+</div>
+@endif
                                             @break
                                         @endif
                                     @endforeach
                                 </div>
                                 <div class="position-absolute sec2ImgD px-3 py-2">
                                     <h6 class="mb-0 sec2PriceText text-dark">
-                                        Price ₹ {{ $property->formatted_price_range_start }} - ₹ {{ $property->formatted_price_range_end }}
+Starting Price ₹: {{ $property->formatted_price_range_start }}
                                     </h6>
                                 </div>
                             </div>
-                            <div class="sec2pt rounded-3 px-3">
+<div class="sec2pt rounded-3 px-3 index-swiper-slide">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="sec2Texth6 text-start mb-0">{{ $property->title }}</h6>
                                 </div>
@@ -291,7 +288,7 @@
                                     <div class="d-flex pt-1">
                                         <p><img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}" class="pe-2 sec2ImgWS1" alt=""></p>
                                         <p class="sec2Textp text-start">
-                                            {{ $location->city->name }}, {{ $location->state->name }}, {{ $location->country->name }}
+                                            {{ $location->area->area_name }},  {{ $location->city->name }}, {{ $location->state->name }}
                                         </p>
                                     </div>
                                 @endforeach
@@ -300,7 +297,7 @@
                                     <div class="col-6 mb-1">
                                         <div class="d-flex">
                                             <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}" alt="" class="sec2ImgWS"></p>
-                                            <p class="sec2Textp text-start">{{ $property->size }} Sq Ft</p>
+                                            <p class="sec2Textp text-start">{{ $property->flat_area }} Sq Ft</p>
                                         </div>
                                     </div>
                                     <div class="col-6 mb-1">
@@ -329,135 +326,28 @@
 
     <!-- ========  section 2   END  ======== -->
     <!-- +++++++++++  section 1  +++++++++++ -->
-    <section class="section pt-5">
-        <div class="sec1Before  mt-3">
-            <h2> <span class="headlineGrayC"> Choose</span> <span class="headlineGoldC"> Your Locality</span></h2>
+<!-- Section for displaying areas with properties -->
+<section class="section pt-5">
+    <div class="sec1Before mt-3">
+        <h2><span class="headlineGrayC">Choose</span> <span class="headlineGoldC">Your Locality</span></h2>
+    </div>
+    <div class="container my-1 py-5">
+        <div class="row">
+            @foreach ($areasWithPropertyCount as $area)
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4">
+                    <div class="text-center sec2bor rounded-3 py-2 h-100">
+                        <div class="text-center">
+                            <img src="{{ asset('assets/frontend/img/v' . ($loop->iteration % 12 + 1) . '.png') }}" width="50%" alt="" class="sec1Imgb">
+                        </div>
+                        <h5 class="pt-1 sectexth5">{{ $area->area_name }}</h5>
+                        <p class="sectextp">{{ $area->property_count }} Projects</p>
+                    </div>
+                </div>
+            @endforeach
         </div>
-        <div class="container my-1 py-5">
-            <div class="row ">
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v1.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Hingna</h5>
-                        <p class="sectextp">2 Projects</p>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v2.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Mankapur</h5>
-                        <p class="sectextp">3 Projects</p>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v3.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Mate Chowk</h5>
-                        <p class="sectextp">1 Projects</p>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v4.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Khamla</h5>
-                        <p class="sectextp">1 Projects</p>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v5.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Wanadongri</h5>
-                        <p class="sectextp">2 Projects</p>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v6.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Gitanjali Chowk</h5>
-                        <p class="sectextp">3 Projects</p>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v7.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Kamptee </h5>
-                        <p class="sectextp">4 Projects</p>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v8.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Automotive Square</h5>
-                        <p class="sectextp">2 Projects</p>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v9.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Kalamna</h5>
-                        <p class="sectextp">1 Projects</p>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v10.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Manewada</h5>
-                        <p class="sectextp">2 Projects</p>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v11.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Ajni</h5>
-                        <p class="sectextp">1 Projects</p>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 mb-4 ">
-                    <div class="text-center sec2bor rounded-3 py-2 h-100">
-                        <div class="text-center">
-                            <img src="{{ asset('assets/frontend/img/v12.png') }}" width="50%" alt=""
-                                class="sec1Imgb">
-                        </div>
-                        <h5 class="pt-1 sectexth5">Bardi</h5>
-                        <p class="sectextp">2 Projects</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
+
     <!-- ========  section 1   END  ======== -->
     <!-- +++++++++++  section 4  +++++++++++ -->
     <section class="section sec4bgImg py-4">

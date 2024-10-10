@@ -7,15 +7,19 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageCategoryController;
 use App\Http\Controllers\LandmarkController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\NewProjectController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\PhoneRequestController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\PropertyAmenityController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SpecialHighlightController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TopProjectController;
 use Illuminate\Support\Facades\Route;
@@ -41,7 +45,7 @@ Route::post('/verify-code', [RegisterController::class, 'verifyCode'])->name('ve
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/property/home', [HomeController::class, 'property'])->name('propertypage');
 Route::get('/home/loan', [HomeController::class, 'homeloan'])->name('homeloan');
-Route::get('/search', [HomeController::class, 'search'])->name('search');
+
 
         Route::get('/projects/{id}/show', [ProjectController::class, 'show'])->name('projects.show');
         Route::get('/lotusresidency', [TopProjectController::class, 'viewlotus'])->name('viewlotus');
@@ -58,14 +62,21 @@ Route::get('/search', [HomeController::class, 'search'])->name('search');
         Route::post('phone_requests', [PhoneRequestController::class, 'store'])->name('phone_requests.store');
 
 
+        Route::get('/properties/{id}/show', [PropertyController::class, 'show'])->name('properties.show.prop');
+
+        Route::get('/search-property/searched', [SearchController::class, 'search'])->name('property.search');
+
+
 Route::middleware(['auth'])->group(function () {
     // Dashboard route with specific permissio
     Route::resource('areas', AreaController::class);
     Route::resource('landmarks', LandmarkController::class);
     Route::resource('properties', PropertyController::class);
     Route::get('/properties/{property}/view', [PropertyController::class, 'view'])->name('properties.view');
+    Route::resource('property_amenities', PropertyAmenityController::class);
 
-    Route::get('/properties/{id}/show', [PropertyController::class, 'show'])->name('properties.show.prop');
+    Route::resource('special_highlights', SpecialHighlightController::class);
+    Route::resource('image_categories', ImageCategoryController::class);
 
     Route::get('/api/states/{countryId}', [LocationController::class, 'getStates']);
     Route::get('/api/cities/{stateId}', [LocationController::class, 'getCities']);

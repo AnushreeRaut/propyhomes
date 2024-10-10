@@ -8,334 +8,276 @@
 
 @section('content')
     <!-- +++++++++++  section 1  +++++++++++ -->
-    {{-- <section>
+    <section class="mt-5" style="margin-top: 114px !important;">
         <div class="container mb-5 mt-5">
-            @foreach ($property->images as $index => $image)
-                <div class="mySlides position-relative {{ $index == 0 ? 'active' : '' }}">
-                    <img src="{{ asset($image->image) }}" width="100%" class="pDetailImg rounded-4">
-                    <div class="Detail-s2phc position-absolute text-center">
-                        <h2 class="mb-0">
-                            <i class="fa-regular fa-heart"></i> Compare
-                        </h2>
-                    </div>
-                    <div class="Detail-s2phc1 position-absolute text-center">
-                        <img src="{{ asset('assets/frontend/search/shareSVGImg.svg') }}" alt="">
-                    </div>
-                </div>
-            @endforeach
-
-            <!-- Carousel Controls -->
-            <a class="prev" onclick="plusSlides(-1)"><i class="fa-solid fa-arrow-left-long fa-arrow-both-long"
-                    style="color: #3D3D3D;"></i></a>
-            <a class="next" onclick="plusSlides(1)"><i class="fa-solid fa-arrow-right-long fa-arrow-both-long"
-                    style="color: #3D3D3D;"></i></a>
-
-            <!-- Thumbnails for Carousel -->
-            <div class="row">
-                @foreach ($property->images as $index => $image)
-                    <div class="column Detail-column">
-                        <img class="demo cursor rounded-2" src="{{ asset($image->image) }}" width="100%"
-                            onclick="currentSlide({{ $index + 1 }})" alt="Property Image">
-                    </div>
-                @endforeach
-            </div>
+            <p class="psec1p"><span class=""> Home</span> <img src="{{ asset('assets/frontend/img/propertyArrow.svg') }}"
+                    class="px-2" alt="">
+                <span class=" text-dark">{{ $property->title }}</span>
+            </p>
         </div>
 
-    </section> --}}
+    </section>
     <!-- ========  section 1   END  ======== -->
     <!-- +++++++++++  section 2  +++++++++++ -->
-    <section class="my-5 mt-4">
-        <div class="container">
+    <section class="my-5 mt-5">
+        <div class="container mt-5">
             <div class="row">
 
                 <div class="col-xl-8 col-lg-12 mb-xl-2 mb-5">
                     <!-- Display Elevation Image -->
-                    <h4>Elevation Image</h4>
+                    <h4 class="mb-3">Elevation Image</h4>
 
                     <div class="container mb-5 ">
-                        <div class="mySlides position-relative">
-                            <!-- <div class="numbertext">1 / 6</div> -->
-                            {{-- public\assets\frontend\img\LOTUSimg41 (1).png --}}
-                            @foreach ($property->images as $propertyImage)
-                                @if ($propertyImage->propertyImage->imageCategory->category_name === 'Elevation')
-                                    <img src="{{ asset($propertyImage->propertyImage->image) }}" width="100%"
-                                        alt="Elevation Image" class="pDetailImg rounded-4">
-                                @break
+                        <div class="container mb-5">
+                            <!-- Elevation Slide -->
+                            <div class="mySlides position-relative">
+                                @foreach ($property->images as $propertyImage)
+                                    @if ($propertyImage->propertyImage->imageCategory->category_name === 'Elevation')
+                                        <img src="{{ asset($propertyImage->propertyImage->image) }}" width="100%"
+                                            alt="Elevation Image" class="pDetailImg rounded-4 pDetailb-size">
+                                    @break
 
-                                <!-- Stop the loop after finding the first 'Elevation' image -->
-                            @endif
+                                    <!-- Stop after the first Elevation image -->
+                                @endif
+                            @endforeach
+
+                            <!-- Additional UI Elements for Elevation Image -->
+                            <div class="Detail-s2phc position-absolute text-center">
+                                <h2 class="mb-0"><i class="fa-regular fa-heart"></i> Compare</h2>
+                            </div>
+                            <div class="Detail-s2phc1 position-absolute text-center">
+                                <img src="{{ asset('assets/frontend/search/shareSVGImg.svg') }}" alt="">
+                            </div>
+                        </div>
+                        <!-- Main Category Images -->
+                        @php
+                            $mainImages = $property->images->where('propertyImage.imageCategory.category_name', 'Main');
+                        @endphp
+
+                        @if ($mainImages->isNotEmpty())
+                            @foreach ($mainImages as $index => $mainImage)
+                                <div class="mySlides position-relative">
+                                    <img src="{{ asset($mainImage->propertyImage->image) }}" width="100%"
+                                        class="pDetailImg rounded-4" alt="Main Image {{ $index + 1 }}">
+                                    <div class="Detail-s2phc position-absolute text-center">
+                                        <h2 class="mb-0"><i class="fa-regular fa-heart"></i> Compare</h2>
+                                    </div>
+                                    <div class="Detail-s2phc1 position-absolute text-center">
+                                        <img src="{{ asset('assets/frontend/search/shareSVGImg.svg') }}" alt="">
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <p>No Main Images available.</p>
+                        @endif
+
+                        <!-- Slider Navigation -->
+                        <a class="prev" onclick="plusSlides(-1)"><i
+                                class="fa-solid fa-arrow-left-long fa-arrow-both-long" style="color: #3D3D3D;"></i></a>
+                        <a class="next" onclick="plusSlides(1)"><i
+                                class="fa-solid fa-arrow-right-long fa-arrow-both-long" style="color: #3D3D3D;"></i></a>
+
+                        <!-- Caption for Images -->
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+                        <!-- Thumbnails for Elevation and Main Category -->
+                        <div class="row">
+                            <!-- Elevation Thumbnail -->
+                            <div class="column Detail-column">
+                                @foreach ($property->images as $propertyImage)
+                                    @if ($propertyImage->propertyImage->imageCategory->category_name === 'Elevation')
+                                        <img src="{{ asset($propertyImage->propertyImage->image) }}" width="100%"
+                                            class="demo cursor rounded-2 pDetailImg pDetails-size"
+                                            onclick="currentSlide(1)" alt="Elevation Thumbnail">
+                                    @break
+                                @endif
+                            @endforeach
+                        </div>
+                        <!-- Main Category Thumbnails -->
+                        @php
+                            $slideIndex = 2; // Start counting for main images after Elevation
+                        @endphp
+                        @foreach ($mainImages as $index => $mainImage)
+                            <div class="column Detail-column">
+                                <img src="{{ asset($mainImage->propertyImage->image) }}" width="100%"
+                                    class="demo cursor rounded-2 pDetailImg pDetails-size"
+                                    onclick="currentSlide({{ $slideIndex }})"
+                                    alt="Main Thumbnail {{ $index + 1 }}">
+                            </div>
+                            @php
+                                $slideIndex++;
+                            @endphp
                         @endforeach
-
-                        <div class="Detail-s2phc  position-absolute text-center">
-                            <h2 class="mb-0  ">
-                                <i class="fa-regular fa-heart"></i>
-                                Compare
-                            </h2>
-                        </div>
-                        <div class="Detail-s2phc1 position-absolute text-center ">
-                            <img src="{{ asset('assets/frontend/search/shareSVGImg.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <!-- <div class="numbertext">2 / 6</div> -->
-                        <img src="{{ asset('assets/frontend/img/LOTUSimg32 (1).png') }}" width="100%"
-                            class="pDetailImg rounded-4">
-                        <div class="Detail-s2phc  position-absolute text-center">
-                            <h2 class="mb-0  ">
-                                <i class="fa-regular fa-heart"></i>
-                                Compare
-                            </h2>
-                        </div>
-                        <div class="Detail-s2phc1 position-absolute text-center ">
-                            <img src="{{ asset('assets/frontend/search/shareSVGImg.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <!-- <div class="numbertext">3 / 6</div> -->
-                        <img src="{{ asset('assets/frontend/img/LOTUSimg23 (1).png') }}" width="100%"
-                            class="pDetailImg rounded-4">
-                        <div class="Detail-s2phc  position-absolute text-center">
-                            <h2 class="mb-0  ">
-                                <i class="fa-regular fa-heart"></i>
-                                Compare
-                            </h2>
-                        </div>
-                        <div class="Detail-s2phc1 position-absolute text-center ">
-                            <img src="{{ asset('assets/frontend/search/shareSVGImg.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <!-- <div class="numbertext">4 / 6</div> -->
-                        <img src="{{ asset('assets/frontend/img/LOTUSimg14 (1).png') }}" width="100%"
-                            class="pDetailImg rounded-4">
-                        <div class="Detail-s2phc  position-absolute text-center">
-                            <h2 class="mb-0  ">
-                                <i class="fa-regular fa-heart"></i>
-                                Compare
-                            </h2>
-                        </div>
-                        <div class="Detail-s2phc1 position-absolute text-center ">
-                            <img src="{{ asset('assets/frontend/search/shareSVGImg.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <!-- <div class="numbertext">5 / 6</div> -->
-                        <img src="{{ asset('assets/frontend/img/LOTUSimg41 (1).png') }}" width="100%"
-                            class="pDetailImg rounded-4">
-                        <div class="Detail-s2phc  position-absolute text-center">
-                            <h2 class="mb-0  ">
-                                <i class="fa-regular fa-heart"></i>
-                                Compare
-                            </h2>
-                        </div>
-                        <div class="Detail-s2phc1 position-absolute text-center ">
-                            <img src="assets/frontend/search/shareSVGImg.svg" alt="">
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <!-- <div class="numbertext">6 / 6</div> -->
-                        <img src="{{ asset('assets/frontend/img/LOTUSimg32 (1).png') }}" width="100%"
-                            class="pDetailImg rounded-4">
-                        <div class="Detail-s2phc  position-absolute text-center">
-                            <h2 class="mb-0  ">
-                                <i class="fa-regular fa-heart"></i>
-                                Compare
-                            </h2>
-                        </div>
-                        <div class="Detail-s2phc1 position-absolute text-center ">
-                            <img src="{{ asset('assets/frontend/search/shareSVGImg.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <a class="prev" onclick="plusSlides(-1)"><i
-                            class="fa-solid fa-arrow-left-long fa-arrow-both-long " style="color: #3D3D3D;"></i></a>
-                    <a class="next" onclick="plusSlides(1)"><i
-                            class="fa-solid fa-arrow-right-long fa-arrow-both-long " style="color: #3D3D3D;"></i></a>
-                    <div class="caption-container">
-                        <p id="caption"></p>
-                    </div>
-                    <div class="row">
-                        <div class="column Detail-column">
-                            <img class="demo cursor rounded-2"
-                                src="{{ asset('assets/frontend/img/LOTUSimg41 (1).png') }}" width="100%"
-                                class="pDetailImg" onclick="currentSlide(1)" alt="The Woods">
-                        </div>
-                        <div class="column ">
-                            <img class="demo cursor rounded-2"
-                                src="{{ asset('assets/frontend/img/LOTUSimg23 (1).png') }}" width="100%"
-                                class="pDetailImg" onclick="currentSlide(2)" alt="Cinque Terre">
-                        </div>
-                        <div class="column ">
-                            <img class="demo cursor rounded-2"
-                                src="{{ asset('assets/frontend/img/LOTUSimg23 (1).png') }}" width="100%"
-                                class="pDetailImg" onclick="currentSlide(3)" alt="Mountains and fjords">
-                        </div>
-                        <div class="column ">
-                            <img class="demo cursor rounded-2"
-                                src="{{ asset('assets/frontend/img/LOTUSimg14 (1).png') }}" width="100%"
-                                class="pDetailImg" onclick="currentSlide(4)" alt="Northern Lights">
-                        </div>
-                        <div class="column ">
-                            <img class="demo cursor rounded-2"
-                                src="{{ asset('assets/frontend/img/LOTUSimg41 (1).png') }}" width="100%"
-                                class="pDetailImg" onclick="currentSlide(5)" alt="Nature and sunrise">
-                        </div>
-                        <div class="column  ">
-                            <img class="demo cursor rounded-2"
-                                src="{{ asset('assets/frontend/img/LOTUSimg32 (1).png') }}" width="100%"
-                                class="pDetailImg" onclick="currentSlide(6)" alt="Snowy Mountains">
-                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="rounded-2 psec2bordeS mt-4">
 
-                <div class="   rounded-2    psec2bordeS">
+                <div class="px-4 px-md-5 pt-5 pb-4 pb-md-5 Detail-Amen">
 
-                    <div class="px-4 px-md-5 pt-4 pb-4 pb-md-5 Detail-Amen">
+                    <h2 class="psec2c1h   ">{{ $property->title }}</h2>
+                </div>
 
-                        <h2 class="psec2c1h   ">{{ $property->title }}</h2>
-                    </div>
+                <div class="px-4 px-md-5 pt-4 pb-4 pb-md-5">
 
-                    <div class="px-4 px-md-5 pt-4 pb-4 pb-md-5">
-
-                        <div class="row">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h6 class="psec2c1h3">Amenities</h6>
-                                </div>
-                                <div class="col-md-4">
-                                    @foreach ($property->amenities as $amenity)
-                                        @if ($amenity->pivot->is_true)
-                                            <div class="d-flex mb-1">
-                                                <h5>
-                                                    <img src="{{ asset($amenity->icon_image ?: 'assets/frontend/search/Furniture.png') }}"
-                                                        width="35px" class="pe-3" alt="{{ $amenity->name }}">
-                                                </h5>
-                                                <h5 class="psec2c1font pt-1">{{ $amenity->name }}</h5>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="px-4 px-md-5 pt-4 pb-4 pb-md-5 Detail-AmenBorder">
-
-
+                    <div class="row">
                         <div class="row">
                             <div class="col-md-4">
-                                <h2 class="psec2c1h3">Property Features</h2>
+                                <h6 class="psec2c1h3">Amenities</h6>
                             </div>
-                            <div class="col-md-8">
-                                <!-- Iterate through the utilities associated with the property -->
-                                @foreach ($property->utilities as $utility)
-                                    <div class="d-flex mb-1">
-                                        <!-- Display utility name and value together -->
-                                        <h5 class="psec2c1font">{{ $utility->name }}:</h5>
-                                        <p class="ms-2">{{ $utility->pivot->value }}</p>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-
-
-
-                    </div>
-
-                    <div class="px-4 px-md-5 pt-4 pb-4 pb-md-5 Detail-AmenBorder">
-                        <div class="row">
                             <div class="col-md-4">
-                                <h2 class="psec2c1h3">Type of Parking</h2>
-                            </div>
-                            <div class="col-md-8">
-                                <!-- Display parking type if available -->
-                                @foreach ($property->utilities as $utility)
-                                    @if ($utility->pivot->parking_type)
-                                        <p class="Detail-padding psec2c1font">{{ $utility->pivot->parking_type }}</p>
+                                @foreach ($property->amenities as $amenity)
+                                    @if ($amenity->pivot->is_true)
+                                        <div class="d-flex mb-1">
+                                            <h5>
+                                                <img src="{{ asset($amenity->icon_image ?: 'assets/frontend/search/Furniture.png') }}"
+                                                    width="35px" class="pe-3" alt="{{ $amenity->name }}">
+                                            </h5>
+                                            <h5 class="psec2c1font pt-1">{{ $amenity->name }}</h5>
+                                        </div>
                                     @endif
                                 @endforeach
                             </div>
                         </div>
-                    </div>
 
-                    <div class="px-4 px-md-5 pt-4 pb-4 pb-md-5 Detail-AmenBorder">
+                        <div class="col-md-4">
 
-                        <div class="row">
-
-                            <div class="col-md-4 ">
-                                <h2 class="psec2c1h3   ">Special Highlights</h2>
-
-                            </div>
-
-                            <div class="col-md-4 Detail-padding1 ">
-
-                                <h5 class="psec2c1font py-1 ">Garden Facing</h5>
-                                <h5 class="psec2c1font py-1 ">Corner Plot</h5>
-                                <h5 class="psec2c1font py-1 ">CCTV</h5>
-                                <h5 class="psec2c1font py-1 ">On Main Road</h5>
-                                <h5 class="psec2c1font py-1 ">Near Hospital</h5>
-
-
-                            </div>
-                            <div class="col-md-4 Detail-padding1">
-
-                                <h5 class="psec2c1font py-1 ">Road Facing</h5>
-                                <h5 class="psec2c1font py-1 ">Common Solar</h5>
-                                <h5 class="psec2c1font py-1 ">Near Market</h5>
-                                <h5 class="psec2c1font py-1 ">Near School</h5>
-                                <h5 class="psec2c1font py-1 ">Near Metro Station</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-4 psec2bordeS rounded-2 mt-5">
-                    <div class="">
-                        <h4 class="psec2c1h pb-3">Video</h4>
-                        <div class="text-center text-lg-start">
-                            @if (!empty($embedUrl))
-                                <!-- Display YouTube Video if the embed URL is available -->
-                                <iframe width="100%" height="315" src="{{ $embedUrl }}" frameborder="0"
-                                    allowfullscreen
-                                    onerror="this.style.display='none'; document.getElementById('video-placeholder').style.display='block';">
-                                </iframe>
-                                <!-- Placeholder Image as a Fallback -->
-                                <img id="video-placeholder" src="{{ asset('assets/frontend/img/video.png') }}"
-                                    width="100%" alt="Video Placeholder" style="display: none;">
-                            @else
-                                <!-- Display Placeholder Image if no video URL is available -->
-                                <img src="{{ asset('assets/frontend/img/video.png') }}" width="100%"
-                                    alt="Video Placeholder">
-                            @endif
                         </div>
                     </div>
 
                 </div>
 
+                <div class="px-4 px-md-5 pt-4 pb-4 pb-md-5 Detail-AmenBorder">
 
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2 class="psec2c1h3">Property Features</h2>
+                        </div>
+                        <div class="col-md-8">
+                            <!-- Iterate through the utilities associated with the property -->
+                            @foreach ($property->utilities as $utility)
+                                <div class="d-flex mb-1">
+                                    <!-- Display utility name and value together -->
+                                    <h5 class="psec2c1font">{{ $utility->name }}:</h5>
+                                    <p class="ms-2">{{ $utility->pivot->value }}</p>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="px-4 px-md-5 pt-4 pb-4 pb-md-5 Detail-AmenBorder">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2 class="psec2c1h3">Type of Parking</h2>
+                        </div>
+                        <div class="col-md-8">
+                            <!-- Display parking type if available -->
+                            @foreach ($property->utilities as $utility)
+                                @if ($utility->pivot->parking_type)
+                                    <p class="Detail-padding psec2c1font">{{ $utility->pivot->parking_type }}</p>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-4 px-md-5 pt-4 pb-4 pb-md-5 Detail-AmenBorder">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2 class="psec2c1h3">Special Highlights</h2>
+                        </div>
+
+                        <!-- Loop through special highlights and display them -->
+                        <div class="col-md-4 Detail-padding1">
+                            @foreach ($property->specialHighlights->take(5) as $highlight)
+                                <h5 class="psec2c1font py-1">{{ $highlight->name }}</h5>
+                            @endforeach
+                        </div>
+
+                        <div class="col-md-4 Detail-padding1">
+                            @foreach ($property->specialHighlights->skip(5)->take(5) as $highlight)
+                                <h5 class="psec2c1font py-1">{{ $highlight->name }}</h5>
+                            @endforeach
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            @if (!empty($embedUrl))
                 <div class="p-4 psec2bordeS rounded-2 mt-5">
-                    <div class="">
-                        <h4 class="psec2c1h pb-3">
-                            Floor Plans
-                        </h4>
-                        <div class="text-center text-lg-start">
-                            <!-- Display 'Floor Plan' Image -->
-                            @php
+                    <h4 class="psec2c1h pb-3">Video</h4>
+                    <div class="text-center text-lg-start">
+                        <!-- Display YouTube Video if the embed URL is available -->
+                        <iframe width="100%" height="315" src="{{ $embedUrl }}" frameborder="0"
+                            allowfullscreen
+                            onerror="this.style.display='none'; document.getElementById('video-placeholder').style.display='block';">
+                        </iframe>
+                        <!-- Placeholder Image as a Fallback -->
+                        <img id="video-placeholder" src="{{ asset('assets/frontend/img/video.png') }}"
+                            width="100%" alt="Video Placeholder" style="display: none;">
+                    </div>
+                </div>
+            @else
+                <!-- Display Placeholder Image if no video URL is available -->
+                {{-- <img src="{{ asset('assets/frontend/img/video.png') }}" width="100%" alt="Video Placeholder"> --}}
+            @endif
+
+
+
+            <div class="p-4 psec2bordeS rounded-2 mt-5">
+                <div class="">
+                    <h4 class="psec2c1h pb-3">
+                        Floor Plans
+                    </h4>
+                    <div class="text-center text-lg-start">
+                        <!-- Display 'Floor Plan' Image -->
+                        @php
                             // Filter the images to find the 'Floor Plan' category
-                            $floorPlanImage = $property->images->firstWhere('propertyImage.imageCategory.category_name', 'Floor Plan');
+                            $floorPlanImage = $property->images->firstWhere(
+                                'propertyImage.imageCategory.category_name',
+                                'Floor Plan',
+                            );
                         @endphp
 
                         @if ($floorPlanImage)
                             <!-- Display the Floor Plan image -->
-                            <img src="{{ asset($floorPlanImage->propertyImage->image) }}" alt="Floor Plan" class="img-fluid">
+                            <img src="{{ asset($floorPlanImage->propertyImage->image) }}" alt="Floor Plan"
+                                class="img-fluid">
                         @else
                             <p>No Floor Plan available.</p>
                         @endif
                     </div>
 
+                </div>
+                <div class="p-4 psec2bordeS rounded-2 mt-5">
+                    <div class="mt-5">
+                        <h4 class="psec2c1h pb-3">Property Images</h4>
+                        <div class="text-center text-lg-start">
+                            <!-- Display 'Main' Images -->
+                            @php
+                                $mainImages = $property->images->where(
+                                    'propertyImage.imageCategory.category_name',
+                                    'Main',
+                                );
+                            @endphp
+
+                            @if ($mainImages->isNotEmpty())
+                                @foreach ($mainImages as $mainImage)
+                                    <img src="{{ asset($mainImage->propertyImage->image) }}" alt="Main Image"
+                                        class="img-fluid mb-3">
+                                @endforeach
+                            @else
+                                <p>No Main Images available.</p>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -357,13 +299,14 @@
                         <div class=""><img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}"
                                 class="pe-2 text-dark" alt="">
                         </div>
+
                         <!-- Display Location -->
                         @foreach ($property->locations as $location)
                             <h6 class="pt-1">
                                 {{ $location->area->area_name }},
                                 {{ $location->city->name }}, {{ $location->state->name }},
                                 {{ $location->country->name }}
-                            </h6>
+                            </h6><br>
                         @endforeach
                         <h6 class="pt-1">
                             <strong>Landmarks:</strong>
@@ -392,11 +335,69 @@
                         <img src="{{ asset('assets/frontend/search/Group1830.png') }}" width="48px"
                             alt="...">
                     </div>
-                    <div class="flex-grow-1 ms-3  pt-3">
-                        <p class="mb-0 ">Project Size </p>
-                        <p class="psec1p ">{{ $property->size }} Sq Ft</p>
+                    <div class="flex-grow-1 ms-3 pt-3">
+                        <p class="mb-0">Property Size</p>
+                        <p class="psec1p">{{ $property->size }} Sq Ft</p>
+                    </div>
+                </div>
 
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="{{ asset('assets/frontend/search/Group1830.png') }}" width="48px"
+                            alt="...">
+                    </div>
+                    <div class="flex-grow-1 ms-3 pt-3">
+                        <p class="mb-0">Flat Area</p>
+                        <p class="psec1p">{{ $property->flat_area }} Sq Ft</p> <!-- New field -->
+                    </div>
+                </div>
 
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="{{ asset('assets/frontend/search/Group1830.png') }}" width="48px"
+                            alt="...">
+                    </div>
+                    <div class="flex-grow-1 ms-3 pt-3">
+                        <p class="mb-0">Project Completion Date</p>
+                        <p class="psec1p">
+                            {{ $property->project_completion_date
+                                ? \Carbon\Carbon::parse($property->project_completion_date)->format('d
+                                        M, Y')
+                                : 'Not Available' }}
+                        </p>
+                    </div>
+
+                </div>
+
+                {{-- <div class="d-flex align-items-center">
+    <div class="flex-shrink-0">
+        <img src="{{ asset('assets/frontend/search/Group1830.png') }}" width="48px" alt="...">
+    </div>
+    <div class="flex-grow-1 ms-3 pt-3">
+        <p class="mb-0">RERA</p>
+        <p class="psec1p">{{ $property->rera ? 'Yes' : 'No' }}</p> <!-- New field -->
+                    </div>
+</div> --}}
+
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="{{ asset('assets/frontend/search/Group1830.png') }}" width="48px"
+                            alt="...">
+                    </div>
+                    <div class="flex-grow-1 ms-3 pt-3">
+                        <p class="mb-0">Number of Flats</p>
+                        <p class="psec1p">{{ $property->no_of_flats }}</p> <!-- New field -->
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="{{ asset('assets/frontend/search/Group1830.png') }}" width="48px"
+                            alt="...">
+                    </div>
+                    <div class="flex-grow-1 ms-3 pt-3">
+                        <p class="mb-0">Number of Floors</p>
+                        <p class="psec1p">{{ $property->no_of_floors }}</p> <!-- New field -->
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
@@ -603,4 +604,44 @@
     </div>
 </section>
 <!-- ========  section 2   END  ======== -->
+<!-- Add JavaScript for Slider -->
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("demo");
+        let captionText = document.getElementById("caption");
+
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>
+<!-- <div class=" p-4 rounded-2 psec2borde w-100  position-sticky topfixed"> --
 @endsection

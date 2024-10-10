@@ -189,7 +189,7 @@
 
                             <div class="text-center p2s2col2btn pt-lg-1  pt-4">
                                 <p>Your EMI will be</p>
-                                <h6>₹<span id="emi-display">14,11,000</span> / <span>Month</span></h6>
+                                <h6 class="p2s2col2btn-h6">₹<span id="emi-display">14,11,000</span> / <span>Month</span></h6>
                                 <small>Note: This is an estimate, actual amount may vary.</small>
 
                                 <div class="d-grid gap-2 pt-4">

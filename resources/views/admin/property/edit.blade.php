@@ -4,8 +4,14 @@
     <div id="content" class="p-4">
         @include('auth.success-message')
         @include('auth.error-message')
-
-        <form id="property-form" method="POST" action="{{ route('properties.update', $property->id) }}" enctype="multipart/form-data">
+     <!-- Back Button -->
+     <div class="card-footer text-right">
+        <a href="{{ route('properties.index') }}" class="btn btn-secondary">
+            <i class="fa-solid fa-arrow-left"></i> Back to Properties List
+        </a>
+    </div>
+        <form id="property-form" method="POST" action="{{ route('properties.update', $property->id) }}"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -17,29 +23,35 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Title</label>
-                        <input type="text" name="properties[title]" class="form-control" value="{{ $property->title }}" required>
+                        <input type="text" name="properties[title]" class="form-control" value="{{ $property->title }}"
+                            required>
                     </div>
 
                     <div class="form-group">
                         <label>Property Type</label>
                         <select name="properties[property_type]" class="form-control" required>
-                            <option value="Residential" {{ $property->property_type == 'Residential' ? 'selected' : '' }}>Residential</option>
-                            <option value="Commercial" {{ $property->property_type == 'Commercial' ? 'selected' : '' }}>Commercial</option>
+                            <option value="Residential" {{ $property->property_type == 'Residential' ? 'selected' : '' }}>
+                                Residential</option>
+                            <option value="Commercial" {{ $property->property_type == 'Commercial' ? 'selected' : '' }}>
+                                Commercial</option>
                         </select>
                     </div>
 
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" name="properties[recent_property]" id="recentProperty" {{ $property->recent_property ? 'checked' : '' }}>
+                        <input type="checkbox" class="form-check-input" name="properties[recent_property]"
+                            id="recentProperty" {{ $property->recent_property ? 'checked' : '' }}>
                         <label class="form-check-label" for="recentProperty">Recent Property</label>
                     </div>
 
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" name="properties[newly_added_property]" id="newlyAddedProperty" {{ $property->newly_added_property ? 'checked' : '' }}>
+                        <input type="checkbox" class="form-check-input" name="properties[newly_added_property]"
+                            id="newlyAddedProperty" {{ $property->newly_added_property ? 'checked' : '' }}>
                         <label class="form-check-label" for="newlyAddedProperty">Newly Added Property</label>
                     </div>
 
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" name="properties[top_projects]" id="topProjects" {{ $property->top_projects ? 'checked' : '' }}>
+                        <input type="checkbox" class="form-check-input" name="properties[top_projects]" id="topProjects"
+                            {{ $property->top_projects ? 'checked' : '' }}>
                         <label class="form-check-label" for="topProjects">Top Projects</label>
                     </div>
 
@@ -56,25 +68,32 @@
 
                     <div class="form-group">
                         <label>Price Range Start</label>
-                        <input type="number" step="0.01" name="properties[price_range_start]" class="form-control" value="{{ $property->price_range_start }}" required>
+                        <input type="number" step="0.01" name="properties[price_range_start]" class="form-control"
+                            value="{{ $property->price_range_start }}" required>
                     </div>
 
                     <div class="form-group">
                         <label>Price Range End</label>
-                        <input type="number" step="0.01" name="properties[price_range_end]" class="form-control" value="{{ $property->price_range_end }}" required>
+                        <input type="number" step="0.01" name="properties[price_range_end]" class="form-control"
+                            value="{{ $property->price_range_end }}" required>
                     </div>
 
                     <div class="form-group">
                         <label>Possession Status</label>
                         <select name="properties[possession_status]" class="form-control" required>
-                            <option value="Under construction" {{ $property->possession_status == 'Under construction' ? 'selected' : '' }}>Under construction</option>
-                            <option value="Ready to Move" {{ $property->possession_status == 'Ready to Move' ? 'selected' : '' }}>Ready to Move</option>
+                            <option value="Under construction"
+                                {{ $property->possession_status == 'Under construction' ? 'selected' : '' }}>Under
+                                construction</option>
+                            <option value="Ready to Move"
+                                {{ $property->possession_status == 'Ready to Move' ? 'selected' : '' }}>Ready to Move
+                            </option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label>Size (sqft)</label>
-                        <input type="number" step="0.01" name="properties[size]" class="form-control" value="{{ $property->size }}" required>
+                        <input type="number" step="0.01" name="properties[size]" class="form-control"
+                            value="{{ $property->size }}" required>
                     </div>
 
                     <div class="form-group">
@@ -95,7 +114,8 @@
                         <select name="locations[country_id]" class="form-control" id="country" required>
                             <option value="">Select Country</option>
                             @foreach ($countries as $country)
-                                <option value="{{ $country->id }}" {{ $property->locations->first()->country_id == $country->id ? 'selected' : '' }}>
+                                <option value="{{ $country->id }}"
+                                    {{ $property->locations->first()->country_id == $country->id ? 'selected' : '' }}>
                                     {{ $country->name }}
                                 </option>
                             @endforeach
@@ -107,7 +127,8 @@
                         <select name="locations[state_id]" class="form-control" id="state" required>
                             <option value="">Select State</option>
                             @foreach ($states as $state)
-                                <option value="{{ $state->id }}" {{ $property->locations->first()->state_id == $state->id ? 'selected' : '' }}>
+                                <option value="{{ $state->id }}"
+                                    {{ $property->locations->first()->state_id == $state->id ? 'selected' : '' }}>
                                     {{ $state->name }}
                                 </option>
                             @endforeach
@@ -119,7 +140,8 @@
                         <select name="locations[city_id]" class="form-control" id="city" required>
                             <option value="">Select City</option>
                             @foreach ($cities as $city)
-                                <option value="{{ $city->id }}" {{ $property->locations->first()->city_id == $city->id ? 'selected' : '' }}>
+                                <option value="{{ $city->id }}"
+                                    {{ $property->locations->first()->city_id == $city->id ? 'selected' : '' }}>
                                     {{ $city->name }}
                                 </option>
                             @endforeach
@@ -131,7 +153,8 @@
                         <select name="locations[area_id]" class="form-control" id="area" required>
                             <option value="">Select Area</option>
                             @foreach ($areas as $area)
-                                <option value="{{ $area->id }}" {{ $property->locations->first()->area_id == $area->id ? 'selected' : '' }}>
+                                <option value="{{ $area->id }}"
+                                    {{ $property->locations->first()->area_id == $area->id ? 'selected' : '' }}>
                                     {{ $area->area_name }}
                                 </option>
                             @endforeach
@@ -141,11 +164,13 @@
                     <div class="form-group">
                         <label for="landmark">Landmark</label>
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle form-control text-left border-secondary border-1" type="button"
-                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn dropdown-toggle form-control text-left border-secondary border-1"
+                                type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
                                 Select Landmarks
                             </button>
-                            <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton" style="max-height: 200px; overflow-y: auto;">
+                            <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton"
+                                style="max-height: 200px; overflow-y: auto;">
                                 <div class="px-3">
                                     <!-- List of checkboxes for each landmark -->
                                     @foreach ($landmarks as $landmark)
@@ -168,44 +193,45 @@
 
                 </div>
             </div>
-<!-- Singular Section for Existing Amenities -->
-<div class="card mb-4">
-    <div class="card-header">
-        <h4>Property Amenities</h4>
-    </div>
-    <div class="card-body">
-        <!-- Existing Amenities (Not cloned) -->
-        <label>Existing Amenities:</label>
-        <div class="form-group">
-            @foreach ($existingAmenities as $amenity)
-                <div class="form-check">
-                    <input type="checkbox" name="amenities[existing][]" value="{{ $amenity->id }}"
-                        class="form-check-input"
-                        {{ in_array($amenity->id, $propertyAmenities) ? 'checked' : '' }}> <!-- Pre-check if the amenity is already related -->
-                    <label class="form-check-label">{{ $amenity->name }}</label>
+            <!-- Singular Section for Existing Amenities -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Property Amenities</h4>
                 </div>
-            @endforeach
-        </div>
+                <div class="card-body">
+                    <!-- Existing Amenities (Not cloned) -->
+                    <label>Existing Amenities:</label>
+                    <div class="form-group">
+                        @foreach ($existingAmenities as $amenity)
+                            <div class="form-check">
+                                <input type="checkbox" name="amenities[existing][]" value="{{ $amenity->id }}"
+                                    class="form-check-input"
+                                    {{ in_array($amenity->id, $propertyAmenities) ? 'checked' : '' }}>
+                                <!-- Pre-check if the amenity is already related -->
+                                <label class="form-check-label">{{ $amenity->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
 
-        <!-- Dynamic Section for Adding New Amenities -->
-        <div class="amenities-section">
-            <h5>New Amenity 1</h5>
-            <div class="form-group">
-                <label>Amenity Name</label>
-                <input type="text" name="amenities[0][new][name]" class="form-control"
-                    placeholder="Amenity Name">
+                    <!-- Dynamic Section for Adding New Amenities -->
+                    <div class="amenities-section">
+                        <h5>New Amenity 1</h5>
+                        <div class="form-group">
+                            <label>Amenity Name</label>
+                            <input type="text" name="amenities[0][new][name]" class="form-control"
+                                placeholder="Amenity Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Amenity Icon</label>
+                            <input type="file" name="amenities[0][new][icon_image]" class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- Button to Add More Amenities -->
+                    <button type="button" class="btn btn-secondary add-amenity mt-3 mb-3">Add Another Amenity</button>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label>Amenity Icon</label>
-                <input type="file" name="amenities[0][new][icon_image]" class="form-control">
-            </div>
-        </div>
-
-        <!-- Button to Add More Amenities -->
-        <button type="button" class="btn btn-secondary add-amenity mt-3 mb-3">Add Another Amenity</button>
-    </div>
-</div>
 
             <!-- Property Utilities Section -->
             <div class="card mb-4">
@@ -219,23 +245,34 @@
                                 <h5>Utility {{ $index + 1 }}</h5>
                                 <div class="form-group">
                                     <label>Utility Name</label>
-                                    <input type="text" name="utilities[{{ $index }}][name]" class="form-control" value="{{ $utility->name }}" placeholder="Utility Name" required>
+                                    <input type="text" name="utilities[{{ $index }}][name]"
+                                        class="form-control" value="{{ $utility->name }}" placeholder="Utility Name"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label>Value</label>
-                                    <input type="number" name="utilities[{{ $index }}][value]" class="form-control" value="{{ $utility->pivot->value }}" placeholder="Utility Value" required>
+                                    <input type="number" name="utilities[{{ $index }}][value]"
+                                        class="form-control" value="{{ $utility->pivot->value }}"
+                                        placeholder="Utility Value" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Parking Type</label>
                                     <select name="utilities[{{ $index }}][parking_type]" class="form-control">
-                                        <option value="Stilt" {{ $utility->pivot->parking_type == 'Stilt' ? 'selected' : '' }}>Stilt</option>
-                                        <option value="Pit" {{ $utility->pivot->parking_type == 'Pit' ? 'selected' : '' }}>Pit</option>
-                                        <option value="Puzzle" {{ $utility->pivot->parking_type == 'Puzzle' ? 'selected' : '' }}>Puzzle</option>
-                                        <option value="Mechanical" {{ $utility->pivot->parking_type == 'Mechanical' ? 'selected' : '' }}>Mechanical</option>
+                                        <option value="Stilt"
+                                            {{ $utility->pivot->parking_type == 'Stilt' ? 'selected' : '' }}>Stilt</option>
+                                        <option value="Pit"
+                                            {{ $utility->pivot->parking_type == 'Pit' ? 'selected' : '' }}>Pit</option>
+                                        <option value="Puzzle"
+                                            {{ $utility->pivot->parking_type == 'Puzzle' ? 'selected' : '' }}>Puzzle
+                                        </option>
+                                        <option value="Mechanical"
+                                            {{ $utility->pivot->parking_type == 'Mechanical' ? 'selected' : '' }}>
+                                            Mechanical</option>
                                     </select>
                                 </div>
                                 <!-- Remove Utility Button -->
-                                <button type="button" class="btn btn-danger remove-utility mt-2 mb-3">Remove Utility</button>
+                                <button type="button" class="btn btn-danger remove-utility mt-2 mb-3">Remove
+                                    Utility</button>
                             </div>
                         @endforeach
                     @else
@@ -243,11 +280,13 @@
                             <h5>New Utility 1</h5>
                             <div class="form-group">
                                 <label>Utility Name</label>
-                                <input type="text" name="utilities[0][name]" class="form-control" placeholder="Utility Name" required>
+                                <input type="text" name="utilities[0][name]" class="form-control"
+                                    placeholder="Utility Name" required>
                             </div>
                             <div class="form-group">
                                 <label>Value</label>
-                                <input type="number" name="utilities[0][value]" class="form-control" placeholder="Utility Value" required>
+                                <input type="number" name="utilities[0][value]" class="form-control"
+                                    placeholder="Utility Value" required>
                             </div>
                             <div class="form-group">
                                 <label>Parking Type</label>
@@ -264,6 +303,38 @@
                     <button type="button" class="btn btn-secondary add-utility mt-3 mb-3">Add Another Utility</button>
                 </div>
             </div>
+<!-- Singular Section for Existing Special Highlights -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h4>Property Special Highlights</h4>
+    </div>
+    <div class="card-body">
+        <!-- Existing Special Highlights -->
+        <label>Existing Highlights:</label>
+        <div class="form-group">
+            @foreach ($existingHighlights as $highlight)
+                <div class="form-check">
+                    <input type="checkbox" name="highlights[existing][]" value="{{ $highlight->id }}"
+                        class="form-check-input"
+                        {{ in_array($highlight->id, $propertyHighlights) ? 'checked' : '' }}> <!-- Pre-check if highlight is already related -->
+                    <label class="form-check-label">{{ $highlight->name }}</label>
+                </div>
+            @endforeach
+        </div>
+
+        <!-- Dynamic Section for Adding New Highlights -->
+        <div class="highlights-section">
+            <h5>New Highlight 1</h5>
+            <div class="form-group">
+                <label>Highlight Name</label>
+                <input type="text" name="highlights[0][new][name]" class="form-control" placeholder="Highlight Name">
+            </div>
+        </div>
+
+        <!-- Button to Add More Highlights -->
+        <button type="button" class="btn btn-secondary add-highlight mt-3 mb-3">Add Another Highlight</button>
+    </div>
+</div>
 
             <!-- Property Images Section -->
             <div class="card mb-4">
@@ -271,39 +342,45 @@
                     <h4>Property Images</h4>
                 </div>
                 @foreach ($groupedImages as $categoryName => $images)
-                <h3>{{ $categoryName }}</h3>
-                <div class="row" id="category-{{ Str::slug($categoryName) }}">
-                    @foreach ($images as $image)
-                        <div class="col-md-3 image-wrapper">
-                            <!-- Display the image -->
-                            <img src="{{ asset($image->propertyImage->image) }}" alt="{{ $categoryName }}" class="img-fluid image-preview">
+                    <h3>{{ $categoryName }}</h3>
+                    <div class="row" id="category-{{ Str::slug($categoryName) }}">
+                        @foreach ($images as $image)
+                            <div class="col-md-3 image-wrapper">
+                                <!-- Display the image -->
+                                <img src="{{ asset($image->propertyImage->image) }}" alt="{{ $categoryName }}"
+                                    class="img-fluid image-preview">
 
-                            <!-- File input for changing the image -->
-                            <div class="form-group mt-2">
-                                <input type="file" name="images[{{ $loop->index }}][file]" class="form-control image-input" data-preview-target="preview-{{ $loop->index }}">
+                                <!-- File input for changing the image -->
+                                <div class="form-group mt-2">
+                                    <input type="file" name="images[{{ $loop->index }}][file]"
+                                        class="form-control image-input"
+                                        data-preview-target="preview-{{ $loop->index }}">
+                                </div>
+
+                                <!-- Image Category Dropdown -->
+                                <div class="form-group mt-2">
+                                    <label>Image Category</label>
+                                    <select name="images[{{ $loop->index }}][image_category_id]" class="form-control"
+                                        required>
+                                        <option value="">Select Category</option>
+                                        @foreach ($imageCategories as $category)
+                                            <option value="{{ $category->id }}"
+                                                {{ $image->propertyImage->image_category_id == $category->id ? 'selected' : '' }}>
+                                                {{ $category->category_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <!-- Remove Image Button -->
+                                <button type="button" class="btn btn-danger remove-image mt-2 mb-3">Remove Image</button>
                             </div>
-
-                            <!-- Image Category Dropdown -->
-                            <div class="form-group mt-2">
-                                <label>Image Category</label>
-                                <select name="images[{{ $loop->index }}][image_category_id]" class="form-control" required>
-                                    <option value="">Select Category</option>
-                                    @foreach ($imageCategories as $category)
-                                        <option value="{{ $category->id }}" {{ $image->propertyImage->image_category_id == $category->id ? 'selected' : '' }}>
-                                            {{ $category->category_name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <!-- Remove Image Button -->
-                            <button type="button" class="btn btn-danger remove-image mt-2 mb-3">Remove Image</button>
-                        </div>
-                    @endforeach
-                </div>
-                <!-- Add Image Button -->
-                <button type="button" class="btn btn-success add-image" data-category="{{ Str::slug($categoryName) }}">Add Image</button>
-            @endforeach
+                        @endforeach
+                    </div>
+                    <!-- Add Image Button -->
+                    <button type="button" class="btn btn-success add-image"
+                        data-category="{{ Str::slug($categoryName) }}">Add Image</button>
+                @endforeach
 
 
                 {{-- @foreach ($groupedImages as $categoryName => $images)
@@ -395,15 +472,15 @@
             <button type="submit" class="btn btn-primary mt-4">Update Property Details</button>
         </form>
     </div>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    let amenityIndex = 1; // Index for new amenities
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let amenityIndex = 1; // Index for new amenities
 
-    // Add new amenity section dynamically
-    document.querySelector('.add-amenity').addEventListener('click', function () {
-        const amenitiesSection = document.querySelector('.amenities-section');
+            // Add new amenity section dynamically
+            document.querySelector('.add-amenity').addEventListener('click', function() {
+                const amenitiesSection = document.querySelector('.amenities-section');
 
-        const newAmenityHtml = `
+                const newAmenityHtml = `
             <h5>New Amenity ${amenityIndex + 1}</h5>
             <div class="form-group">
                 <label>Amenity Name</label>
@@ -415,60 +492,61 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
 
-        // Append the new amenity section to the form
-        amenitiesSection.insertAdjacentHTML('beforeend', newAmenityHtml);
+                // Append the new amenity section to the form
+                amenitiesSection.insertAdjacentHTML('beforeend', newAmenityHtml);
 
-        amenityIndex++; // Increment the index for the next new amenity
-    });
-});
+                amenityIndex++; // Increment the index for the next new amenity
+            });
+        });
 
-//===================
-document.addEventListener('DOMContentLoaded', function () {
-    // Function to handle image preview
-    function previewImage(input, previewTarget) {
-        const file = input.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const preview = document.querySelector(`.${previewTarget}`);
-                if (preview) {
-                    preview.src = e.target.result;
+        //===================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to handle image preview
+            function previewImage(input, previewTarget) {
+                const file = input.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const preview = document.querySelector(`.${previewTarget}`);
+                        if (preview) {
+                            preview.src = e.target.result;
+                        }
+                    };
+                    reader.readAsDataURL(file);
                 }
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-
-    // Handle image input changes for preview
-    document.querySelectorAll('.image-input').forEach(input => {
-        input.addEventListener('change', function () {
-            const previewTarget = this.getAttribute('data-preview-target');
-            previewImage(this, previewTarget);
-        });
-    });
-
-    // Handle image removal
-    document.querySelectorAll('.remove-image').forEach(button => {
-        button.addEventListener('click', function () {
-            const imageWrapper = this.closest('.image-wrapper');
-            if (imageWrapper) {
-                imageWrapper.remove(); // Remove the image block
             }
-        });
-    });
 
-    // Handle adding new images
-    document.querySelectorAll('.add-image').forEach(button => {
-        button.addEventListener('click', function () {
-            const categorySlug = this.getAttribute('data-category');
-            const container = document.getElementById(`category-${categorySlug}`);
+            // Handle image input changes for preview
+            document.querySelectorAll('.image-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const previewTarget = this.getAttribute('data-preview-target');
+                    previewImage(this, previewTarget);
+                });
+            });
 
-            const newImageIndex = container.querySelectorAll('.image-wrapper').length; // Get the current number of images
+            // Handle image removal
+            document.querySelectorAll('.remove-image').forEach(button => {
+                button.addEventListener('click', function() {
+                    const imageWrapper = this.closest('.image-wrapper');
+                    if (imageWrapper) {
+                        imageWrapper.remove(); // Remove the image block
+                    }
+                });
+            });
 
-            // Create new image input block
-            const newImageBlock = document.createElement('div');
-            newImageBlock.classList.add('col-md-3', 'image-wrapper');
-            newImageBlock.innerHTML = `
+            // Handle adding new images
+            document.querySelectorAll('.add-image').forEach(button => {
+                button.addEventListener('click', function() {
+                    const categorySlug = this.getAttribute('data-category');
+                    const container = document.getElementById(`category-${categorySlug}`);
+
+                    const newImageIndex = container.querySelectorAll('.image-wrapper')
+                    .length; // Get the current number of images
+
+                    // Create new image input block
+                    const newImageBlock = document.createElement('div');
+                    newImageBlock.classList.add('col-md-3', 'image-wrapper');
+                    newImageBlock.innerHTML = `
                 <img src="#" alt="New Image" class="img-fluid image-preview">
                 <div class="form-group mt-2">
                     <input type="file" name="images[${newImageIndex}][file]" class="form-control image-input" data-preview-target="preview-${newImageIndex}">
@@ -483,23 +561,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 <button type="button" class="btn btn-danger remove-image mt-2 mb-3">Remove Image</button>
             `;
 
-            // Append new image block to the category
-            container.appendChild(newImageBlock);
+                    // Append new image block to the category
+                    container.appendChild(newImageBlock);
 
-            // Reattach event listeners for the new elements
-            newImageBlock.querySelector('.image-input').addEventListener('change', function () {
-                const previewTarget = this.getAttribute('data-preview-target');
-                previewImage(this, previewTarget);
-            });
+                    // Reattach event listeners for the new elements
+                    newImageBlock.querySelector('.image-input').addEventListener('change',
+                    function() {
+                        const previewTarget = this.getAttribute('data-preview-target');
+                        previewImage(this, previewTarget);
+                    });
 
-            newImageBlock.querySelector('.remove-image').addEventListener('click', function () {
-                this.closest('.image-wrapper').remove();
+                    newImageBlock.querySelector('.remove-image').addEventListener('click',
+                    function() {
+                        this.closest('.image-wrapper').remove();
+                    });
+                });
             });
         });
-    });
-});
-
-</script>
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let utilitiesIndex = {{ $property->utilities->count() }};
@@ -548,6 +627,30 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     </script>
+{{-- highlights --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let highlightIndex = 1;
+
+        // Add new highlight section dynamically
+        document.querySelector('.add-highlight').addEventListener('click', function () {
+            const highlightSection = document.querySelector('.highlights-section');
+
+            const newHighlightHtml = `
+                <h5>New Highlight ${highlightIndex + 1}</h5>
+                <div class="form-group">
+                    <label>Highlight Name</label>
+                    <input type="text" name="highlights[${highlightIndex}][new][name]" class="form-control" placeholder="Highlight Name">
+                </div>
+            `;
+
+            // Append the new highlight section to the form
+            highlightSection.insertAdjacentHTML('beforeend', newHighlightHtml);
+
+            highlightIndex++;
+        });
+    });
+</script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>

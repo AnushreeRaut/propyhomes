@@ -22,4 +22,15 @@ class PropertyAmenity extends Model
                     ->withTimestamps();
     }
 
+    // Relationship to the user who added the amenity
+    public function addedByUser()
+    {
+        return $this->belongsTo(User::class, 'added_by');
+    }
+
+    // Relationship to the user who updated the amenity
+    public function updatedByUser()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
 }

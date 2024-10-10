@@ -104,6 +104,9 @@
         <div class="textcolr2 py-2 collapse-inner rounded">
             <a class="collapse-item text-white" href="{{ route('areas.index') }}">Area</a>
             <a class="collapse-item text-white" href="{{ route('landmarks.index') }}">Landmark</a>
+            <a class="collapse-item text-white" href="{{ route('special_highlights.index') }}">Special HighLights</a>
+            <a class="collapse-item text-white" href="{{ route('property_amenities.index') }}">Amenity</a>
+            <a class="collapse-item text-white" href="{{ route('image_categories.index') }}">Image Categories</a>
         </div>
     </div>
 </li>

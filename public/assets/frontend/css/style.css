@@ -567,7 +567,8 @@ background-image: linear-gradient(to top, orange 9% , red 5%);
   border-radius: 10px;
 }
 .sec2ImgMai {
-  width: 100%;
+  height: 170px !important;
+  width: 200%;
   transition: transform 1s ease-in-out;
   /* Smooth scaling transition */
 }
@@ -2934,3 +2935,86 @@ tr .p2s4Tp {
   .search-form-control:focus {
     border: 1px solid var(--color-gold);
   }
+  .pDetailb-size {
+    height: 31vw !important;
+  }
+  .pDetails-size {
+    height:6vw !important;
+  }
+  .index-swiper-slide{
+    width: 300px !important;
+  }
+  .rera-approval-badge {
+    font-size: 14px; /* Adjust font size as needed */
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 10; /* Ensure it is visible on top of the image */
+    display: flex;
+    align-items: center;
+}
+
+.index-search-container {
+    /* width: 700px; */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    height:
+        87px;
+    gap: 5px;
+}
+.index-search-input {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 3px;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    border: 1px solid white;
+}
+.index-search-input:focus {
+    border: 1px solid #C8A864;
+    /* Slight golden border when focused */
+}
+.index-search-btn {
+    padding: 10px 20px;
+    margin-left: 5px;
+    background-color: #C8A864;
+    /* Golden background for the button */
+    color: white;
+    font-size: 16px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 5px !important;
+}
+.index-search-btn:hover {
+    background-color: #B39257;
+    /* Darker golden on hover */
+}
+.index-search-container input::placeholder {
+    color: #404040;
+}
+@media only screen and (max-width: 424px) {
+    .index-search-container {
+        display: flex;
+        height: 100%;
+        flex-wrap: wrap !important;
+    }
+    .index-search-btn {
+        /* width: 244.5px; */
+        margin-top: 4px;
+        height: 100%;
+    }
+    .index-search-btn{
+        margin-top:20px;
+    }
+    .input-btn{
+        margin-top: 3px;
+    }
+}

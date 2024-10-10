@@ -19,155 +19,70 @@
                     <h1 class="psec1h1 pt-3 pb-4">Flats for Sale in Somalwada, Nagpur</h1>
                     <div class="row">
                         <div class="col-xl-3 col-lg-4 col-md-6  col-12 mb-4">
-                            <div class="p-3 search-col1-bgc rounded-3">
-                                <h3 class="search_s1h3T pt-2  pb-3 ">Find you home</h3>
-                                <div class="input-group mb-3  search-inputs">
-                                    <span class="input-group-text  border-0  pe-0" id="basic-addon1"><i
-                                            class="fa-solid fa-magnifying-glass fa-xs"
-                                            style="color:black;"></i></span>
-                                    <input type="text" class="form-control border-0 pb-2 "
-                                        placeholder="Search by location, Project name" aria-label="Username"
-                                        aria-describedby="basic-addon1">
-                                </div>
-                                <h3 class="search_s1h3T pt-2 pb-2">BHK Type</h3>
-                                <select class="form-select search-inputs" aria-label="Default select example">
-                                    <option selected>1RK</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                <h3 class="search_s1h3T pt-4 pb-2">Property Types</h3>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Residential
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Commercial
-                                    </label>
-                                </div>
-                                <h3 class="search_s1h3T  pt-3 pb-3">Budget</h3>
-                                <!-- buget -->
-                                <div class="budget-section">
-                                    <div class="budget-slider-container">
-                                        <div class="budget-slider">
-                                            <input type="range" id="minRange" min="0" max="150000" step="1000"
-                                                value="0">
-                                            <div class="budget-track"></div>
-                                            <input type="range" id="maxRange" min="0" max="150000" step="1000"
-                                                value="150000">
+<form action="{{ route('property.search') }}" method="GET">
+<div class="p-3 search-col1-bgc rounded-3">
+<h3 class="search_s1h3T pt-2 pb-3 ">Find your home</h3>
+
+<!-- Search by Location or Project Name -->
+<div class="input-group mb-3 search-inputs">
+    <span class="input-group-text border-0 pe-0"><i class="fa-solid fa-magnifying-glass fa-xs"
+            style="color:black;"></i></span>
+<input type="text" name="search_term" class="form-control border-0 pb-2" placeholder="Search by location, Project name">
                                         </div>
-                                    </div>
-                                </div>
-                                <span></span>
-                                <div class="d-flex justify-content-between ">
-                                    <button type="button" class="btn btn_bgC"><span id="minValue">₹0</span></button>
-                                    <button type="button" class="btn btn_bgC"> <span
-                                            id="maxValue">₹1,50,000</span></button>
-                                </div>
-                                <h3 class="search_s1h3T  pt-4 mt-1 pb-2">Possession Status</h3>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Ready to Move
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Under Construction
-                                    </label>
-                                </div>
-                                <!--  -->
-                                <h3 class="search_s1h3T  pt-3 pb-1">Amenities</h3>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        POP
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Gated Community
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        CCTV
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Video Door Bell
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        GYM
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Furniture
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Modular Kitchen
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Common Solar
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Security Guard
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Gazibo / Function Hall
-                                    </label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input search-checkBorder" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Swimming Pool
-                                    </label>
-                                </div>
-                                <div class="d-grid gap-2 py-3">
-                                    <button class="btn search-col1btn " type="button">Search Your Property</button>
-                                </div>
-                            </div>
+<!-- BHK Type -->
+<h3 class="search_s1h3T pt-2 pb-2">BHK Type</h3>
+<select name="bhk_type" class="form-select search-inputs">
+    <option value="">All</option>
+    <option value="1BHK">1BHK</option>
+    <option value="2BHK">2BHK</option>
+    <option value="3BHK">3BHK</option>
+    <option value="4BHK">4BHK</option>
+    <option value="5BHK">5BHK</option>
+</select>
+<!-- Property Type -->
+<h3 class="search_s1h3T pt-4 pb-2">Property Types</h3>
+<div class="form-check mb-2">
+<input class="form-check-input search-checkBorder" type="checkbox" name="property_type[]" value="Residential">
+<label class="form-check-label">Residential</label>
+</div>
+<div class="form-check mb-2">
+<input class="form-check-input search-checkBorder" type="checkbox" name="property_type[]" value="Commercial">
+<label class="form-check-label">Commercial</label>
+</div>
+<!-- Budget Range -->
+<h3 class="search_s1h3T pt-3 pb-3">Budget</h3>
+<input type="number" name="min_budget" placeholder="Min" class="form-control mb-2">
+<input type="number" name="max_budget" placeholder="Max" class="form-control mb-2">
+
+<!-- Possession Status -->
+<h3 class="search_s1h3T pt-4 mt-1 pb-2">Possession Status</h3>
+<div class="form-check mb-2">
+<input class="form-check-input search-checkBorder" type="checkbox" name="possession_status[]" value="Ready to Move">
+<label class="form-check-label">Ready to Move</label>
+</div>
+<div class="form-check mb-2">
+<input class="form-check-input search-checkBorder" type="checkbox" name="possession_status[]"
+    value="Under construction">
+<label class="form-check-label">Under Construction</label>
+</div>
+<!-- Amenities -->
+<h3 class="search_s1h3T pt-3 pb-1">Amenities</h3>
+<div class="form-check mb-2">
+<input class="form-check-input search-checkBorder" type="checkbox" name="amenities[]" value="POP">
+<label class="form-check-label">POP</label>
+</div>
+<div class="form-check mb-2">
+<input class="form-check-input search-checkBorder" type="checkbox" name="amenities[]" value="Gated Community">
+<label class="form-check-label">Gated Community</label>
+</div>
+<!-- Add more amenities options as needed -->
+
+<!-- Search Button -->
+<div class="d-grid gap-2 py-3">
+<button class="btn search-col1btn" type="submit">Search Your Property</button>
+</div>
+</div>
+</form>
                         </div>
                         <div class="col-xl-6 col-lg-8 col-md-6  col-12  mb-4">
                             <div class="row">
@@ -176,144 +91,74 @@
                                         <p class="search-col2-t"> Showing 1 – 10 of 15 results</p>
                                     </div>
                                 </div>
+<!--  -->
                                 <div class="col-lg-6 col-12 mb-4">
-                                    <div class="">
-                                        <div class="swiper-slide  bg-white">
-                                            <div
-                                                class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                                                <a href="{{route('viewbalaji')}}" class="text-decoration-none">
-                                                    <div class="px-3 position-relative sec2dH overflow-visible  ">
-                                                        <div class="image-wrapper position-relative  ">
-                                                            <img src="{{asset('assets/frontend/img/Rectangle 23.webp')}}"
-                                                                class="sec2ImgMai" alt="Image">
-                                                            <div class="position-absolute  sec2ImgD px-3 py-2">
-                                                                <h6 class="mb-0 sec2PriceText text-dark">Price ₹
-                                                                    2.25Cr ₹ 2.5 Cr</h6>
-                                                            </div>
-                                                        </div>
+@if ($properties->isEmpty())
+<p>No properties found matching your criteria.</p>
+@else
+@foreach ($properties as $property)
+<div class="swiper-slide ">
+    <div class="position-relative sec2Macard rounded-3 card-container pt-3 z-1">
+        <a href="{{ route('properties.show.prop', $property->id) }}" class="text-decoration-none">
+            <div class="px-3 position-relative sec2dH overflow-visible">
+                <div class="image-wrapper position-relative">
+                    @foreach ($property->images as $propertyImage)
+                    @if ($propertyImage->propertyImage->imageCategory->category_name === 'Cover Image')
+                    <img src="{{ asset($propertyImage->propertyImage->image) }}" alt="Cover Image" class="sec2ImgMai">
+                    <!-- Check if the property is RERA approved and display a badge -->
+                    @if ($property->rera)
+                    <!-- Small box or icon for RERA approval using Font Awesome -->
+                    <div class="rera-approval-badge position-absolute bottom-0 end-0 bg-success text-white p-1 rounded">
+                        <i class="fas fa-check-circle me-1"></i> <!-- Font Awesome Icon -->
+                        <span>RERA Approved</span>
+                    </div>
+@endif
+@break
+@endif
+@endforeach
                                                     </div>
-                                                    <div class=" sec2pt1 rounded-3  px-3 ">
-                                                        <div class="search-sec2h"></div>
-                                                        <div class="d-flex justify-content-between ">
-                                                            <h6 class="sec2Texth6 text-start mb-0 "> Balaji Paradise
-                                                            </h6>
-                                                            <p class="ps-2  mb-0" data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal">
-                                                                <span class="sec2SpanCr  "><img
-                                                                        src="{{asset('assets/frontend/img/telephone-call.svg')}}" alt=""
-                                                                        class=""></span>
-                                                            </p>
+<div class="position-absolute sec2ImgD px-3 py-2">
+    <h6 class="mb-0 sec2PriceText text-dark">
+        Starting Price ₹ {{ $property->formatted_price_range_start }}
+    </h6>
+</div>
+</div>
+<div class="sec2pt rounded-3 px-3 index-swiper-slide">
+<div class="d-flex justify-content-between">
+<h6 class="sec2Texth6 text-start mb-0">{{ $property->title }}</h6>
                                                         </div>
-                                                        <div class="d-flex  pt-1">
-                                                            <p> <img src="{{asset('assets/frontend/img/maps-and-flags.svg')}}"
-                                                                    class="pe-2 sec2ImgWS1" alt=""></p>
+@foreach ($property->locations as $location)
+<div class="d-flex pt-1">
+    <p><img src="{{ asset('assets/frontend/img/maps-and-flags.svg') }}" class="pe-2 sec2ImgWS1" alt=""></p>
                                                             <p class="sec2Textp text-start">
-                                                                Kandivali East,
-                                                                Mumbai, Maharashtra
+{{ $location->city->name }}, {{ $location->state->name }}, {{ $location->country->name }}
                                                             </p>
                                                         </div>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">No. of Rooms </p>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">04</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">Construction Status </p>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">Active</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">Rera ID </p>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">12345678765432</p>
+@endforeach
+<div class="sec2Bord w-100"></div>
+<div class="row pt-3 pb-0 px-2 rounded-3">
+    <div class="col-6 mb-1">
+        <div class="d-flex">
+            <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Fit-to-Page.svg') }}" alt="" class="sec2ImgWS">
+            </p>
+            <p class="sec2Textp text-start">{{ $property->size }} Sq Ft</p>
+        </div>
+</div>
+<div class="col-6 mb-1">
+    <div class="d-flex">
+        <p class="pe-3 pt-1"><img src="{{ asset('assets/frontend/img/Bed.svg') }}" alt="" class="sec2ImgWS"></p>
+        <p class="sec2Textp text-start">{{ $property->bhk_type }}</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div
-                                                        class="position-absolute  w-100 sec2Wihove sec2Wihove1 z-n1 ">
-                                                    </div>
-                                                </a>
-                                            </div>
+</div>
+</div>
+<div class="position-absolute w-100 sec2Wihove z-n1"></div>
+</a>
+</div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-12 mb-4">
-                                    <div class="">
-                                        <div class="swiper-slide  bg-white">
-                                            <div
-                                                class=" position-relative sec2Macard bg-white   rounded-3 card-container    pt-3 z-1">
-                                                <a href="{{route('viewbalaji')}}" class="text-decoration-none">
-                                                    <div class="px-3 position-relative sec2dH overflow-visible  ">
-                                                        <div class="image-wrapper position-relative  ">
-                                                            <img src="{{asset('assets/frontend/img/Rectangle 23.webp')}}"
-                                                                class="sec2ImgMai" alt="Image">
-                                                            <div class="position-absolute  sec2ImgD px-3 py-2">
-                                                                <h6 class="mb-0 sec2PriceText text-dark">Price ₹
-                                                                    2.25Cr ₹ 2.5 Cr</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="  sec2pt1 rounded-3  px-3 ">
-                                                        <div class="search-sec2h"></div>
-                                                        <div class="d-flex justify-content-between ">
-                                                            <h6 class="sec2Texth6 text-start mb-0 "> Balaji Paradise
-                                                            </h6>
-                                                            <p class="ps-2  mb-0" data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal">
-                                                                <span class="sec2SpanCr  "><img
-                                                                        src="{{asset('assets/frontend/asset/img/telephone-call.svg')}}" alt=""
-                                                                        class=""></span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="d-flex  pt-1">
-                                                            <p> <img src="{{asset('assets/frontend/asset/img/maps-and-flags.svg')}}"
-                                                                    class="pe-2 sec2ImgWS1" alt=""></p>
-                                                            <p class="sec2Textp text-start">
-                                                                Kandivali East,
-                                                                Mumbai, Maharashtra
-                                                            </p>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">No. of Rooms </p>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">04</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">Construction Status </p>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">Active</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between">
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">Rera ID </p>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="sec2Textp mb-2">12345678765432</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="position-absolute  w-100 sec2Wihove sec2Wihove1 z-n1 ">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+@endforeach
+@endif
+</div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-6  col-12  mb-4 ">

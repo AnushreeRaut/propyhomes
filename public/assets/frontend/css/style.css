@@ -2656,6 +2656,13 @@ tr .p2s4Tp {
 }
 @media only screen and (max-width: 1400px) and (min-width: 1200px) {.Home_s1_h {
     height: 90px;
+    .banderImg {
+        background-image: url(/asset/img/banner2.png);
+        background-size: 100% 700px;
+        background-repeat: no-repeat;
+        /* height: 510px; */
+        background-position: 0% 0%;
+      }
 }}
 
 @media only screen and (max-width: 1200px) and (min-width: 992px) {.Home_s1_h {
@@ -2945,76 +2952,375 @@ tr .p2s4Tp {
     width: 300px !important;
   }
   .rera-approval-badge {
-    font-size: 14px; /* Adjust font size as needed */
+    font-size: 12px; /* Adjust font size as needed */
     padding: 5px;
     border-radius: 5px;
     z-index: 10; /* Ensure it is visible on top of the image */
     display: flex;
     align-items: center;
 }
-
 .index-search-container {
-    /* width: 700px; */
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #333;
-    border-radius: 8px;
-    border: 1px solid #fff;
-    height:
-        87px;
-    gap: 5px;
-}
-.index-search-input {
-    padding: 10px;
-    margin: 5px;
-    border-radius: 3px;
-    border: none;
-    width: 100%;
-    font-size: 16px;
-    outline: none;
-    transition: all 0.3s ease;
-    border: 1px solid white;
-}
-.index-search-input:focus {
-    border: 1px solid #C8A864;
-    /* Slight golden border when focused */
-}
-.index-search-btn {
-    padding: 10px 20px;
-    margin-left: 5px;
-    background-color: #C8A864;
-    /* Golden background for the button */
-    color: white;
-    font-size: 16px;
-    border-radius: 3px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 5px !important;
-}
-.index-search-btn:hover {
-    background-color: #B39257;
-    /* Darker golden on hover */
-}
-.index-search-container input::placeholder {
-    color: #404040;
-}
-@media only screen and (max-width: 424px) {
-    .index-search-container {
-        display: flex;
-        height: 100%;
-        flex-wrap: wrap !important;
-    }
-    .index-search-btn {
-        /* width: 244.5px; */
-        margin-top: 4px;
-        height: 100%;
-    }
-    .index-search-btn{
-        margin-top:20px;
-    }
-    .input-btn{
-        margin-top: 3px;
-    }
-}
+            /* width: 700px; */
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 8px;
+            border: 1px solid #fff;
+            /* height:
+                87px;
+            gap: 5px; */
+        }
+        .index-search-input {
+            padding: 10px;
+            /* margin: 5px; */
+            border-radius: 3px;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+            border: 1px solid white;
+        }
+        .index-search-input:focus {
+            border: 1px solid #C8A864;
+            /* Slight golden border when focused */
+        }
+        .index-search-btn {
+            padding: 10px 20px;
+            margin-left: 5px;
+            background-color: #C8A864;
+            /* Golden background for the button */
+            color: white;
+            font-size: 16px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 5px !important;
+        }
+        .index-search-btn:hover {
+            background-color: #B39257;
+            /* Darker golden on hover */
+        }
+        .index-search-container input::placeholder {
+            color: #404040;
+        }
+        @media only screen and (max-width: 424px) {
+            .index-search-container {
+                display: flex;
+                height: 100%;
+                flex-wrap: wrap !important;
+            }
+            .index-search-btn {
+                /* width: 244.5px; */
+                margin-top: 4px;
+                height: 100%;
+            }
+            .index-search-btn{
+                margin-top:20px;
+            }
+            .input-btn{
+                margin-top: 3px;
+            }
+        }
+        .input-btn {
+            margin-left: 8px;
+            border: 2px solid transparent;
+            background: linear-gradient(90deg, #E9E09B 0%, #A07A43 100%) padding-box,
+                linear-gradient(#DBCC8A 0%, #A58149 100%) border-box;
+            border-radius: 30px;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.19);
+            padding: 10px 30px;
+            font-size: 0.9em;
+            /* text-transform: uppercase; */
+            font-weight: 600;
+            color: #000000;
+        }
+        /* new inpute */
+        .index-search-container {
+            /* width: 700px; */
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 8px;
+            border: 1px solid #fff;
+        }
+        .index-search-input {
+            padding: 10px;
+            /* margin: 5px; */
+            border-radius: 0px;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+            border: 1px solid white;
+        }
+        .index-search-input:focus {
+            border: 1px solid #C8A864;
+            /* Slight golden border when focused */
+        }
+        .index-search-btn {
+            padding: 10px 20px;
+            margin-left: 5px;
+            background-color: #C8A864;
+            /* Golden background for the button */
+            color: white;
+            font-size: 16px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 20px !important;
+        }
+        .index-search-btn:hover {
+            background-color: #B39257;
+            /* Darker golden on hover */
+        }
+        .index-search-container input::placeholder {
+            color: #404040;
+        }
+        /* buget */
+        /* General Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-toggle {
+            background-color: white;
+            border: 1px solid #CED4DA;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 0px;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #FFFFFF;
+            width: 200px;
+            border: 1px solid #ccc;
+            z-index: 1;
+            padding: 10px;
+            border-radius: 4px;
+            height: 250px;
+        }
+        .rangeBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .minBox,
+        .maxBox {
+            width: 48%;
+        }
+        .minBox input,
+        .maxBox input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #CED4DA;
+            border-radius: 4px;
+        }
+        .minBox ul,
+        .maxBox ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .minBox li,
+        .maxBox li {
+            padding: 8px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .minBox li:hover,
+        .maxBox li:hover {
+            background-color: #F1F1F1;
+        }
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        .min-max-div {
+            height: 220px;
+            overflow: auto;
+        }
+        .rangeBox-top {
+            top: 0px;
+        }
+        .min-max-div::-webkit-scrollbar {
+            background: linear-gradient(white);
+            border-radius: 20px;
+            width: 10px;
+        }
+        .min-max-div::-webkit-scrollbar-thumb {
+            background: #BFBFBF;
+            border-radius: 20px;
+        }
+        .input-SaleminPrice {
+            border: 1px solid #C8A864;
+        }
+        .input-SaleminPrice:focus {
+            border: 1px solid #C8A864;
+        }
+        .input-SalemaxPrice {
+            border: 1px solid #C8A864;
+        }
+        .input-SalemaxPrice:focus {
+            border: 1px solid #C8A864;
+        }
+        .input-SaleminPrice::placeholder {
+            font-size: 12px;
+        }
+        .input-SalemaxPrice::placeholder {
+            font-size: 12px;
+        }
+        .index-search-input-Bleft {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .index-search-input-Bright {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        .dropdown-toggle-btn {
+            color: #555555;
+        }
+        .dropdown-toggle::after {
+            color: #555555;
+        }
+
+@media only screen and (max-width: 768px) {
+            .index-search-input {
+                height: 35px;
+            }
+            .dropdown-toggle {
+                height: 35px;
+                padding-top: 5px !important;
+                width: 100%;
+            }
+            .index-input-btn {
+                height: 35px;
+                padding-top: 5px;
+            }
+            .index-dropdown {
+                width: 100%;
+            }
+        }
+        @media only screen and (max-width: 424px) {
+            .index-search-btn {
+                height: 100%;
+            }
+        }
+        @media only screen and (max-width: 500px) and (min-width: 425px) {
+            .index-search-input {
+                width: 80px;
+            }
+            .index-search-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .dropdown-toggle {
+                width: 110px;
+            }
+            .index-dropdown {
+                width: 100px;
+            }
+            .index-input-btn {
+                width: 110px;
+                padding-left: 26px;
+            }
+            .dropdown-menu {
+                left: -48px;
+            }
+        }
+        @media only screen and (max-width: 407px) and (min-width: 0px) {
+            .index-input-btn {
+                width: 110px;
+            }
+        }
+        @media only screen and (max-width:425px) and (min-width: 375px) {
+            .input-btn {
+                margin-top: 10px !important;
+            }
+            .index-search-input {
+                width: 27%;
+            }
+            .index-search-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .dropdown-toggle {
+                width: 110px;
+            }
+            .index-dropdown {
+                width: 110px;
+            }
+            .dropdown-menu {
+                width: 180px;
+                left: -38px;
+            }
+        }
+        @media only screen and (max-width:375px) and (min-width: 320px) {
+            .index-search-input {
+                width: 60px;
+                height: 28px;
+                font-size: 13px;
+            }
+            .index-input-btn {
+                width: 70px;
+                padding-left: 12px;
+                height: 30px;
+                font-size: 12px;
+            }
+            .index-search-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .dropdown-toggle {
+                width: 85px !important;
+                padding-left: 12px;
+                height: 28px;
+                font-size: 13px;
+                padding-top: 0;
+            }
+            .budgetSearch {
+                font-size: 5px;
+            }
+            .dropdown-toggle::after {
+                display: inline-block;
+                margin-left: .255em;
+                vertical-align: .255em;
+                content: " ";
+                border-top: .3em solid;
+                border-right: .3em solid transparent;
+                border-bottom: 0;
+                border-left: .3em solid transparent;
+            }
+            .index-dropdown {
+                width: 100px;
+            }
+            .dropdown-menu {
+                width: 180px;
+                left: -38px;
+            }
+            .dropdown-toggle-btn {
+                position: relative;
+                top: -1px;
+            }
+        }
+        @media only screen and (max-width:436px) and (min-width: 375px) {
+            .input-btn {
+                margin-top: 10px !important;
+            }
+        }
+        @media only screen and (max-width:355px) and (min-width: 0px) {
+            .input-btn {
+                margin-top: 10px !important;
+            }
+        }

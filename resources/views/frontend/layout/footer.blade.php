@@ -27,8 +27,8 @@
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h2 class="footerTexth2">{{ $property->title }}<br></h2>
-                                    <h3 class="GoldC footerTexth2">From
-                                        ₹{{ number_format($property->price_range_start) }}/month</h3>
+                                    <h3 class="GoldC footerTexth2">
+                                        Starting From ₹: {{ $property->formatted_price_range_start }}</h3>
                                 </div>
                             </div>
                         </a>

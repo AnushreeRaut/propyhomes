@@ -84,6 +84,34 @@
                         <label>Video URL</label>
                         <input type="text" name="properties[video]" class="form-control" placeholder="Video URL">
                     </div>
+                    <!-- New fields -->
+                    <div class="form-group">
+                        <label>Flat Area (Sq Ft)</label>
+                        <input type="number" step="0.01" name="properties[flat_area]" class="form-control"
+                            placeholder="Flat Area" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project Completion Date</label>
+                        <input type="date" name="properties[project_completion_date]" class="form-control" required>
+                    </div>
+
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" name="properties[rera]" id="rera">
+                        <label class="form-check-label" for="rera">RERA Compliance</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>No of Flats</label>
+                        <input type="number" name="properties[no_of_flats]" class="form-control"
+                            placeholder="Number of Flats" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>No of Floors</label>
+                        <input type="number" name="properties[no_of_floors]" class="form-control"
+                            placeholder="Number of Floors" required>
+                    </div>
 
                     <input type="hidden" name="properties[added_by]" value="{{ auth()->user()->id }}">
                 </div>
@@ -136,16 +164,33 @@
                         </select>
                     </div>
 
-                    <!-- Landmark Dropdown -->
                     <div class="form-group">
                         <label for="landmark">Landmark</label>
-                        <select name="locations[landmark_id]" class="form-control" id="landmark" required>
-                            <option value="">Select Landmark</option>
-                            @foreach ($landmarks as $landmark)
-                                <option value="{{ $landmark->id }}">{{ $landmark->name }}</option>
-                            @endforeach
-                        </select>
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle form-control text-left border-secondary border-1"
+                                type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Select Landmarks
+                            </button>
+                            <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton"
+                                style="max-height: 200px; overflow-y: auto;">
+                                <div class="px-3">
+                                    <!-- List of checkboxes for each landmark -->
+                                    @foreach ($landmarks as $landmark)
+                                        <div class="form-check">
+                                            <input class="form-check-input landmark-checkbox" type="checkbox"
+                                                name="locations[landmark_id][]" value="{{ $landmark->id }}"
+                                                id="landmark_{{ $landmark->id }}">
+                                            <label class="form-check-label" for="landmark_{{ $landmark->id }}">
+                                                {{ $landmark->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -248,6 +293,39 @@
                     </div>
                     <!-- Add More Image Set Button -->
                     <button type="button" class="btn btn-secondary add-image mt-3 mb-3">Add Another Image</button>
+                </div>
+            </div>
+            <!-- Singular Section for Special Highlights -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Special Highlights</h4>
+                </div>
+                <div class="card-body">
+                    <!-- Existing Special Highlights -->
+                    <label>Existing Special Highlights:</label>
+                    <div class="form-group">
+                        @foreach ($existingHighlights as $highlight)
+                            <div class="form-check">
+                                <input type="checkbox" name="highlights[existing][]" value="{{ $highlight->id }}"
+                                    class="form-check-input">
+                                <label class="form-check-label">{{ $highlight->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Dynamic Section for Adding New Highlights -->
+                    <div class="highlights-section">
+                        <h5>New Highlight 1</h5>
+                        <div class="form-group">
+                            <label>Highlight Name</label>
+                            <input type="text" name="highlights[0][new][name]" class="form-control"
+                                placeholder="Highlight Name">
+                        </div>
+                    </div>
+
+                    <!-- Button to Add More Highlights -->
+                    <button type="button" class="btn btn-secondary add-highlight mt-3 mb-3">Add Another
+                        Highlight</button>
                 </div>
             </div>
 
@@ -399,6 +477,73 @@
                     });
                 }
             });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let highlightIndex = 1;
+
+            // Add more highlights
+            document.querySelector('.add-highlight').addEventListener('click', function() {
+                highlightIndex++;
+                const newHighlightSection = document.querySelector('.highlights-section').cloneNode(true);
+
+                // Update heading for cloned section
+                newHighlightSection.querySelector('h5').textContent = `New Highlight ${highlightIndex}`;
+
+                // Clear existing input values and update name attributes
+                newHighlightSection.querySelectorAll('input').forEach(function(input) {
+                    input.name = input.name.replace(/\[\d+\]/, `[${highlightIndex}]`);
+                    input.value = '';
+                });
+
+                // Add remove button for newly added highlights
+                const removeButton = document.createElement('button');
+                removeButton.type = 'button';
+                removeButton.className = 'btn btn-danger remove-highlight mt-2 mb-3';
+                removeButton.textContent = 'Remove';
+                removeButton.addEventListener('click', function() {
+                    newHighlightSection.remove(); // Remove the newly added highlight section
+                });
+
+                // Append remove button
+                newHighlightSection.appendChild(removeButton);
+
+                // Append the new highlights section
+                document.querySelector('.highlights-section').parentNode.appendChild(newHighlightSection);
+            });
+        });
+    </script>
+    <!-- Optional: To make it look nicer, include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.landmark-checkbox');
+            const button = document.getElementById('dropdownMenuButton');
+
+            function updateButtonLabel() {
+                let selected = [];
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        selected.push(checkbox.nextElementSibling.textContent.trim());
+                    }
+                });
+
+                if (selected.length > 0) {
+                    button.textContent = selected.join(', ');
+                } else {
+                    button.textContent = 'Select Landmarks';
+                }
+            }
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateButtonLabel);
+            });
+
+            // Initialize with default label
+            updateButtonLabel();
         });
     </script>
 @endsection

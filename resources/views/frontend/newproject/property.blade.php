@@ -26,11 +26,23 @@
             <div class="row">
 
                 <div class="col-xl-8 col-lg-12 mb-xl-2 mb-5">
+
                     <!-- Display Elevation Image -->
                     <h4 class="mb-3">Elevation Image</h4>
 
                     <div class="container mb-5 ">
-                        <div class="container mb-5">
+                        <div class="image-container">
+                            @foreach ($property->images as $propertyImage)
+                                @if ($propertyImage->propertyImage->imageCategory->category_name === 'Elevation')
+                                    <img src="{{ asset($propertyImage->propertyImage->image) }}"
+                                         width="100%" height="200px"
+                                         alt="Elevation Image" class="pDetailImg rounded-4 pDetailb-size">
+                                    @break <!-- Stop after displaying the first Elevation image -->
+                                @endif
+                            @endforeach
+                        </div>
+
+                        {{-- <div class="container mb-5">
                             <!-- Elevation Slide -->
                             <div class="mySlides position-relative">
                                 @foreach ($property->images as $propertyImage)
@@ -112,7 +124,7 @@
                             @endphp
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="rounded-2 psec2bordeS mt-4">
 
@@ -162,7 +174,7 @@
                             @foreach ($property->utilities as $utility)
                                 <div class="d-flex mb-1">
                                     <!-- Display utility name and value together -->
-                                    <h5 class="psec2c1font">{{ $utility->name }}:</h5>
+                                    <h5 class="psec2c1font ms-3 ps-3">{{ $utility->name }}:</h5>
                                     <p class="ms-2">{{ $utility->pivot->value }}</p>
                                 </div>
                             @endforeach

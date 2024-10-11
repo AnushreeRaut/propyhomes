@@ -10,8 +10,8 @@ class ContactController extends Controller
     // Display all contacts
     public function index()
     {
-        $contacts = Contact::all();
-        return view('contacts.index', compact('contacts'));
+        $contacts = Contact::orderByDesc('created_at')->get();
+        return view('admin.newcustomer.index', compact('contacts'));
     }
 
     // Store a newly created contact

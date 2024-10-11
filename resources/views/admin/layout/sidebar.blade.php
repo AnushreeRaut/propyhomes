@@ -26,6 +26,16 @@
     @endcan
 </li>
 
+<!-- Nav Item - Speed Dials -->
+<li class="nav-item">
+    @can('view_phone')
+        <a class="nav-link ds1col1SB w-100" href="{{ route('contacts.index') }}">
+            <img src="{{ asset('assets/frontend/img/DashboardCustomer.svg') }}" alt="">
+            <span style="font-weight: 600;color: white;">Contact Requests</span>
+        </a>
+    @endcan
+</li>
+
 <!-- Nav Item - Project Collapse Menu -->
 <li class="nav-item">
     @can('view_projects')

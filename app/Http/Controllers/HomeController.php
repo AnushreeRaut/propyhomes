@@ -52,22 +52,22 @@ class HomeController extends Controller
 
     public function property()
     {
-// Fetch the latest 2 recently added properties
-$footerProperties = Property::where('recent_property', true)
-->orderBy('created_at', 'desc') // Order by creation date
-->take(2) // Limit to 2 properties
-->with('images.propertyImage.imageCategory') // Eager load the images with their categories
-->get();
-        return view('frontend.home.property',compact('footerProperties'));
+        // Fetch the latest 2 recently added properties
+        $footerProperties = Property::where('recent_property', true)
+            ->orderBy('created_at', 'desc') // Order by creation date
+            ->take(2) // Limit to 2 properties
+            ->with('images.propertyImage.imageCategory') // Eager load the images with their categories
+            ->get();
+        return view('frontend.home.property', compact('footerProperties'));
     }
     public function homeloan()
     {
- // Fetch the latest 2 recently added properties
- $footerProperties = Property::where('recent_property', true)
- ->orderBy('created_at', 'desc') // Order by creation date
- ->take(2) // Limit to 2 properties
- ->with('images.propertyImage.imageCategory') // Eager load the images with their categories
- ->get();
-        return view('frontend.home.homeloan',compact('footerProperties'));
+        // Fetch the latest 2 recently added properties
+        $footerProperties = Property::where('recent_property', true)
+            ->orderBy('created_at', 'desc') // Order by creation date
+            ->take(2) // Limit to 2 properties
+            ->with('images.propertyImage.imageCategory') // Eager load the images with their categories
+            ->get();
+        return view('frontend.home.homeloan', compact('footerProperties'));
     }
 }

@@ -59,41 +59,46 @@ class PropertyController extends Controller
     }
 
     public function create()
-    {
-        // Fetch existing amenities to display as checkboxes in the form
-        $existingAmenities = PropertyAmenity::all();
-        // Fetch existing special highlights
-        $existingHighlights = SpecialHighlight::all();
+{
+    // Fetch existing amenities to display as checkboxes in the form
+    $existingAmenities = PropertyAmenity::all();
+    // Fetch existing special highlights
+    $existingHighlights = SpecialHighlight::all();
 
-        // Fetch existing cities, states, countries, areas, and landmarks
-        $cities = City::all();
-        $states = State::all();
-        $countries = Country::all();
-        $areas = Area::all();
-        $landmarks = Landmark::all();
+    // Fetch states and countries
+    $selectedCountry = Country::where('name', 'India')->first(); // Preselect India
+    $states = State::where('country_id', $selectedCountry->id)->get(); // Fetch states for India
 
-        // Fetch utilities (if required to show some defaults)
-        $existingUtilities = PropertyUtility::all();
+    // Fetch selected state (Maharashtra) and its cities
+    $selectedState = State::where('name', 'Maharashtra')->first(); // Preselect Maharashtra
+    $cities = City::where('state_id', $selectedState->id)->get(); // Fetch cities for Maharashtra
 
-        // Fetch image categories for the image section
-        $imageCategories = ImageCategory::all();
+    // Other necessary data
+    $countries = Country::all();
+    $areas = Area::all();
+    $landmarks = Landmark::all();
+    $existingUtilities = PropertyUtility::all();
+    $imageCategories = ImageCategory::all();
 
-        // Pass data to the view to populate the form fields
-        return view(
-            'admin.property.create',
-            compact(
-                'existingHighlights',
-                'existingAmenities',
-                'cities',
-                'states',
-                'countries',
-                'areas',
-                'landmarks',
-                'existingUtilities',
-                'imageCategories', // Pass image categories to view
-            ),
-        );
-    }
+    // Pass data to the view to populate the form fields
+    return view(
+        'admin.property.create',
+        compact(
+            'existingHighlights',
+            'existingAmenities',
+            'states',
+            'countries',
+            'cities', // Pass cities for the preselected state
+            'selectedCountry',
+            'selectedState',
+            'areas',
+            'landmarks',
+            'existingUtilities',
+            'imageCategories' // Pass image categories to view
+        )
+    );
+}
+
 
     // public function store(Request $request)
     // {

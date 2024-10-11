@@ -516,8 +516,7 @@
   }
   /* baner */
   .banderImg {
-    background-image: url(/asset/img/banner1.png);
-
+    background-image: url(../img/banner2.png);
     background-size: 100% 600px;
     background-repeat: no-repeat;
     height: 510px;
@@ -584,6 +583,12 @@
   .sec6col2Img {
     height: 450px;
     top: -108px;
+  }
+  .banderImg{
+    background-image: url(../img/banner2.png);
+    background-size: 100% 700px;
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
   }
   /* section 2 */
   .sec2pt {

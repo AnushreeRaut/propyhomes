@@ -247,7 +247,7 @@ body {
   padding-top: 150px;
 }
 .banderImg {
-  background-image: url(../img/banner1.png);
+  background-image: url(../img/banner2.png);
   background-size: 100% 745px;
   background-repeat: no-repeat;
   height: 630px;
@@ -2656,13 +2656,6 @@ tr .p2s4Tp {
 }
 @media only screen and (max-width: 1400px) and (min-width: 1200px) {.Home_s1_h {
     height: 90px;
-    .banderImg {
-        background-image: url(/asset/img/banner2.png);
-        background-size: 100% 700px;
-        background-repeat: no-repeat;
-        /* height: 510px; */
-        background-position: 0% 0%;
-      }
 }}
 
 @media only screen and (max-width: 1200px) and (min-width: 992px) {.Home_s1_h {

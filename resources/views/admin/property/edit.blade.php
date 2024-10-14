@@ -4,12 +4,12 @@
     <div id="content" class="p-4">
         @include('auth.success-message')
         @include('auth.error-message')
-     <!-- Back Button -->
-     <div class="card-footer text-right">
-        <a href="{{ route('properties.index') }}" class="btn btn-secondary">
-            <i class="fa-solid fa-arrow-left"></i> Back to Properties List
-        </a>
-    </div>
+        <!-- Back Button -->
+        <div class="card-footer text-right">
+            <a href="{{ route('properties.index') }}" class="btn btn-secondary">
+                <i class="fa-solid fa-arrow-left"></i> Back to Properties List
+            </a>
+        </div>
         <form id="property-form" method="POST" action="{{ route('properties.update', $property->id) }}"
             enctype="multipart/form-data">
             @csrf
@@ -99,6 +99,41 @@
                     <div class="form-group">
                         <label>Video URL</label>
                         <input type="text" name="properties[video]" class="form-control" value="{{ $property->video }}">
+                    </div>
+                    <!-- New Fields -->
+                    <!-- Flat Area Field -->
+                    <div class="form-group">
+                        <label>Flat Area (Sq Ft)</label>
+                        <input type="number" step="0.01" name="properties[flat_area]" class="form-control"
+                            value="{{ $property->flat_area }}" required>
+                    </div>
+
+                    <!-- Project Completion Date Field -->
+                    <div class="form-group">
+                        <label>Project Completion Date</label>
+                        <input type="date" name="properties[project_completion_date]" class="form-control"
+                            value="{{ $property->project_completion_date }}" required>
+                    </div>
+
+                    <!-- RERA Compliance Checkbox -->
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" name="properties[rera]" id="rera"
+                            {{ $property->rera ? 'checked' : '' }}>
+                        <label class="form-check-label" for="rera">RERA Compliance</label>
+                    </div>
+
+                    <!-- Number of Flats Field -->
+                    <div class="form-group">
+                        <label>No of Flats</label>
+                        <input type="number" name="properties[no_of_flats]" class="form-control"
+                            value="{{ $property->no_of_flats }}" required>
+                    </div>
+
+                    <!-- Number of Floors Field -->
+                    <div class="form-group">
+                        <label>No of Floors</label>
+                        <input type="number" name="properties[no_of_floors]" class="form-control"
+                            value="{{ $property->no_of_floors }}" required>
                     </div>
                 </div>
             </div>
@@ -303,38 +338,41 @@
                     <button type="button" class="btn btn-secondary add-utility mt-3 mb-3">Add Another Utility</button>
                 </div>
             </div>
-<!-- Singular Section for Existing Special Highlights -->
-<div class="card mb-4">
-    <div class="card-header">
-        <h4>Property Special Highlights</h4>
-    </div>
-    <div class="card-body">
-        <!-- Existing Special Highlights -->
-        <label>Existing Highlights:</label>
-        <div class="form-group">
-            @foreach ($existingHighlights as $highlight)
-                <div class="form-check">
-                    <input type="checkbox" name="highlights[existing][]" value="{{ $highlight->id }}"
-                        class="form-check-input"
-                        {{ in_array($highlight->id, $propertyHighlights) ? 'checked' : '' }}> <!-- Pre-check if highlight is already related -->
-                    <label class="form-check-label">{{ $highlight->name }}</label>
+            <!-- Singular Section for Existing Special Highlights -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Property Special Highlights</h4>
                 </div>
-            @endforeach
-        </div>
+                <div class="card-body">
+                    <!-- Existing Special Highlights -->
+                    <label>Existing Highlights:</label>
+                    <div class="form-group">
+                        @foreach ($existingHighlights as $highlight)
+                            <div class="form-check">
+                                <input type="checkbox" name="highlights[existing][]" value="{{ $highlight->id }}"
+                                    class="form-check-input"
+                                    {{ in_array($highlight->id, $propertyHighlights) ? 'checked' : '' }}>
+                                <!-- Pre-check if highlight is already related -->
+                                <label class="form-check-label">{{ $highlight->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
 
-        <!-- Dynamic Section for Adding New Highlights -->
-        <div class="highlights-section">
-            <h5>New Highlight 1</h5>
-            <div class="form-group">
-                <label>Highlight Name</label>
-                <input type="text" name="highlights[0][new][name]" class="form-control" placeholder="Highlight Name">
+                    <!-- Dynamic Section for Adding New Highlights -->
+                    <div class="highlights-section">
+                        <h5>New Highlight 1</h5>
+                        <div class="form-group">
+                            <label>Highlight Name</label>
+                            <input type="text" name="highlights[0][new][name]" class="form-control"
+                                placeholder="Highlight Name">
+                        </div>
+                    </div>
+
+                    <!-- Button to Add More Highlights -->
+                    <button type="button" class="btn btn-secondary add-highlight mt-3 mb-3">Add Another
+                        Highlight</button>
+                </div>
             </div>
-        </div>
-
-        <!-- Button to Add More Highlights -->
-        <button type="button" class="btn btn-secondary add-highlight mt-3 mb-3">Add Another Highlight</button>
-    </div>
-</div>
 
             <!-- Property Images Section -->
             <div class="card mb-4">
@@ -541,7 +579,7 @@
                     const container = document.getElementById(`category-${categorySlug}`);
 
                     const newImageIndex = container.querySelectorAll('.image-wrapper')
-                    .length; // Get the current number of images
+                        .length; // Get the current number of images
 
                     // Create new image input block
                     const newImageBlock = document.createElement('div');
@@ -566,15 +604,15 @@
 
                     // Reattach event listeners for the new elements
                     newImageBlock.querySelector('.image-input').addEventListener('change',
-                    function() {
-                        const previewTarget = this.getAttribute('data-preview-target');
-                        previewImage(this, previewTarget);
-                    });
+                        function() {
+                            const previewTarget = this.getAttribute('data-preview-target');
+                            previewImage(this, previewTarget);
+                        });
 
                     newImageBlock.querySelector('.remove-image').addEventListener('click',
-                    function() {
-                        this.closest('.image-wrapper').remove();
-                    });
+                        function() {
+                            this.closest('.image-wrapper').remove();
+                        });
                 });
             });
         });
@@ -627,16 +665,16 @@
             });
         });
     </script>
-{{-- highlights --}}
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        let highlightIndex = 1;
+    {{-- highlights --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let highlightIndex = 1;
 
-        // Add new highlight section dynamically
-        document.querySelector('.add-highlight').addEventListener('click', function () {
-            const highlightSection = document.querySelector('.highlights-section');
+            // Add new highlight section dynamically
+            document.querySelector('.add-highlight').addEventListener('click', function() {
+                const highlightSection = document.querySelector('.highlights-section');
 
-            const newHighlightHtml = `
+                const newHighlightHtml = `
                 <h5>New Highlight ${highlightIndex + 1}</h5>
                 <div class="form-group">
                     <label>Highlight Name</label>
@@ -644,13 +682,13 @@
                 </div>
             `;
 
-            // Append the new highlight section to the form
-            highlightSection.insertAdjacentHTML('beforeend', newHighlightHtml);
+                // Append the new highlight section to the form
+                highlightSection.insertAdjacentHTML('beforeend', newHighlightHtml);
 
-            highlightIndex++;
+                highlightIndex++;
+            });
         });
-    });
-</script>
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>

@@ -76,6 +76,7 @@
                                                     <!-- Min Range (5 Lakh) -->
                                                     <input type="range" name="price_range_start" id="minRange"
                                                            min="500000" max="800000000" step="1" value="500000">
+                                                           <div class="budget-track "></div>
                                                     <!-- Max Range (80 Crore) -->
                                                     <input type="range" name="price_range_end" id="maxRange"
                                                            min="500000000" max="800000000" step="1" value="800000000">

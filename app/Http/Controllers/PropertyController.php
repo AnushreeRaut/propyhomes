@@ -33,13 +33,6 @@ class PropertyController extends Controller
 
         return view('admin.property.index', compact('properties'));
     }
-    // public function view($id)
-    // {
-    //     // Fetch the property with all related details
-    //     $property = Property::with(['images.propertyImage.imageCategory', 'locations.country', 'locations.state', 'locations.city', 'locations.area', 'locations.landmark', 'amenities', 'utilities', 'images'])->findOrFail($id);
-
-    //     return view('admin.property.show', compact('property'));
-    // }
     public function view($id)
     {
         // Fetch the property with all related details including landmarks via the pivot table
@@ -241,8 +234,237 @@ class PropertyController extends Controller
     //             ->with('error', 'An error occurred while saving the property: ' . $e->getMessage());
     //     }
     // }
+//workedandimp
+    // public function store(Request $request)
+    // {
+    //     try {
+    //         // Step 1: Store Property Details
+    //         $propertyData = $request->input('properties');
+    //         $newProperty = Property::create([
+    //             'title' => $propertyData['title'],
+    //             'property_type' => $propertyData['property_type'],
+    //             'recent_property' => isset($propertyData['recent_property']),
+    //             'newly_added_property' => isset($propertyData['newly_added_property']),
+    //             'top_projects' => isset($propertyData['top_projects']),
+    //             'bhk_type' => $propertyData['bhk_type'],
+    //             'price_range_start' => $propertyData['price_range_start'],
+    //             'price_range_end' => $propertyData['price_range_end'],
+    //             'size' => $propertyData['size'],
+    //             'video' => $propertyData['video'] ?? null,
+    //             'flat_area' => $propertyData['flat_area'], // New field
+    //             'project_completion_date' => $propertyData['project_completion_date'], // New field
+    //             'rera' => isset($propertyData['rera']), // New field
+    //             'no_of_flats' => $propertyData['no_of_flats'], // New field
+    //             'no_of_floors' => $propertyData['no_of_floors'], // New field
+    //             'added_by' => auth()->user()->id,
+    //         ]);
+
+    //         // Step 2: Store Property Location and Relate with Property
+    //         $locationData = $request->input('locations');
+    //         $newLocation = PropertyLocation::create([
+    //             'city_id' => $locationData['city_id'],
+    //             'state_id' => $locationData['state_id'],
+    //             'country_id' => $locationData['country_id'],
+    //             'area_id' => $locationData['area_id'],
+    //             'added_by' => auth()->user()->id,
+    //         ]);
+
+    //         // Create a relation between property and location
+    //         PropertyRelatedLocation::create([
+    //             'property_id' => $newProperty->id,
+    //             'property_location_id' => $newLocation->id,
+    //         ]);
+
+    //         // Step 3: Store Multiple Landmarks (Using the pivot table 'property_landmark')
+    //         if ($request->has('locations.landmark_id')) {
+    //             $landmarkIds = $request->input('locations.landmark_id');
+    //             foreach ($landmarkIds as $landmarkId) {
+    //                 DB::table('property_landmark')->insert([
+    //                     'property_id' => $newProperty->id,
+    //                     'landmark_id' => $landmarkId,
+    //                     'created_at' => now(),
+    //                     'updated_at' => now(),
+    //                 ]);
+    //             }
+    //         }
+
+    //         // Step 4: Store Existing Amenities (Similar to your existing logic)
+    //         if ($request->has('amenities.existing')) {
+    //             foreach ($request->input('amenities.existing') as $existingAmenityId) {
+    //                 PropertyRelatedAmenity::create([
+    //                     'property_id' => $newProperty->id,
+    //                     'property_amenity_id' => $existingAmenityId,
+    //                     'is_true' => true,
+    //                 ]);
+    //             }
+    //         }
+
+    //         // Step 5: Store New Amenities (Similar to your existing logic)
+    //         if ($request->has('amenities')) {
+    //             foreach ($request->input('amenities') as $index => $amenitySet) {
+    //                 if (isset($amenitySet['new']) && !empty($amenitySet['new']['name'])) {
+    //                     $newAmenityData = [
+    //                         'name' => $amenitySet['new']['name'],
+    //                         'added_by' => auth()->user()->id,
+    //                     ];
+
+    //                     // Check if 'icon_image' exists and is a valid file
+    //                     if ($request->hasFile("amenities.$index.new.icon_image")) {
+    //                         $file = $request->file("amenities.$index.new.icon_image");
+    //                         if ($file->isValid()) {
+    //                             // Store the image and get the relative path
+    //                             $newAmenityData['icon_image'] = $this->uploadFile($file, 'amenities');
+    //                         }
+    //                     }
+
+    //                     // Create the new amenity
+    //                     $newAmenity = PropertyAmenity::create($newAmenityData);
+
+    //                     // Relate the newly created amenity with the property
+    //                     PropertyRelatedAmenity::create([
+    //                         'property_id' => $newProperty->id,
+    //                         'property_amenity_id' => $newAmenity->id,
+    //                         'is_true' => true,
+    //                     ]);
+    //                 }
+    //             }
+    //         }
+
+    //         // Step 6: Store Utilities (Similar to your existing logic)
+    //         if ($request->has('utilities')) {
+    //             foreach ($request->input('utilities') as $utilitySet) {
+    //                 if (!empty($utilitySet['name'])) {
+    //                     $newUtility = PropertyUtility::create([
+    //                         'name' => $utilitySet['name'],
+    //                         'added_by' => auth()->user()->id,
+    //                     ]);
+
+    //                     // Relate the utility with the property
+    //                     PropertyRelatedUtility::create([
+    //                         'property_id' => $newProperty->id,
+    //                         'property_utility_id' => $newUtility->id,
+    //                         'value' => $utilitySet['value'] ?? 0,
+    //                         'parking_type' => $utilitySet['parking_type'] ?? null,
+    //                     ]);
+    //                 }
+    //             }
+    //         }
+
+    //         // Step 7: Store Property Images (Similar to your existing logic)
+    //         if ($request->has('images')) {
+    //             foreach ($request->input('images') as $index => $imageData) {
+    //                 // Check if file is provided
+    //                 if ($request->hasFile("images.$index.file")) {
+    //                     $file = $request->file("images.$index.file");
+
+    //                     if ($file->isValid()) {
+    //                         // Store the image file and get the path
+    //                         $fileName = $this->uploadFile($file, 'images');
+
+    //                         // Ensure `image_category_id` is present
+    //                         if (!empty($imageData['image_category_id'])) {
+    //                             // Create property image
+    //                             $newImage = PropertyImage::create([
+    //                                 'image' => $fileName,
+    //                                 'image_category_id' => $imageData['image_category_id'],
+    //                                 'added_by' => auth()->user()->id,
+    //                             ]);
+
+    //                             // Create relation to property
+    //                             PropertyRelatedImage::create([
+    //                                 'property_id' => $newProperty->id,
+    //                                 'image_id' => $newImage->id,
+    //                                 'is_active' => true,
+    //                             ]);
+    //                         } else {
+    //                             throw new \Exception('Image category is missing.');
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         // Step 8: Store New Special Highlights
+    //         if ($request->has('highlights.existing')) {
+    //             foreach ($request->input('highlights.existing') as $existingHighlightId) {
+    //                 DB::table('property_special_highlight')->insert([
+    //                     'property_id' => $newProperty->id,
+    //                     'special_highlight_id' => $existingHighlightId,
+    //                     'is_true' => true,
+    //                     'created_at' => now(),
+    //                     'updated_at' => now(),
+    //                 ]);
+    //             }
+    //         }
+
+    //         if ($request->has('highlights')) {
+    //             foreach ($request->input('highlights') as $index => $highlightSet) {
+    //                 if (isset($highlightSet['new']) && !empty($highlightSet['new']['name'])) {
+    //                     $newHighlightData = [
+    //                         'name' => $highlightSet['new']['name'],
+    //                         'added_by' => auth()->user()->id,
+    //                     ];
+
+    //                     $newHighlight = SpecialHighlight::create($newHighlightData);
+
+    //                     // Relate the newly created special highlight with the property
+    //                     DB::table('property_special_highlight')->insert([
+    //                         'property_id' => $newProperty->id,
+    //                         'special_highlight_id' => $newHighlight->id,
+    //                         'is_true' => true,
+    //                         'created_at' => now(),
+    //                         'updated_at' => now(),
+    //                     ]);
+    //                 }
+    //             }
+    //         }
+    //         return redirect()->route('properties.index')->with('success', 'Property and related details have been saved successfully!');
+    //     } catch (\Exception $e) {
+    //         return redirect()
+    //             ->back()
+    //             ->with('error', 'An error occurred while saving the property: ' . $e->getMessage());
+    //     }
+    // }
     public function store(Request $request)
     {
+  // Step 1: Define validation rules
+    $request->validate([
+    // Property Details
+    'properties.title' => 'required|string|max:255',
+    'properties.property_type' => 'required|in:Residential,Commercial',
+    'properties.bhk_type' => 'required|in:1BHK,2BHK,3BHK,4BHK,5BHK',
+    'properties.price_range_start' => 'required|numeric|min:0',
+    'properties.price_range_end' => 'required|numeric|min:0',
+    'properties.size' => 'required|numeric|min:0',
+    'properties.flat_area' => 'required|numeric|min:0',
+    'properties.project_completion_date' => 'required|date',
+    'properties.no_of_flats' => 'required|integer|min:1',
+    'properties.no_of_floors' => 'required|integer|min:1',
+    'properties.video' => 'nullable|string',
+
+    // Location Details
+    'locations.city_id' => 'required|exists:cities,id',
+    'locations.state_id' => 'required|exists:states,id',
+    'locations.country_id' => 'required|exists:countries,id',
+    'locations.area_id' => 'required|exists:areas,id',
+
+    // Amenities and Highlights (if provided)
+    'amenities.existing' => 'nullable|array',
+    'amenities.*.new.name' => 'nullable|string|max:255',
+    'amenities.*.new.icon_image' => 'nullable|image|max:10240', // 10MB image size limit
+
+    // Utilities (if provided)
+    'utilities.*.name' => 'nullable|string|max:255',
+    'utilities.*.value' => 'nullable|integer|min:0',
+    'utilities.*.parking_type' => 'nullable|in:Stilt,Pit,Puzzle,Mechanical',
+
+    // Images
+    'images.*.file' => 'nullable|image|max:10240', // 10MB image size limit
+    'images.*.image_category_id' => 'required_with:images.*.file|exists:image_categories,id',
+
+    // Special Highlights
+    'highlights.existing' => 'nullable|array',
+    'highlights.*.new.name' => 'required|string|max:255',
+]);
         try {
             // Step 1: Store Property Details
             $propertyData = $request->input('properties');
@@ -430,7 +652,6 @@ class PropertyController extends Controller
                 ->with('error', 'An error occurred while saving the property: ' . $e->getMessage());
         }
     }
-
     /**
      * Handle file upload for amenities and images.
      *
@@ -1049,6 +1270,12 @@ class PropertyController extends Controller
                 'possession_status' => $propertyData['possession_status'],
                 'size' => $propertyData['size'],
                 'video' => $propertyData['video'] ?? null,
+                'flat_area' => $propertyData['flat_area'], // New field
+                'project_completion_date' => $propertyData['project_completion_date'], // New field
+                'rera' => isset($propertyData['rera']), // New field
+                'no_of_flats' => $propertyData['no_of_flats'], // New field
+                'no_of_floors' => $propertyData['no_of_floors'], // New field
+                'added_by' => auth()->user()->id,
             ]);
 
             // Step 2: Update Property Location

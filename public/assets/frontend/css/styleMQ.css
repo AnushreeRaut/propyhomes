@@ -11,7 +11,7 @@
 @media only screen and (max-width: 375px) and (min-width: 320px) {
   .nav_aWidht {
     width: 174px;
-  }
+  }x
   /* baner */
   .banderImg {
     background-image: none;
@@ -98,7 +98,7 @@
   }
   /* section 2 */
   .sec2pt {
-    padding-top: 48%;
+    padding-top: 45%;
   }
   /* property  */
   .caption-container {
@@ -174,7 +174,7 @@
   /* section 2 */
   /* section 2 */
   .sec2pt {
-    padding-top: 47%;
+    padding-top: 45%;
   }
   /* property  */
   .caption-container {
@@ -216,7 +216,7 @@
   }
   /* section 2 */
   .sec2pt {
-    padding-top: 48%;
+    padding-top: 45%;
   }
 
   /* nav bar */
@@ -331,7 +331,7 @@
   }
   /* section 2 */
   .sec2pt {
-    padding-top: 150px;
+    padding-top: 135px;
   }
 
   /* nav bar */
@@ -592,7 +592,7 @@
   }
   /* section 2 */
   .sec2pt {
-    padding-top: 165px;
+    padding-top: 140px;
   }
   .swiper-button-next:after {
     top: 455%;

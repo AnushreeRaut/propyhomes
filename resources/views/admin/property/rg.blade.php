@@ -130,7 +130,10 @@
                         <select name="locations[country_id]" class="form-control" id="country" required>
                             <option value="">Select Country</option>
                             @foreach ($countries as $country)
-                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                <option value="{{ $country->id }}"
+                                    {{ $selectedCountry->id == $country->id ? 'selected' : '' }}>
+                                    {{ $country->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -140,7 +143,12 @@
                         <label for="state">State</label>
                         <select name="locations[state_id]" class="form-control" id="state" required>
                             <option value="">Select State</option>
-                            <!-- Options will be populated based on selected country -->
+                            @foreach ($states as $state)
+                                <option value="{{ $state->id }}"
+                                    {{ isset($selectedState) && $selectedState->id == $state->id ? 'selected' : '' }}>
+                                    {{ $state->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -149,9 +157,13 @@
                         <label for="city">City</label>
                         <select name="locations[city_id]" class="form-control" id="city" required>
                             <option value="">Select City</option>
-                            <!-- Options will be populated based on selected state -->
+                            @foreach ($cities as $city)
+                                <option value="{{ $city->id }}">{{ $city->name }}</option>
+                            @endforeach
                         </select>
                     </div>
+
+
 
                     <!-- Area Dropdown -->
                     <div class="form-group">
@@ -224,8 +236,10 @@
 
                         <div class="form-group">
                             <label>Amenity Icon</label>
-                            <input type="file" name="amenities[0][new][icon_image]" class="form-control">
+                            <input type="file" name="amenities[0][new][icon_image]" class="form-control amenity-icon-input">
+                            <small class="text-danger amenity-icon-error" style="display:none;">Icon size should not be greater than 10KB.</small>
                         </div>
+
                     </div>
 
                     <!-- Button to Add More Amenities -->
@@ -425,58 +439,64 @@
 
     <script>
         $(document).ready(function() {
-            // When the country is changed
+            // Load cities for preselected state (Maharashtra)
+            let preselectedState = $('#state').val();
+            if (preselectedState) {
+                loadCities(preselectedState);
+            }
+
+            // When the country is changed, load states (already handled above)
             $('#country').change(function() {
                 let countryId = $(this).val();
-
-                // Clear state and city dropdowns
                 $('#state').html('<option value="">Select State</option>');
                 $('#city').html('<option value="">Select City</option>');
 
-                // Make AJAX request to get states
                 if (countryId) {
-                    $.ajax({
-                        url: '/api/states/' + countryId,
-                        type: 'GET',
-                        success: function(states) {
-                            // Populate state dropdown
-                            $.each(states, function(key, state) {
-                                $('#state').append('<option value="' + state.id + '">' +
-                                    state.name + '</option>');
-                            });
-                        },
-                        error: function() {
-                            alert('Failed to fetch states.');
-                        }
-                    });
+                    loadStates(countryId);
                 }
             });
 
-            // When the state is changed
+            // When the state is changed, load cities
             $('#state').change(function() {
                 let stateId = $(this).val();
-
-                // Clear city dropdown
                 $('#city').html('<option value="">Select City</option>');
 
-                // Make AJAX request to get cities
                 if (stateId) {
-                    $.ajax({
-                        url: '/api/cities/' + stateId,
-                        type: 'GET',
-                        success: function(cities) {
-                            // Populate city dropdown
-                            $.each(cities, function(key, city) {
-                                $('#city').append('<option value="' + city.id + '">' +
-                                    city.name + '</option>');
-                            });
-                        },
-                        error: function() {
-                            alert('Failed to fetch cities.');
-                        }
-                    });
+                    loadCities(stateId);
                 }
             });
+
+            function loadStates(countryId) {
+                $.ajax({
+                    url: '/api/states/' + countryId,
+                    type: 'GET',
+                    success: function(states) {
+                        $.each(states, function(key, state) {
+                            $('#state').append('<option value="' + state.id + '">' + state
+                                .name + '</option>');
+                        });
+                    },
+                    error: function() {
+                        alert('Failed to fetch states.');
+                    }
+                });
+            }
+
+            function loadCities(stateId) {
+                $.ajax({
+                    url: '/api/cities/' + stateId,
+                    type: 'GET',
+                    success: function(cities) {
+                        $.each(cities, function(key, city) {
+                            $('#city').append('<option value="' + city.id + '">' + city.name +
+                                '</option>');
+                        });
+                    },
+                    error: function() {
+                        alert('Failed to fetch cities.');
+                    }
+                });
+            }
         });
     </script>
     <script>
@@ -546,4 +566,46 @@
             updateButtonLabel();
         });
     </script>
+{{-- ====================================================va,idation --}}
+
+<!-- Add JavaScript for Validation -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const formFields = {
+            title: document.getElementById('title'),
+            propertyType: document.getElementById('propertyType'),
+            bhkType: document.getElementById('bhkType'),
+            priceRangeStart: document.getElementById('priceRangeStart'),
+            priceRangeEnd: document.getElementById('priceRangeEnd'),
+            possessionStatus: document.getElementById('possessionStatus'),
+            size: document.getElementById('size'),
+            flatArea: document.getElementById('flatArea'),
+            completionDate: document.getElementById('completionDate'),
+            noOfFlats: document.getElementById('noOfFlats'),
+            noOfFloors: document.getElementById('noOfFloors')
+        };
+
+        function validateField(field, errorId, errorMessage) {
+            field.addEventListener('input', function() {
+                if (!field.value) {
+                    document.getElementById(errorId).innerText = errorMessage;
+                } else {
+                    document.getElementById(errorId).innerText = '';
+                }
+            });
+        }
+
+        validateField(formFields.title, 'titleError', 'Title is required');
+        validateField(formFields.propertyType, 'propertyTypeError', 'Please select a property type');
+        validateField(formFields.bhkType, 'bhkTypeError', 'Please select a BHK type');
+        validateField(formFields.priceRangeStart, 'priceRangeStartError', 'Start price is required');
+        validateField(formFields.priceRangeEnd, 'priceRangeEndError', 'End price is required');
+        validateField(formFields.possessionStatus, 'possessionStatusError', 'Please select possession status');
+        validateField(formFields.size, 'sizeError', 'Size is required');
+        validateField(formFields.flatArea, 'flatAreaError', 'Flat area is required');
+        validateField(formFields.completionDate, 'completionDateError', 'Completion date is required');
+        validateField(formFields.noOfFlats, 'noOfFlatsError', 'Number of flats is required');
+        validateField(formFields.noOfFloors, 'noOfFloorsError', 'Number of floors is required');
+    });
+</script>
 @endsection

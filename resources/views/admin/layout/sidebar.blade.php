@@ -105,6 +105,7 @@
 <!-- Divider -->
 
 <!-- Nav Item - Reference Collapse Menu -->
+@can('view_employee')
 <li class="nav-item">
     <a class="nav-link collapsed ds1col1SB w-100" href="#" data-toggle="collapse" data-target="#collapseArea" aria-expanded="true" aria-controls="collapseArea">
         <img src="{{ asset('assets/frontend/img/DashboardReference.svg') }}" alt="">
@@ -120,3 +121,4 @@
         </div>
     </div>
 </li>
+@endcan

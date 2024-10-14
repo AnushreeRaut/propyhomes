@@ -22,13 +22,13 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>Title</label><span class="text-danger">*</span>
+                        <label>Title</label>
                         <input type="text" name="properties[title]" class="form-control" value="{{ $property->title }}"
                             required>
                     </div>
 
                     <div class="form-group">
-                        <label>Property Type</label><span class="text-danger">*</span>
+                        <label>Property Type</label>
                         <select name="properties[property_type]" class="form-control" required>
                             <option value="Residential" {{ $property->property_type == 'Residential' ? 'selected' : '' }}>
                                 Residential</option>
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>BHK Type</label><span class="text-danger">*</span>
+                        <label>BHK Type</label>
                         <select name="properties[bhk_type]" class="form-control" required>
                             <option value="1BHK" {{ $property->bhk_type == '1BHK' ? 'selected' : '' }}>1BHK</option>
                             <option value="2BHK" {{ $property->bhk_type == '2BHK' ? 'selected' : '' }}>2BHK</option>
@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Price Range Start</label><span class="text-danger">*</span>
+                        <label>Price Range Start</label>
                         <input type="number" step="0.01" name="properties[price_range_start]" class="form-control"
                             value="{{ $property->price_range_start }}" required>
                     </div>
@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Possession Status</label><span class="text-danger">*</span>
+                        <label>Possession Status</label>
                         <select name="properties[possession_status]" class="form-control" required>
                             <option value="Under construction"
                                 {{ $property->possession_status == 'Under construction' ? 'selected' : '' }}>Under
@@ -91,7 +91,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Size (sqft)</label><span class="text-danger">*</span>
+                        <label>Size (sqft)</label>
                         <input type="number" step="0.01" name="properties[size]" class="form-control"
                             value="{{ $property->size }}" required>
                     </div>
@@ -103,14 +103,14 @@
                     <!-- New Fields -->
                     <!-- Flat Area Field -->
                     <div class="form-group">
-                        <label>Flat Area (Sq Ft)</label><span class="text-danger">*</span>
+                        <label>Flat Area (Sq Ft)</label>
                         <input type="number" step="0.01" name="properties[flat_area]" class="form-control"
                             value="{{ $property->flat_area }}" required>
                     </div>
 
                     <!-- Project Completion Date Field -->
                     <div class="form-group">
-                        <label>Project Completion Date</label><span class="text-danger">*</span>
+                        <label>Project Completion Date</label>
                         <input type="date" name="properties[project_completion_date]" class="form-control"
                             value="{{ $property->project_completion_date }}" required>
                     </div>
@@ -379,7 +379,6 @@
                 <div class="card-header">
                     <h4>Property Images</h4>
                 </div>
-                <div class="card-body">
                 @foreach ($groupedImages as $categoryName => $images)
                     <h3>{{ $categoryName }}</h3>
                     <div class="row" id="category-{{ Str::slug($categoryName) }}">
@@ -420,7 +419,7 @@
                     <button type="button" class="btn btn-success add-image"
                         data-category="{{ Str::slug($categoryName) }}">Add Image</button>
                 @endforeach
-                </div>
+
 
                 {{-- @foreach ($groupedImages as $categoryName => $images)
                 <h3>{{ $categoryName }}</h3>

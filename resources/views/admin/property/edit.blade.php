@@ -16,19 +16,19 @@
             @method('PUT')
 
             <!-- Property Details Section -->
-            <div class="card mb-4">
+            {{-- <div class="card mb-4">
                 <div class="card-header">
                     <h4>Edit Property Details</h4>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>Title</label>
+                        <label>Title</label><span class="text-danger">*</span>
                         <input type="text" name="properties[title]" class="form-control" value="{{ $property->title }}"
                             required>
                     </div>
 
                     <div class="form-group">
-                        <label>Property Type</label>
+                        <label>Property Type</label><span class="text-danger">*</span>
                         <select name="properties[property_type]" class="form-control" required>
                             <option value="Residential" {{ $property->property_type == 'Residential' ? 'selected' : '' }}>
                                 Residential</option>
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>BHK Type</label>
+                        <label>BHK Type</label><span class="text-danger">*</span>
                         <select name="properties[bhk_type]" class="form-control" required>
                             <option value="1BHK" {{ $property->bhk_type == '1BHK' ? 'selected' : '' }}>1BHK</option>
                             <option value="2BHK" {{ $property->bhk_type == '2BHK' ? 'selected' : '' }}>2BHK</option>
@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Price Range Start</label>
+                        <label>Price Range Start</label><span class="text-danger">*</span>
                         <input type="number" step="0.01" name="properties[price_range_start]" class="form-control"
                             value="{{ $property->price_range_start }}" required>
                     </div>
@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Possession Status</label>
+                        <label>Possession Status</label><span class="text-danger">*</span>
                         <select name="properties[possession_status]" class="form-control" required>
                             <option value="Under construction"
                                 {{ $property->possession_status == 'Under construction' ? 'selected' : '' }}>Under
@@ -91,7 +91,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Size (sqft)</label>
+                        <label>Size (sqft)</label><span class="text-danger">*</span>
                         <input type="number" step="0.01" name="properties[size]" class="form-control"
                             value="{{ $property->size }}" required>
                     </div>
@@ -103,14 +103,14 @@
                     <!-- New Fields -->
                     <!-- Flat Area Field -->
                     <div class="form-group">
-                        <label>Flat Area (Sq Ft)</label>
+                        <label>Flat Area (Sq Ft)</label><span class="text-danger">*</span>
                         <input type="number" step="0.01" name="properties[flat_area]" class="form-control"
                             value="{{ $property->flat_area }}" required>
                     </div>
 
                     <!-- Project Completion Date Field -->
                     <div class="form-group">
-                        <label>Project Completion Date</label>
+                        <label>Project Completion Date</label><span class="text-danger">*</span>
                         <input type="date" name="properties[project_completion_date]" class="form-control"
                             value="{{ $property->project_completion_date }}" required>
                     </div>
@@ -136,6 +136,110 @@
                             value="{{ $property->no_of_floors }}" required>
                     </div>
                 </div>
+            </div> --}}
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Title</label><span class="text-danger">*</span>
+                    <input type="text" name="properties[title]" class="form-control" id="title" value="{{ $property->title }}" required>
+                    <small id="titleError" class="text-danger" style="display: none;">Title is required.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Property Type</label><span class="text-danger">*</span>
+                    <select name="properties[property_type]" class="form-control" id="propertyType" required>
+                        <option value="Residential" {{ $property->property_type == 'Residential' ? 'selected' : '' }}>Residential</option>
+                        <option value="Commercial" {{ $property->property_type == 'Commercial' ? 'selected' : '' }}>Commercial</option>
+                    </select>
+                    <small id="propertyTypeError" class="text-danger" style="display: none;">Property type is required.</small>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" name="properties[recent_property]" id="recentProperty" {{ $property->recent_property ? 'checked' : '' }}>
+                    <label class="form-check-label" for="recentProperty">Recent Property</label>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" name="properties[newly_added_property]" id="newlyAddedProperty" {{ $property->newly_added_property ? 'checked' : '' }}>
+                    <label class="form-check-label" for="newlyAddedProperty">Newly Added Property</label>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" name="properties[top_projects]" id="topProjects" {{ $property->top_projects ? 'checked' : '' }}>
+                    <label class="form-check-label" for="topProjects">Top Projects</label>
+                </div>
+
+                <div class="form-group">
+                    <label>BHK Type</label><span class="text-danger">*</span>
+                    <select name="properties[bhk_type]" class="form-control" id="bhkType" required>
+                        <option value="1BHK" {{ $property->bhk_type == '1BHK' ? 'selected' : '' }}>1BHK</option>
+                        <option value="2BHK" {{ $property->bhk_type == '2BHK' ? 'selected' : '' }}>2BHK</option>
+                        <option value="3BHK" {{ $property->bhk_type == '3BHK' ? 'selected' : '' }}>3BHK</option>
+                        <option value="4BHK" {{ $property->bhk_type == '4BHK' ? 'selected' : '' }}>4BHK</option>
+                        <option value="5BHK" {{ $property->bhk_type == '5BHK' ? 'selected' : '' }}>5BHK</option>
+                    </select>
+                    <small id="bhkTypeError" class="text-danger" style="display: none;">BHK type is required.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Price Range Start</label><span class="text-danger">*</span>
+                    <input type="number" step="0.01" name="properties[price_range_start]" class="form-control" id="priceRangeStart" value="{{ $property->price_range_start }}" required>
+                    <small id="priceRangeStartError" class="text-danger" style="display: none;">Price range start is required.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Price Range End</label><span class="text-danger">*</span>
+                    <input type="number" step="0.01" name="properties[price_range_end]" class="form-control" id="priceRangeEnd" value="{{ $property->price_range_end }}" required>
+                    <small id="priceRangeEndError" class="text-danger" style="display: none;">Price range end is required.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Possession Status</label><span class="text-danger">*</span>
+                    <select name="properties[possession_status]" class="form-control" id="possessionStatus" required>
+                        <option value="Under construction" {{ $property->possession_status == 'Under construction' ? 'selected' : '' }}>Under construction</option>
+                        <option value="Ready to Move" {{ $property->possession_status == 'Ready to Move' ? 'selected' : '' }}>Ready to Move</option>
+                    </select>
+                    <small id="possessionStatusError" class="text-danger" style="display: none;">Possession status is required.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Size (sqft)</label><span class="text-danger">*</span>
+                    <input type="number" step="0.01" name="properties[size]" class="form-control" id="size" value="{{ $property->size }}" required>
+                    <small id="sizeError" class="text-danger" style="display: none;">Size is required.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Video URL</label>
+                    <input type="text" name="properties[video]" class="form-control" id="video" value="{{ $property->video }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Flat Area (Sq Ft)</label><span class="text-danger">*</span>
+                    <input type="number" step="0.01" name="properties[flat_area]" class="form-control" id="flatArea" value="{{ $property->flat_area }}" required>
+                    <small id="flatAreaError" class="text-danger" style="display: none;">Flat area is required.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Project Completion Date</label><span class="text-danger">*</span>
+                    <input type="date" name="properties[project_completion_date]" class="form-control" id="completionDate" value="{{ $property->project_completion_date }}" required>
+                    <small id="completionDateError" class="text-danger" style="display: none;">Project completion date is required.</small>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" name="properties[rera]" id="rera" {{ $property->rera ? 'checked' : '' }}>
+                    <label class="form-check-label" for="rera">RERA Compliance</label>
+                </div>
+
+                <div class="form-group">
+                    <label>No of Flats</label><span class="text-danger">*</span>
+                    <input type="number" name="properties[no_of_flats]" class="form-control" id="noOfFlats" value="{{ $property->no_of_flats }}" required>
+                    <small id="noOfFlatsError" class="text-danger" style="display: none;">Number of flats is required.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>No of Floors</label><span class="text-danger">*</span>
+                    <input type="number" name="properties[no_of_floors]" class="form-control" id="noOfFloors" value="{{ $property->no_of_floors }}" required>
+                    <small id="noOfFloorsError" class="text-danger" style="display: none;">Number of floors is required.</small>
+                </div>
             </div>
 
             <!-- Property Location Section -->
@@ -145,7 +249,7 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="country">Country</label>
+                        <label for="country">Country</label><span class="text-danger">*</span>
                         <select name="locations[country_id]" class="form-control" id="country" required>
                             <option value="">Select Country</option>
                             @foreach ($countries as $country)
@@ -158,7 +262,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="state">State</label>
+                        <label for="state">State</label><span class="text-danger">*</span>
                         <select name="locations[state_id]" class="form-control" id="state" required>
                             <option value="">Select State</option>
                             @foreach ($states as $state)
@@ -171,7 +275,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="city">City</label>
+                        <label for="city">City</label><span class="text-danger">*</span>
                         <select name="locations[city_id]" class="form-control" id="city" required>
                             <option value="">Select City</option>
                             @foreach ($cities as $city)
@@ -184,7 +288,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="area">Area</label>
+                        <label for="area">Area</label><span class="text-danger">*</span>
                         <select name="locations[area_id]" class="form-control" id="area" required>
                             <option value="">Select Area</option>
                             @foreach ($areas as $area)
@@ -197,7 +301,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="landmark">Landmark</label>
+                        <label for="landmark">Landmark</label><span class="text-danger">*</span>
                         <div class="dropdown">
                             <button class="btn dropdown-toggle form-control text-left border-secondary border-1"
                                 type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -228,6 +332,7 @@
 
                 </div>
             </div>
+
             <!-- Singular Section for Existing Amenities -->
             <div class="card mb-4">
                 <div class="card-header">
@@ -379,6 +484,7 @@
                 <div class="card-header">
                     <h4>Property Images</h4>
                 </div>
+                <div class="card-body">
                 @foreach ($groupedImages as $categoryName => $images)
                     <h3>{{ $categoryName }}</h3>
                     <div class="row" id="category-{{ Str::slug($categoryName) }}">
@@ -419,7 +525,7 @@
                     <button type="button" class="btn btn-success add-image"
                         data-category="{{ Str::slug($categoryName) }}">Add Image</button>
                 @endforeach
-
+                </div>
 
                 {{-- @foreach ($groupedImages as $categoryName => $images)
                 <h3>{{ $categoryName }}</h3>
@@ -510,6 +616,45 @@
             <button type="submit" class="btn btn-primary mt-4">Update Property Details</button>
         </form>
     </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Utility function to validate required fields
+    function validateField(input, errorElementId) {
+        const errorElement = document.getElementById(errorElementId);
+        if (input.value.trim() === '') {
+            errorElement.style.display = 'block';
+        } else {
+            errorElement.style.display = 'none';
+        }
+    }
+
+    // Validate all required fields in real-time
+    const fields = [
+        { id: 'title', errorId: 'titleError' },
+        { id: 'propertyType', errorId: 'propertyTypeError' },
+        { id: 'bhkType', errorId: 'bhkTypeError' },
+        { id: 'priceRangeStart', errorId: 'priceRangeStartError' },
+        { id: 'priceRangeEnd', errorId: 'priceRangeEndError' },
+        { id: 'possessionStatus', errorId: 'possessionStatusError' },
+        { id: 'size', errorId: 'sizeError' },
+        { id: 'flatArea', errorId: 'flatAreaError' },
+        { id: 'completionDate', errorId: 'completionDateError' },
+        { id: 'noOfFlats', errorId: 'noOfFlatsError' },
+        { id: 'noOfFloors', errorId: 'noOfFloorsError' }
+    ];
+
+    fields.forEach(function(field) {
+        const input = document.getElementById(field.id);
+        input.addEventListener('input', function() {
+            validateField(input, field.errorId);
+        });
+
+        // Validate initially if the field is empty
+        validateField(input, field.errorId);
+    });
+});
+
+</script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let amenityIndex = 1; // Index for new amenities

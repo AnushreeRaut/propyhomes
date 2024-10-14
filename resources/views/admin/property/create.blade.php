@@ -678,13 +678,13 @@
                                 // Check if the image dimensions exceed 700x600
                                 if (width > 700 || height > 600) {
                                     errorElement.style.display =
-                                    'block'; // Show error if dimensions exceed
+                                        'block'; // Show error if dimensions exceed
                                     errorElement.textContent =
                                         'Icon dimensions should not exceed 700x600 pixels.';
                                     input.value = ''; // Clear the file input
                                 } else {
                                     errorElement.style.display =
-                                    'none'; // Hide error if dimensions are valid
+                                        'none'; // Hide error if dimensions are valid
                                 }
                             };
                         };
@@ -979,66 +979,17 @@
         //         document.querySelector('.highlights-section').parentNode.appendChild(newHighlightSection);
         //     });
         // });
+    </script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const checkboxes = document.querySelectorAll('.existing-highlight');
-            const highlightError = document.getElementById('highlightError');
-            const newHighlightNames = document.querySelectorAll('.new-highlight-name');
-
-            // Show the error message initially for existing highlights
-            highlightError.style.display = 'block';
-
-            // Function to validate checkboxes (existing highlights)
-            function validateExistingHighlights() {
-                let isChecked = false;
-
-                checkboxes.forEach(function(checkbox) {
-                    if (checkbox.checked) {
-                        isChecked = true;
-                    }
-                });
-
-                if (isChecked) {
-                    highlightError.style.display = 'none';
-                } else {
-                    highlightError.style.display = 'block';
-                }
-            }
-
-            // Function to validate new highlight names (text input)
-            function validateNewHighlights() {
-                let isValid = true;
-                document.querySelectorAll('.new-highlight-name').forEach(function(input) {
-                    const errorElement = input.closest('.form-group').querySelector('.new-highlight-error');
-                    if (input.value.trim() === '') {
-                        errorElement.style.display = 'block';
-                        isValid = false;
-                    } else {
-                        errorElement.style.display = 'none';
-                    }
-                });
-                return isValid;
-            }
-
-            // Real-time validation for checkboxes
-            checkboxes.forEach(function(checkbox) {
-                checkbox.addEventListener('change', validateExistingHighlights);
-            });
-
-            // Real-time validation for new highlight names
-            newHighlightNames.forEach(function(input) {
-                input.addEventListener('input', validateNewHighlights);
-            });
-
-            // Validate checkboxes on page load
-            validateExistingHighlights();
-
-            // Add more highlight dynamically
             let highlightIndex = 1;
+
+            // Add more highlights
             document.querySelector('.add-highlight').addEventListener('click', function() {
                 highlightIndex++;
                 const newHighlightSection = document.querySelector('.highlights-section').cloneNode(true);
 
-                // Update heading for the cloned section
+                // Update heading for cloned section
                 newHighlightSection.querySelector('h5').textContent = `New Highlight ${highlightIndex}`;
 
                 // Clear existing input values and update name attributes
@@ -1047,22 +998,83 @@
                     input.value = '';
                 });
 
-                // Add error message handling for new inputs
+                // Add remove button for newly added highlights
+                const removeButton = document.createElement('button');
+                removeButton.type = 'button';
+                removeButton.className = 'btn btn-danger remove-highlight mt-2 mb-3';
+                removeButton.textContent = 'Remove';
+                removeButton.addEventListener('click', function() {
+                    newHighlightSection.remove(); // Remove the newly added highlight section
+                });
+
+                // Append remove button
+                newHighlightSection.appendChild(removeButton);
+
+                // Append the new highlights section
+                document.querySelector('.highlights-section').parentNode.appendChild(newHighlightSection);
+
+                // Add error message handling for new highlights
                 const error = document.createElement('small');
                 error.className = 'text-danger new-highlight-error';
                 error.textContent = 'Please enter the highlight name.';
                 error.style.display = 'none';
                 newHighlightSection.querySelector('.form-group').appendChild(error);
-
-                // Append the new highlight section
-                document.querySelector('.highlights-section').parentNode.appendChild(newHighlightSection);
-
-                // Add real-time validation for the new input
-                const newHighlightInput = newHighlightSection.querySelector('.new-highlight-name');
-                newHighlightInput.addEventListener('input', validateNewHighlights);
             });
+
+            // Real-time validation for existing highlights checkboxes
+            const checkboxes = document.querySelectorAll('.existing-highlight');
+            const highlightError = document.getElementById('highlightError');
+
+            // Show the error message initially
+            highlightError.style.display = 'block';
+
+            // Function to validate checkboxes
+            function validateCheckboxes() {
+                let isChecked = false;
+
+                // Check if any checkbox is checked
+                checkboxes.forEach(function(checkbox) {
+                    if (checkbox.checked) {
+                        isChecked = true;
+                    }
+                });
+
+                // Show or hide the error based on whether a checkbox is checked
+                if (isChecked) {
+                    highlightError.style.display = 'none';
+                } else {
+                    highlightError.style.display = 'block';
+                }
+            }
+
+            // Attach the event listener to each checkbox for real-time validation
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', validateCheckboxes);
+            });
+
+            // Call the validation function initially to show the error if no checkboxes are selected
+            validateCheckboxes();
+
+            // Real-time validation for new highlight names (optional)
+            function validateHighlightNames() {
+                document.querySelectorAll('.new-highlight-name').forEach(function(input) {
+                    const errorElement = input.closest('.form-group').querySelector('.new-highlight-error');
+                    input.addEventListener('input', function() {
+                        if (input.value.trim() === '') {
+                            errorElement.style.display =
+                            'none'; // Hide the error because it's optional
+                        } else {
+                            errorElement.style.display = 'none'; // No error if the field is filled
+                        }
+                    });
+                });
+            }
+
+            // Call validation for highlight names on page load and for newly added highlight sections
+            validateHighlightNames();
         });
     </script>
+
     <!-- Optional: To make it look nicer, include Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -1137,82 +1149,6 @@
             validateField(formFields.noOfFloors, 'noOfFloorsError', 'Number of floors is required');
         });
     </script>
-    <!-- JavaScript for validation -->
-    <!-- JavaScript for On-Typing Validation -->
-    {{-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // City validation
-        document.getElementById('city').addEventListener('change', function() {
-            if (this.value === '') {
-                document.getElementById('cityError').innerText = 'Please select a city.';
-            } else {
-                document.getElementById('cityError').innerText = '';
-            }
-        });
-
-        // Area validation
-        document.getElementById('area').addEventListener('change', function() {
-            if (this.value === '') {
-                document.getElementById('areaError').innerText = 'Please select an area.';
-            } else {
-                document.getElementById('areaError').innerText = '';
-            }
-        });
-
-        // Landmark validation on checkbox change
-        document.querySelectorAll('.landmark-checkbox').forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                validateLandmarks();
-            });
-        });
-
-        // Validate Landmarks
-        function validateLandmarks() {
-            const landmarkCheckboxes = document.querySelectorAll('.landmark-checkbox');
-            let isLandmarkSelected = false;
-            landmarkCheckboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    isLandmarkSelected = true;
-                }
-            });
-            if (!isLandmarkSelected) {
-                document.getElementById('landmarkError').innerText = 'Please select at least one landmark.';
-            } else {
-                document.getElementById('landmarkError').innerText = '';
-            }
-        }
-
-        // Prevent form submission if validation fails
-        document.getElementById('submitBtn').addEventListener('click', function(event) {
-            let isValid = true;
-
-            // Validate City
-            const city = document.getElementById('city');
-            if (city.value === '') {
-                isValid = false;
-                document.getElementById('cityError').innerText = 'Please select a city.';
-            }
-
-            // Validate Area
-            const area = document.getElementById('area');
-            if (area.value === '') {
-                isValid = false;
-                document.getElementById('areaError').innerText = 'Please select an area.';
-            }
-
-            // Validate Landmarks
-            validateLandmarks();
-            const landmarkError = document.getElementById('landmarkError').innerText;
-            if (landmarkError !== '') {
-                isValid = false;
-            }
-
-            if (!isValid) {
-                event.preventDefault(); // Stop form submission if any field is invalid
-            }
-        });
-    });
-</script> --}}
     <!-- JavaScript for On-Typing Validation with Initial Error Display -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {

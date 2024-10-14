@@ -52,46 +52,45 @@ class PropertyController extends Controller
     }
 
     public function create()
-{
-    // Fetch existing amenities to display as checkboxes in the form
-    $existingAmenities = PropertyAmenity::all();
-    // Fetch existing special highlights
-    $existingHighlights = SpecialHighlight::all();
+    {
+        // Fetch existing amenities to display as checkboxes in the form
+        $existingAmenities = PropertyAmenity::all();
+        // Fetch existing special highlights
+        $existingHighlights = SpecialHighlight::all();
 
-    // Fetch states and countries
-    $selectedCountry = Country::where('name', 'India')->first(); // Preselect India
-    $states = State::where('country_id', $selectedCountry->id)->get(); // Fetch states for India
+        // Fetch states and countries
+        $selectedCountry = Country::where('name', 'India')->first(); // Preselect India
+        $states = State::where('country_id', $selectedCountry->id)->get(); // Fetch states for India
 
-    // Fetch selected state (Maharashtra) and its cities
-    $selectedState = State::where('name', 'Maharashtra')->first(); // Preselect Maharashtra
-    $cities = City::where('state_id', $selectedState->id)->get(); // Fetch cities for Maharashtra
+        // Fetch selected state (Maharashtra) and its cities
+        $selectedState = State::where('name', 'Maharashtra')->first(); // Preselect Maharashtra
+        $cities = City::where('state_id', $selectedState->id)->get(); // Fetch cities for Maharashtra
 
-    // Other necessary data
-    $countries = Country::all();
-    $areas = Area::all();
-    $landmarks = Landmark::all();
-    $existingUtilities = PropertyUtility::all();
-    $imageCategories = ImageCategory::all();
+        // Other necessary data
+        $countries = Country::all();
+        $areas = Area::all();
+        $landmarks = Landmark::all();
+        $existingUtilities = PropertyUtility::all();
+        $imageCategories = ImageCategory::all();
 
-    // Pass data to the view to populate the form fields
-    return view(
-        'admin.property.create',
-        compact(
-            'existingHighlights',
-            'existingAmenities',
-            'states',
-            'countries',
-            'cities', // Pass cities for the preselected state
-            'selectedCountry',
-            'selectedState',
-            'areas',
-            'landmarks',
-            'existingUtilities',
-            'imageCategories' // Pass image categories to view
-        )
-    );
-}
-
+        // Pass data to the view to populate the form fields
+        return view(
+            'admin.property.create',
+            compact(
+                'existingHighlights',
+                'existingAmenities',
+                'states',
+                'countries',
+                'cities', // Pass cities for the preselected state
+                'selectedCountry',
+                'selectedState',
+                'areas',
+                'landmarks',
+                'existingUtilities',
+                'imageCategories', // Pass image categories to view
+            ),
+        );
+    }
 
     // public function store(Request $request)
     // {
@@ -234,7 +233,7 @@ class PropertyController extends Controller
     //             ->with('error', 'An error occurred while saving the property: ' . $e->getMessage());
     //     }
     // }
-//workedandimp
+    //workedandimp
     // public function store(Request $request)
     // {
     //     try {
@@ -426,46 +425,47 @@ class PropertyController extends Controller
     // }
     public function store(Request $request)
     {
-  // Step 1: Define validation rules
-    $request->validate([
-    // Property Details
-    'properties.title' => 'required|string|max:255',
-    'properties.property_type' => 'required|in:Residential,Commercial',
-    'properties.bhk_type' => 'required|in:1BHK,2BHK,3BHK,4BHK,5BHK',
-    'properties.price_range_start' => 'required|numeric|min:0',
-    'properties.price_range_end' => 'required|numeric|min:0',
-    'properties.size' => 'required|numeric|min:0',
-    'properties.flat_area' => 'required|numeric|min:0',
-    'properties.project_completion_date' => 'required|date',
-    'properties.no_of_flats' => 'required|integer|min:1',
-    'properties.no_of_floors' => 'required|integer|min:1',
-    'properties.video' => 'nullable|string',
-
-    // Location Details
-    'locations.city_id' => 'required|exists:cities,id',
-    'locations.state_id' => 'required|exists:states,id',
-    'locations.country_id' => 'required|exists:countries,id',
-    'locations.area_id' => 'required|exists:areas,id',
-
-    // Amenities and Highlights (if provided)
-    'amenities.existing' => 'nullable|array',
-    'amenities.*.new.name' => 'nullable|string|max:255',
-    'amenities.*.new.icon_image' => 'nullable|image|max:10240', // 10MB image size limit
-
-    // Utilities (if provided)
-    'utilities.*.name' => 'nullable|string|max:255',
-    'utilities.*.value' => 'nullable|integer|min:0',
-    'utilities.*.parking_type' => 'nullable|in:Stilt,Pit,Puzzle,Mechanical',
-
-    // Images
-    'images.*.file' => 'nullable|image|max:10240', // 10MB image size limit
-    'images.*.image_category_id' => 'required_with:images.*.file|exists:image_categories,id',
-
-    // Special Highlights
-    'highlights.existing' => 'nullable|array',
-    'highlights.*.new.name' => 'required|string|max:255',
-]);
         try {
+        // Step 1: Define validation rules
+        $request->validate([
+            // Property Details
+            'properties.title' => 'required|string|max:255',
+            'properties.property_type' => 'required|in:Residential,Commercial',
+            'properties.bhk_type' => 'required|in:1BHK,2BHK,3BHK,4BHK,5BHK',
+            'properties.price_range_start' => 'required|numeric|min:0',
+            'properties.price_range_end' => 'numeric|min:0',
+            'properties.size' => 'required|numeric|min:0',
+            'properties.flat_area' => 'required|numeric|min:0',
+            'properties.project_completion_date' => 'required|date',
+            'properties.no_of_flats' => 'required|integer|min:1',
+            'properties.no_of_floors' => 'required|integer|min:1',
+            'properties.video' => 'nullable|string',
+
+            // Location Details
+            'locations.city_id' => 'required|exists:cities,id',
+            'locations.state_id' => 'required|exists:states,id',
+            'locations.country_id' => 'required|exists:countries,id',
+            'locations.area_id' => 'required|exists:areas,id',
+
+            // Amenities and Highlights (if provided)
+            'amenities.existing' => 'nullable|array',
+            'amenities.*.new.name' => 'nullable|string|max:255',
+            'amenities.*.new.icon_image' => 'nullable|image|max:10240', // 10MB image size limit
+
+            // Utilities (if provided)
+            'utilities.*.name' => 'nullable|string|max:255',
+            'utilities.*.value' => 'nullable|integer|min:0',
+            'utilities.*.parking_type' => 'nullable|in:Stilt,Pit,Puzzle,Mechanical',
+
+            // Images
+            'images.*.file' => 'nullable|image|max:10240', // 10MB image size limit
+            'images.*.image_category_id' => 'required_with:images.*.file|exists:image_categories,id',
+
+            // Special Highlights
+            'highlights.existing' => 'nullable|array',
+            'highlights.*.new.name' => 'string|max:255',
+        ]);
+
             // Step 1: Store Property Details
             $propertyData = $request->input('properties');
             $newProperty = Property::create([
@@ -857,13 +857,13 @@ class PropertyController extends Controller
         // Get the embed URL for the video
         $embedUrl = $this->getEmbedUrl($property->video);
 
-    // Fetch the latest 2 recently added properties
-    $footerProperties = Property::where('recent_property', true)
-    ->orderBy('created_at', 'desc') // Order by creation date
-    ->take(2) // Limit to 2 properties
-    ->with('images.propertyImage.imageCategory') // Eager load the images with their categories
-    ->get();
-        return view('frontend.newproject.property', compact('property', 'embedUrl','footerProperties'));
+        // Fetch the latest 2 recently added properties
+        $footerProperties = Property::where('recent_property', true)
+            ->orderBy('created_at', 'desc') // Order by creation date
+            ->take(2) // Limit to 2 properties
+            ->with('images.propertyImage.imageCategory') // Eager load the images with their categories
+            ->get();
+        return view('frontend.newproject.property', compact('property', 'embedUrl', 'footerProperties'));
     }
 
     private function getEmbedUrl($videoUrl)
@@ -1223,7 +1223,7 @@ class PropertyController extends Controller
             'amenities',
             'utilities',
             'images.propertyImage.imageCategory', // Eager load images with their categories
-            'specialHighlights' // Load special highlights
+            'specialHighlights', // Load special highlights
         ])->findOrFail($id);
 
         // Group images by their categories
@@ -1243,13 +1243,12 @@ class PropertyController extends Controller
         // Fetch the property amenities that are already related to this property
         $propertyAmenities = $property->amenities->pluck('id')->toArray(); // Array of existing amenity IDs
 
-    // Fetch existing highlights
-    $existingHighlights = SpecialHighlight::all();
-    $propertyHighlights = $property->specialHighlights->pluck('id')->toArray(); // Get associated highlights
+        // Fetch existing highlights
+        $existingHighlights = SpecialHighlight::all();
+        $propertyHighlights = $property->specialHighlights->pluck('id')->toArray(); // Get associated highlights
         // Fetch all landmarks associated with this property
         $propertyLandmarks = DB::table('property_landmark')->where('property_id', $id)->pluck('landmark_id')->toArray(); // Get an array of associated landmark IDs
-        return view('admin.property.edit', compact('property', 'groupedImages', 'countries', 'states', 'cities', 'areas', 'landmarks', 'imageCategories', 'existingAmenities', 'propertyAmenities', 'propertyLandmarks','existingHighlights',
-        'propertyHighlights'));
+        return view('admin.property.edit', compact('property', 'groupedImages', 'countries', 'states', 'cities', 'areas', 'landmarks', 'imageCategories', 'existingAmenities', 'propertyAmenities', 'propertyLandmarks', 'existingHighlights', 'propertyHighlights'));
     }
     public function update(Request $request, $id)
     {
@@ -1367,47 +1366,47 @@ class PropertyController extends Controller
                     }
                 }
             }
-   // First, delete old highlights for this property
-   DB::table('property_special_highlight')
-   ->where('property_id', $property->id)
-   ->delete();
+            // First, delete old highlights for this property
+            DB::table('property_special_highlight')
+                ->where('property_id', $property->id)
+                ->delete();
 
-// Insert selected existing highlights
-if ($request->has('highlights.existing')) {
-   foreach ($request->input('highlights.existing') as $existingHighlightId) {
-       DB::table('property_special_highlight')->insert([
-           'property_id' => $property->id,
-           'special_highlight_id' => $existingHighlightId,
-           'is_true' => true,
-           'created_at' => now(),
-           'updated_at' => now(),
-       ]);
-   }
-}
+            // Insert selected existing highlights
+            if ($request->has('highlights.existing')) {
+                foreach ($request->input('highlights.existing') as $existingHighlightId) {
+                    DB::table('property_special_highlight')->insert([
+                        'property_id' => $property->id,
+                        'special_highlight_id' => $existingHighlightId,
+                        'is_true' => true,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
 
-// Handle new highlights
-if ($request->has('highlights')) {
-   foreach ($request->input('highlights') as $index => $highlightSet) {
-       if (isset($highlightSet['new']) && !empty($highlightSet['new']['name'])) {
-           $newHighlightData = [
-               'name' => $highlightSet['new']['name'],
-               'added_by' => auth()->user()->id,
-           ];
+            // Handle new highlights
+            if ($request->has('highlights')) {
+                foreach ($request->input('highlights') as $index => $highlightSet) {
+                    if (isset($highlightSet['new']) && !empty($highlightSet['new']['name'])) {
+                        $newHighlightData = [
+                            'name' => $highlightSet['new']['name'],
+                            'added_by' => auth()->user()->id,
+                        ];
 
-           // Create new highlight
-           $newHighlight = SpecialHighlight::create($newHighlightData);
+                        // Create new highlight
+                        $newHighlight = SpecialHighlight::create($newHighlightData);
 
-           // Relate the newly created highlight with the property
-           DB::table('property_special_highlight')->insert([
-               'property_id' => $property->id,
-               'special_highlight_id' => $newHighlight->id,
-               'is_true' => true,
-               'created_at' => now(),
-               'updated_at' => now(),
-           ]);
-       }
-   }
-}
+                        // Relate the newly created highlight with the property
+                        DB::table('property_special_highlight')->insert([
+                            'property_id' => $property->id,
+                            'special_highlight_id' => $newHighlight->id,
+                            'is_true' => true,
+                            'created_at' => now(),
+                            'updated_at' => now(),
+                        ]);
+                    }
+                }
+            }
 
             // Step 7: Update or Replace Property Images
             if ($request->has('images')) {
